@@ -1,0 +1,27 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetAlert>
+
+@if (Model == null || string.IsNullOrEmpty(Model.AlertText))
+{
+    return;
+}
+
+@if (Request.QueryString["dtgePreview"] == "1")
+{
+    <p>@Model.AlertText</p>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert--purple" role="alert">
+                    <i class="icon-exclamation_line c-white"><span class="sr-only">Alert icon</span></i>
+                    <div>
+                        <p class="mb-0">@Model.AlertText</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

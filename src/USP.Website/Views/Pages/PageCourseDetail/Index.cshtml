@@ -1,0 +1,100 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageCourseDetail>
+@{
+    Layout = "~/Views/_ContentLayout.cshtml";
+}
+
+@section ContentBelowBanner
+{
+    <div class="bg-usp-navi-dark course-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="course-details">
+                        @if (!string.IsNullOrWhiteSpace(Model.Duration))
+                        {
+                            <div>
+                                <p>Duration</p>
+                                <p class="c-usp-yellow font-bold mb-0">@Model.Duration</p>
+                            </div>
+                        }
+                        @{
+                            var level = Model.CourseLevel.OfType<DataTaxonomy>().FirstOrDefault();
+                        }
+                        @if (level != null && !string.IsNullOrWhiteSpace(level.TaxonomyName))
+                        {
+                            <div>
+                                <p>Level</p>
+                                <p class="c-usp-yellow font-bold mb-0">@level.TaxonomyName</p>
+                            </div>
+                        }
+                        @{
+                            var sector = Model.CareerSector.OfType<DataTaxonomy>().FirstOrDefault();
+                        }
+                        @if (sector != null && !string.IsNullOrWhiteSpace(sector.TaxonomyName))
+                        {
+                            <div>
+                                <p>Career Sector</p>
+                                <p class="c-usp-yellow font-bold mb-0">@sector.TaxonomyName</p>
+                            </div>
+                        }
+                        @{
+                            var campuses = Model.Campus.OfType<DataTaxonomy>().ToArray();
+                        }
+                        @if (campuses.Length > 0)
+                        {
+                            <div>
+                                <p>Available At</p>
+                                <p class="c-usp-yellow font-bold mb-0">
+                                    @for (var i = 0; i < campuses.Length; i++)
+                                    {
+                                    <span class="@(i < campuses.Length-1 ? "mr-15" : "" )">@campuses[i].TaxonomyName</span>
+                                    }
+                                </p>
+                            </div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.StartDate))
+                        {
+                            <div>
+                                <p>Start Date</p>
+                                <p class="c-usp-yellow font-bold mb-0">@Model.StartDate</p>
+                            </div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.DaysAndTimes))
+                        {
+                            <div>
+                                <p>Days & Times</p>
+                                <p class="c-usp-yellow font-bold mb-0">@Model.DaysAndTimes</p>
+                            </div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.Fee))
+                        {
+                            <div>
+                                <p>Fee</p>
+                                <p class="c-usp-yellow font-bold mb-0">@Model.Fee</p>
+                            </div>
+                        }
+                        
+                        @if (Model.DownloadPdf != null)
+                        {
+                            <div>
+                                <p>Download Course Overview</p>
+                                <p class="mb-0">
+                                    <a class="c-usp-yellow font-bold" href="@Model.DownloadPdf.Url" download><i class="icon-download" aria-hidden="true"></i> PDF</a>
+                                </p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@Html.Partial("Content", Model)
+
+@Html.Partial("ArticleGrid", Model)
+

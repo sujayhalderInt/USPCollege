@@ -1,0 +1,11 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageContent>
+@{
+    Layout = "~/Views/_ContentLayout.cshtml";
+}
+
+    @Html.Partial("Content", Model)
+    @Html.Partial("ArticleGrid", Model)
+

@@ -1,0 +1,105 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Controllers.Pages
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageNewsListing>
+
+@functions {
+    private string IsChecked(string key, string[] selectedKeys)
+    {
+        if (selectedKeys == null || selectedKeys.Length == 0)
+            return "";
+
+        if (selectedKeys.Contains(key))
+        {
+            return "checked=\"checked\"";
+        }
+
+        return string.Empty;
+    }
+}
+@{
+    Layout = "~/Views/_CourseLayout.cshtml";
+}
+
+@using (Html.BeginUmbracoForm<PageNewsListingController>("Index", null, new { @class = "listing-page" }))
+{
+    <section class="hero-search bg-usp-navi-dark mb-50">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-6 offset-md-3">
+                    <h2 class="hero-home__headline">@Model.LabelSearch</h2>
+                    <div class="hero-search__form">
+                        <div class="search mb-0">
+                            <label for="@Html.IdFor(m => m.ListingPostback.SearchText)"><span class="sr-only">Search</span></label>
+                            @Html.TextBoxFor(m => m.ListingPostback.SearchText, new { type = "search", id = "page-search", placeholder = Model.PlaceholderSearch, data_predictive = "/umbraco/api/PredictiveSearch/getnewsresults" })
+                            <input id="btn-listing-search" name="@Html.NameFor(m => m.ListingPostback.BtnSearch)" class="btn btn--inline btn-listing-submit" type="submit" value="@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.NewsListing.SearchButton)">
+                        </div>
+                        <div class="hero-search__results hidden">
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section><!-- end hero-search -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="sidebar-filter">
+                    <h2 class="sidebar-filter__head">Filter by date</h2>
+                    <div class="form__check mb-10">
+                        @Html.LabelFor(m => m.ListingPostback.StartDate, "From", new { @class = "form__check__label" })
+                        @Html.TextBoxFor(m => m.ListingPostback.StartDate, new { placeholder = "From Date", @class = "date", autocomplete = "off" })
+                    </div>
+                    <div class="form__check">
+                        @Html.LabelFor(m => m.ListingPostback.EndDate, "To", new { @class = "form__check__label" })
+                        @Html.TextBoxFor(m => m.ListingPostback.EndDate, new { placeholder = "To Date", @class = "date", autocomplete = "off" })
+                    </div>
+
+                    <h2 class="sidebar-filter__head">Filter by</h2>
+                    <input id="btn-clear-all" class="btn btn--line-blue mb-20" type="submit" name="@Html.NameFor(m => m.ListingPostback.BtnClearFilters)" value="@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.NewsListing.ClearFilters)" />
+
+                    <div class="sidebar-filter__body">
+                        @foreach (var filter in Model.FilterItems)
+                        {
+                            var taxonomyFolder = filter.Taxonomies.FirstOrDefault();
+                            if (taxonomyFolder != null)
+                            {
+                                var taxonomies = taxonomyFolder.Children.OfType<DataTaxonomy>();
+
+
+                                <div class="sidebar-filter__section">
+                                    <p class="sidebar-filter__section__head">@filter.FilterTitle</p>
+                                    <div class="sidebar-filter__section__body is-hidden">
+                                        @foreach (var taxonomy in taxonomies)
+                                        {
+                                            var key = taxonomyFolder.Id + "|" + taxonomy.GetKey().ToIndexString();
+                                            <div class="checkbox">
+                                                <label for="filter-@(taxonomy.Id)">@taxonomy.TaxonomyName</label>
+                                                <input id="filter-@(taxonomy.Id)" name="@Html.NameFor(m => m.ListingPostback.SelectedTaxonomy)" type="checkbox" value="@key" @IsChecked(key, Model.ListingPostback.SelectedTaxonomy)>
+                                                <span class="checkmark"></span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <!-- end .sidebar-filter__section -->
+                            }
+                        }
+                    </div>
+
+                    <noscript>
+                        <input class="btn" type="submit" name="@Html.NameFor(m => m.ListingPostback.BtnApplyFilters)" value="@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.NewsListing.ApplyFilters)" />
+                    </noscript>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="loader" aria-hidden="true">
+                    <img src="/assets/img/loader.gif" alt="loader-gif" />
+                </div>
+                @Html.Partial("~/Views/Pages/PageNewsListing/NewsListing.cshtml", Model)
+            </div>
+        </div><!-- end row -->
+    </div><!-- end container -->
+
+}

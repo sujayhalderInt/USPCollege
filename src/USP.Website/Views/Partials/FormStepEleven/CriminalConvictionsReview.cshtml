@@ -1,0 +1,23 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEleven>
+
+<div class="review-headline">
+    <h3>@Model.HeadingsAndLabels.CriminalConvictionsReviewHeading</h3>
+    <div>
+        <a href="@Model.FormStep10Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+    </div>
+</div>
+<div class="review-block review-block--inline">
+    @{
+        if (Model.ApplicationForm.AnyCriminalConvictionOrFinalWarning.Value)
+        {
+            <p class="review-block__label">@Model.HeadingsAndLabels.LabelHaveCriminalConviction</p>
+        }
+        else
+        {
+            <p class="review-block__label">@Model.HeadingsAndLabels.LabelNoCriminalConviction</p>
+
+        }
+    }
+</div>

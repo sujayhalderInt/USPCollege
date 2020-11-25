@@ -1,0 +1,41 @@
+﻿@using USP.Business.Controllers
+@using USP.Business.Controllers.Pages
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageApplicationFormLogin>
+@if (Model == null)
+{
+    return;
+}
+
+@using (Html.BeginUmbracoForm<PageApplicationFormLoginController>("HandleLogin"))
+{
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelEmail))
+        {
+            @Html.LabelFor(model => model.EmailAddress, Model.LabelEmail)
+        }
+        @Html.TextBoxFor(model => model.EmailAddress)
+        @Html.ValidationMessageFor(model => model.EmailAddress)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelPassword))
+        {
+            @Html.LabelFor(model => model.Password, Model.LabelPassword)
+        }
+        @Html.PasswordFor(model => model.Password)
+        @Html.ValidationMessageFor(model => model.Password)
+    </div>
+
+    if (!string.IsNullOrEmpty(Model.LabelForgottenPassword) && Model.ForgottenPasswordPage.Any())
+    {
+        <p class="under-headline"><a href="@Model.ForgottenPasswordPage.First().Url">@Model.LabelForgottenPassword</a>
+        </p>
+    }
+
+    if (!string.IsNullOrEmpty(Model.TextLoginButton))
+    {
+        <p>
+            <input type="submit" class="btn btn-inline" value="@Model.TextLoginButton">
+        </p>
+    }
+}

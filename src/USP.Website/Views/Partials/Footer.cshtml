@@ -1,0 +1,161 @@
+﻿@using umbraco.cms.businesslogic.media
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@model SettingsSite
+
+@functions {
+    private HtmlString DisplayIfPresent(string addressSegment, string prefix, string suffix)
+    {
+        if (!string.IsNullOrWhiteSpace(addressSegment))
+        {
+            return new HtmlString(prefix + addressSegment + suffix);
+        }
+        return new HtmlString("");
+    }
+
+}
+
+@helper  Copyright()
+    {
+        if (!string.IsNullOrEmpty(Model.CopyrightText))
+        {
+            var text = Model.CopyrightText.Replace("##Year##", DateTime.Now.Year.ToString(), StringComparison.InvariantCultureIgnoreCase);
+
+            <p>@Html.Raw(text)</p>
+        }
+}
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p class="footer__logo">
+                    @*USP-3_04/11/2020 Begin*@
+                    @* @Html.LazyImage("/assets/img/logo.png", new { alt = "Unified Seevic Palmers College" }, "/assets/img/logo.png")*@
+                    <img src="/assets/img/logo.png" alt="Unified Seevic Palmers College" />
+                    @*USP-3_04/11/2020 End*@
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-self-center">
+
+            @if (!Model.FooterLinks.IsNullOrEmpty())
+            {
+                <div class="col-lg-8 my-auto cxbvie1">
+                    <nav class="footer__main-nav">
+
+                        <ul>
+                            @foreach (var link in Model.FooterLinks)
+                            {
+                                <li>
+                                    <a href="@link.Link" @Html.NewWindow(link.NewWindow)>@link.Caption</a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            }
+            @if (Model.HasSocialLinks)
+            {
+                <div class="col-lg-4 my-auto cxbvie2">
+                    <p>Follow us</p>
+                    <nav class="footer__social-nav">
+                        <ul>
+                            @if (!string.IsNullOrWhiteSpace(Model.FacebookLink))
+                            {
+                                <li><a href="@Model.FacebookLink" @Html.NewWindow(true)><i class="icon-facebook"><span class="sr-only">Facebook</span></i></a></li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.LinkedInLink))
+                            {
+                                <li><a href="@Model.LinkedInLink" @Html.NewWindow(true)><i class="icon-linkedin"><span class="sr-only">Linkedin</span></i></a></li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.YouTubeLink))
+                            {
+                                <li><a href="@Model.YouTubeLink" @Html.NewWindow(true)><i class="icon-youtube"><span class="sr-only">Youtube</span></i></a></li>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(Model.TwitterLink))
+                            {
+                                <li><a href="@Model.TwitterLink" @Html.NewWindow(true)><i class="icon-twitter"><span class="sr-only">Twitter</span></i></a></li>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(Model.GetPropertyValue<string>("instagramLink")))
+                            {
+                                <li><a href="@Model.GetPropertyValue("instagramLink")" @Html.NewWindow(true)><i class="icon-instagram"><span class="sr-only">Instagram</span></i></a></li>
+                            }
+
+                        </ul>
+                    </nav>
+                </div>
+            }
+            <div class="col-12">
+                <hr class="mb-30">
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var campusAddress in Model.CampusList.OfType<DataCampusAddress>())
+            {
+                <div class="col-md-2">
+                    <h2>@campusAddress.CampusName</h2>
+                    <address>
+                        @DisplayIfPresent(campusAddress.AddressLine1, string.Empty, "<br />")
+                        @DisplayIfPresent(campusAddress.AddressLine2, string.Empty, "<br />")
+                        @DisplayIfPresent(campusAddress.TownCity, string.Empty, "<br />")
+                        @DisplayIfPresent(campusAddress.County, string.Empty, "<br />")
+                        @DisplayIfPresent(campusAddress.Postcode, string.Empty, "<br />")
+                        @DisplayIfPresent(campusAddress.TelephoneNumber, "Tel: ", "<br />")
+                    </address>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr>
+                <div class="row">
+                    <div class="col-md-10">
+
+                        @if (!Model.PolicyLinks.IsNullOrEmpty())
+                        {
+                            <nav class="footer__sec-nav">
+                                <ul>
+                                    @foreach (var link in Model.PolicyLinks)
+                                    {
+                                        <li>
+                                            <a href="@link.Link" @Html.NewWindow(link.NewWindow)>@link.Caption</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </nav>
+                        }
+                    </div>
+                    <div class="col-md-2">
+                        @Copyright()
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</footer>
+@if (!Model.LogoList.IsNullOrEmpty())
+{
+    <div class="container" role="complementary">
+        <div class="row">
+            <div class="col-12">
+                <div class="under-footer">
+                    @foreach (var logo in Model.LogoList.OfType<DataExternalLogo>())
+                    {
+                        var image = new Image(logo.LogoImage);
+                        <p>
+                            <a href="@logo.ExternalUrl">
+                                <img src="/assets/img/logo.png" alt="USP College" />
+                            </a>
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

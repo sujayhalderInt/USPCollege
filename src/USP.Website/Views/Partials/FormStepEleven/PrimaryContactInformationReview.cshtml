@@ -1,0 +1,50 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEleven>
+    
+@if (!Model.ApplicationForm.IsAdultLearning && Model.ApplicationForm.IsParentOrCarerPrimaryContact.HasValue && !Model.ApplicationForm.IsParentOrCarerPrimaryContact.Value)
+{
+    <div class="review-headline">
+        <h3>@Model.HeadingsAndLabels.PrimaryContactDetailsReviewHeading</h3>
+        <div>
+            <a href="@Model.FormStep5Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+        </div>
+    </div>
+    <div class="review-block review-block--inline">
+        @if (!string.IsNullOrEmpty(Model.ApplicationForm.PrimaryContactFirstName))
+        {
+            <div>
+                <p class="review-block__label">@Model.HeadingsAndLabels.LabelFirstName</p>
+                <p class="review-block__result">@Model.ApplicationForm.PrimaryContactFirstName</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.ApplicationForm.PrimaryContactLastName))
+        {
+            <div>
+                <p class="review-block__label">@Model.HeadingsAndLabels.LabelLastName</p>
+                <p class="review-block__result">@Model.ApplicationForm.PrimaryContactLastName</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.ApplicationForm.PrimaryContactRelationshipToStudent))
+        {
+            <div>
+                <p class="review-block__label">@Model.HeadingsAndLabels.LabelRelationshipToStudent</p>
+                <p class="review-block__result">@Model.ApplicationForm.PrimaryContactRelationshipToStudent</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.ApplicationForm.PrimaryContactPhoneNumber))
+        {
+            <div>
+                <p class="review-block__label">@Model.HeadingsAndLabels.LabelPhoneNumber</p>@*conditional*@
+                <p class="review-block__result">@Model.ApplicationForm.PrimaryContactPhoneNumber</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.ApplicationForm.PrimaryContactEmailAddress))
+        {
+            <div>
+                <p class="review-block__label">@Model.HeadingsAndLabels.LabelEmail</p>
+                <p class="review-block__result">@Model.ApplicationForm.PrimaryContactEmailAddress</p>
+            </div>
+        }
+    </div>
+}

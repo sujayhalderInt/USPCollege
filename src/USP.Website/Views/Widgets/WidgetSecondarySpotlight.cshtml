@@ -1,0 +1,89 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<USP.Business.Models.ContentModels.WidgetSecondarySpotlight>
+
+@if (Model == null || Model.Items.IsNullOrEmpty())
+{
+    return;
+}
+@{
+    var items = FilterItems(Model.Items);
+}
+<section class="spotlight__section bg-usp-navi">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="spotlight__wrapper" data-elements="@items.Count">
+                    
+                    @RenderSpotlights(items)
+
+                </div><!-- end spotlight__wrapper -->
+            </div>
+      
+        </div>
+    </div>
+</section>
+
+@functions
+{
+
+    public List<DataSpotlightItem> FilterItems(IEnumerable<DataSpotlightItem> originalItems)
+    {
+        var results = new List<DataSpotlightItem>();
+
+        foreach (var item in originalItems.ToList())
+        {
+            var page = item.Page.FirstOrDefault() as IBaseContentBanner;
+            if (page != null)
+            {
+                results.Add(item);
+            }
+        }
+
+        return results;
+    }
+}
+
+@helper RenderSpotlights(IEnumerable<DataSpotlightItem> spotlightItems)
+{
+    var list = spotlightItems.ToList();
+
+    if (!list.IsNullOrEmpty())
+    {
+        foreach (var item in list)
+        {
+            var page = item.Page.First() as IBaseContentBanner;
+                @* Show Cut down Preview in DTGE*@
+            if (Request.QueryString["dtgePreview"] == "1")
+            {
+                <div>[Page: @page.Id] @page.BannerHeading</div>
+                continue;
+            }
+
+            var overlay = "teal";
+            if (page.Overlay != null)
+            {
+                overlay = page.Overlay.ToString().ToLower();
+            }
+
+            <div class="spotlight__component">
+                <div class="spotlight spotlight--v2">
+                    <p class="mb-20 filter filter--@overlay">
+                        @Html.LazyImage(page.BannerImage, SiteConstants.Crops.CropSpotlightSecondary, aspect: SiteConstants.Crops.AspectRatio.SixteenToNine)
+                    </p>
+                    <h3 class="mb-10">@page.BannerHeading</h3>
+                    <p class="mb-20">
+                        @page.BannerSummary
+                    </p>
+                    <a href="@page.Url" class="btn btn--blue btn--animated">
+                        <span class="wrapper">
+                            @item.CTacopy
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <!-- spotlight component -->
+        }
+    }
+}

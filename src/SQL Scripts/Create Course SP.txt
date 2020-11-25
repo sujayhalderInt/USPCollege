@@ -1,0 +1,7 @@
+CREATE PROCEDURE dbo.uspGetCourses
+AS
+	SELECT RTRIM(PRTX_Code) AS CourseCode, 
+	RTRIM(PRTX_Paragraph) AS ItemOrder, 
+	RTRIM(PRTX_Type)
+	AS ItemType, PRTX_Text AS ItemText
+	FROM dbo.PRTXProspectusText

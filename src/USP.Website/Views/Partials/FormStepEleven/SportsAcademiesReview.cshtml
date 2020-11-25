@@ -1,0 +1,23 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEleven>
+    
+@if (!Model.ApplicationForm.IsAdultLearning || !Model.ApplicationForm.IsApprenticeships)
+{
+    if (!string.IsNullOrEmpty(Model.ApplicationForm.SportsAcademiesCsv))
+    {
+        <div class="review-headline">
+            <h3>@Model.HeadingsAndLabels.SportsAcademiesReviewHeading</h3>
+            <div>
+                <a href="@Model.FormStep8Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+            </div>
+        </div>
+        <div class="review-block">
+            <p class="review-block__label">@Model.HeadingsAndLabels.LabelSportsAcademiesApplyingTo</p>
+            @foreach (var academy in Model.ApplicationForm.SportsAcademiesCsv.Split(','))
+            {
+                <p class="review-block__result">@academy</p>
+            }
+        </div>
+    }
+}

@@ -1,0 +1,61 @@
+﻿@using USP.Business.Extensions
+@using USP.Business.Models.ViewModels
+@model USP.Business.Models.ViewModels.NavigationViewModel
+
+<a class="menu__skip" href="#mainContent">Skip to main content</a>
+
+<ul class="menu__primary" role="menubar" aria-hidden="false">
+    <li><a href="/" class="menu__logo"><img src="/assets/img/logo.png" alt="logo"></a></li>
+    @foreach (var primaryItem in Model.NavigationItems)
+    {
+        var hasBuckets = primaryItem.Buckets.Any(b => b.Buckets.Count > 0);
+
+        <li role="menuitem" aria-haspopup="true" class="@(hasBuckets ? "has-dropdown" : "")">
+            <a href="@primaryItem.PrimaryNavigationItem.Url" data-nav-id=",@(primaryItem.PrimaryNavigationItem.Id),">@primaryItem.PrimaryNavigationItem.NavigationTitle</a>
+            @if (hasBuckets)
+            {
+                <div class="menu__dropdown">
+
+                    @foreach (var column in primaryItem.Buckets)
+                    {
+                        <div class="menu__dropdown__part">
+                            <ul>
+                                @foreach (var navItem in column.Buckets)
+                                {
+                                    <li class="@( navItem.TertiaryItem.IsNullOrEmpty() ? "" : "dropdown")">
+                                        <a href="@navItem.SecondaryItem.Url">@navItem.SecondaryItem.NavigationTitle</a>
+                                        @if (navItem.TertiaryItem.Count > 0)
+                                        {
+                                            <ul>
+                                                @foreach (var tertiaryItem in navItem.TertiaryItem)
+                                                {
+
+                                                    <li role="menuitem"><a href="@tertiaryItem.Url">@tertiaryItem.NavigationTitle</a></li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            }
+        </li>
+    }
+</ul>
+    
+
+<ul class="menu__secondary" role="menubar" aria-hidden="false">
+    @if (Model.Settings != null && Model.Settings.UtilityLinks != null)
+    {
+        foreach (var link in Model.Settings.UtilityLinks)
+        {
+            <li role="menuitem"><a href="@link.Link" @Html.NewWindow(link.NewWindow)>@link.Caption</a></li>
+        }
+    }
+
+</ul>
+
+
+

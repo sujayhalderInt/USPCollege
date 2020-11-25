@@ -1,0 +1,22 @@
+﻿@using USP.Business.Extensions
+@model IEnumerable<USP.Business.Models.Data.Sitemap>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemalocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    @foreach (var pageItem in Model)
+    {
+        var pageUrl = pageItem.Url;
+        if (!pageUrl.StartsWith("http"))
+        {
+            pageUrl = Url.AbsoluteUrl(pageUrl);
+        }
+        pageUrl = pageUrl.Replace("http://", "https://");
+
+        <url>
+            <loc>@pageUrl</loc>
+            <lastmod>@pageItem.LastModified.ToString("yyyy-MM-ddTHH:mm:00")+00:00</lastmod>
+        </url>
+    }
+</urlset>

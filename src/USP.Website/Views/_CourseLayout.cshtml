@@ -1,0 +1,21 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage
+@{
+    Layout = "~/Views/_MainLayout.cshtml";
+}
+
+@if (Model is IBaseContentBanner)
+{
+    @Html.Partial("HeroBanner", Model)
+}
+
+@RenderSection("ContentBelowBanner", required: false)
+
+<div class="main-wrapper">
+    @RenderBody()
+</div>
+
+@section PageScript
+{
+    @RenderSection("PageScript", required: false)
+}

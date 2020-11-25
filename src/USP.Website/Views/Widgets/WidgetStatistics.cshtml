@@ -1,0 +1,37 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetStatistics>
+
+@if (Model == null || Model.StatisticsData == null || !Model.StatisticsData.Any())
+{
+    return;
+}
+
+@if (Request.QueryString["dtgePreview"] == "1")
+{
+    foreach (var stat in Model.StatisticsData)
+    {
+        <p><b>@stat.Figure:</b>        @stat.Description</p>
+    }
+}
+else
+{
+    <section class="bg-usp-grey mb-50 statistic">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="@(Model.StatisticsData.Count() <= 1 ? "nocarousels" : "mobile-centered-carousel") statistic-wrapper">
+                        @foreach (var stat in Model.StatisticsData)
+                        {
+                           
+                            <div class="statistic-item">
+                                <p class="statistic-item__number"> @stat.Figure </p>
+                                <p class="statistic-item__details"> @stat.Description </p>
+                            </div>
+
+                        }
+
+                    </div>
+            </div>
+        </div>
+    </section>
+}

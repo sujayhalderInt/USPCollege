@@ -1,0 +1,47 @@
+﻿@using USP.Business.Constants
+@model USP.Business.Models.Form.FormStepsListing
+
+<nav>
+    <ul class="step-nav">
+        @foreach (var step in Model.FormSteps)
+        {
+            if (step.StepDoctypeAlias == SiteConstants.AliasApplicationForm.StepTwo)
+            {
+                if (step.StepListingOrder == Model.CurrentFormStep)
+                {
+                    <li class="active"><a href="@step.StepUrl">@step.StepName</a></li>
+                }
+                else
+                {
+                    <li><a href="@step.StepUrl">@step.StepName</a></li>
+                }
+            }
+            else
+            {
+                if (step.IsSubmitted)
+                {
+                    if (step.StepListingOrder == Model.CurrentFormStep)
+                    {
+                        <li class="active"><a href="@step.StepUrl">@step.StepName</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@step.StepUrl">@step.StepName</a></li>
+
+                    }
+                }
+                else
+                {
+                    if (step.StepListingOrder == Model.CurrentFormStep)
+                    {
+                        <li class="active"><a href="@step.StepUrl">@step.StepName</a></li>
+                    }
+                    else
+                    {
+                        <li class="disabled"><span>@step.StepName</span></li>
+                    }
+                }
+            }
+        }
+    </ul>
+</nav>

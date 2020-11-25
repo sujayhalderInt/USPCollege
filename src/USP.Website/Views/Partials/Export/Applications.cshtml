@@ -1,0 +1,501 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Helpers
+@model USP.Business.Models.ViewModels.FormApplicationViewModel
+
+@functions {
+    private string GetName(string guid, UmbracoHelper uhelper, string fieldname)
+    {
+        var c = uhelper.TypedContent(guid);
+        if (c == null)
+            return string.Empty;
+
+        var header = c.GetPropertyValue<string>(fieldname);
+        return header;
+    }
+
+}
+
+@{
+    UmbracoHelper uhelper = new UmbracoHelper(UmbracoContext.Current);
+}
+<html>
+<head>
+    <style>
+         
+         td { min-width: 8rem;}
+             body, table th, table td {
+                 font-size: 12px;
+                 text-align: left;
+             }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Application Export</h1>
+    <p>Start Date: @( (Model.StartDate.HasValue) ? Model.StartDate.Value.ToString("dd/MM/yyyy") : "N/A" )  </p>
+    <p>End Date: @( (Model.EndDate.HasValue) ? Model.EndDate.Value.ToString("dd/MM/yyyy") : "N/A" ) </p>
+</div>
+
+@if (Model.Results.IsNullOrEmpty())
+{
+    <div>No applications available</div>
+}
+<hr/>
+
+@foreach (var item in Model.Results)
+{
+
+    <div style="page-break-inside: avoid;">
+    <div>
+        <h3>@item.HeadingsAndLabels.StudentsPersonalInformationReviewHeading</h3>
+    </div>
+    <div style="padding-left: 2rem;">
+        <table border="0" width="100%">
+            <tr>
+                <td>
+                    <strong>@item.HeadingsAndLabels.LabelLastName</strong>: @item.ApplicationForm.StudentsLastName
+                </td>
+                <td>
+                    <strong>@item.HeadingsAndLabels.LabelFirstName</strong>: @item.ApplicationForm.StudentsFirstName
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ApplicationForm.StudentsMiddleName))
+                    {
+                        <span><strong>@item.HeadingsAndLabels.LabelMiddleName</strong>: @item.ApplicationForm.StudentsMiddleName</span>
+                    }
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ApplicationForm.StudentsPreferedName))
+                    {
+                        <span><strong>@item.HeadingsAndLabels.LabelPreferredName</strong>: @item.ApplicationForm.StudentsPreferedName</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>@item.HeadingsAndLabels.LabelDateOfBirth</strong>: @item.ApplicationForm.StudentsDateOfBirth.Value.ToString("dd/MM/yyyy")
+                </td>
+                <td colspan="3">
+                    <strong>@item.HeadingsAndLabels.LabelGender</strong>: @item.ApplicationForm.StudentsGender
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <h3>@item.HeadingsAndLabels.StudentsContactInformationReviewHeading</h3>
+    </div>
+    <div style="padding-left: 2rem;">
+        <strong>@item.HeadingsAndLabels.LabelHomeAddress</strong>
+        <p>
+            @item.ApplicationForm.StudentsHomeAddressLine1 <br />
+            @item.ApplicationForm.StudentsHomeAddressLine2 <br />
+            @item.ApplicationForm.StudentsTownOrCity <br />
+            @item.ApplicationForm.StudentsHomePostCode <br />
+        </p>
+
+        <p>
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.StudentsMobileNumber))
+            {
+                <span><strong>@item.HeadingsAndLabels.LabelMobileNumber</strong>: @item.ApplicationForm.StudentsMobileNumber</span>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.StudentsHomeNumber))
+            {
+                <span style="padding-left: 5em"><strong>@item.HeadingsAndLabels.LabelHomeNumber</strong>: @item.ApplicationForm.StudentsHomeNumber</span>
+            }
+            <span style="padding-left: 5em"><strong>@item.HeadingsAndLabels.LabelStudentsEmail</strong>: @item.ApplicationForm.StudentsEmailAddress</span>
+        </p>
+        @if (!string.IsNullOrWhiteSpace(item.ApplicationForm.NationalInsuranceNumber))
+        {
+            <p><strong>@item.HeadingsAndLabels.LabelNationalInsuranceNumber</strong>: @item.ApplicationForm.NationalInsuranceNumber</p>
+        }
+    </div>
+
+    @if (item.ApplicationForm.IsAdultLearning)
+    {
+        <div>
+            <h3>@item.HeadingsAndLabels.EmergencyContactReviewHeading</h3>
+        </div>
+        <div style="padding-left: 2rem;">
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.EmergencyContactFirstName))
+            {
+                <div>
+                    <p> <strong>@item.HeadingsAndLabels.LabelFirstName</strong>: @item.ApplicationForm.EmergencyContactFirstName</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.EmergencyContactLastName))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelLastName</strong>: @item.ApplicationForm.EmergencyContactLastName</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.EmergencyContactRelationship))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelRelationshipToStudent</strong>: @item.ApplicationForm.EmergencyContactRelationship</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.EmergencyContactPhoneNumber))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelPhoneNumber</strong>: @item.ApplicationForm.EmergencyContactPhoneNumber</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.EmergencyContactEmailAddress))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelEmail</strong>: @item.ApplicationForm.EmergencyContactEmailAddress</p>
+                </div>
+            }
+        </div>
+    }
+
+    @if (!item.ApplicationForm.IsAdultLearning)
+    {
+        <div>
+            <h3>@item.HeadingsAndLabels.ParentCarerDetailsReviewHeading</h3>
+
+        </div>
+        <div style="padding-left: 2rem;">
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.ParentOrCarerFirstName))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelFirstName</strong>: @item.ApplicationForm.ParentOrCarerFirstName</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.ParentOrCarerLastName))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelLastName</strong>: @item.ApplicationForm.ParentOrCarerLastName</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.ParentOrCarerRelationshipToStudent))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelRelationshipToStudent</strong>: @item.ApplicationForm.ParentOrCarerRelationshipToStudent</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.ParentOrCarerPhoneNumber))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelPhoneNumber</strong>: @item.ApplicationForm.ParentOrCarerPhoneNumber</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.ParentOrCarerEmailAddress))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelEmail</strong>: @item.ApplicationForm.ParentOrCarerEmailAddress</p>
+                </div>
+            }
+        </div>
+    }
+
+    @if (!item.ApplicationForm.IsAdultLearning && !item.ApplicationForm.IsParentOrCarerPrimaryContact.Value)
+    {
+        <div>
+            <h3>@item.HeadingsAndLabels.PrimaryContactDetailsReviewHeading</h3>
+        </div>
+        <div style="padding-left: 2rem;">
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.PrimaryContactFirstName))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelFirstName</strong>: @item.ApplicationForm.PrimaryContactFirstName</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.PrimaryContactLastName))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelLastName</strong>: @item.ApplicationForm.PrimaryContactLastName</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.PrimaryContactRelationshipToStudent))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelRelationshipToStudent</strong>: @item.ApplicationForm.PrimaryContactRelationshipToStudent</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.PrimaryContactPhoneNumber))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelPhoneNumber</strong>: @item.ApplicationForm.PrimaryContactPhoneNumber</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.PrimaryContactEmailAddress))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelEmail</strong>: @item.ApplicationForm.PrimaryContactEmailAddress</p>
+                </div>
+            }
+        </div>
+    }
+
+    @if (item.ApplicationForm.IsALevels)
+    {
+        <div>
+            <h3>@(item.HeadingsAndLabels.CourseSelectionReviewHeading+"("+FormHelper.GetField(item.ApplicationForm.TypeOfStudy, SiteConstants.Fields.TaxonomyName)+")")</h3>
+
+        </div>
+        <div style="padding-left: 2rem;">
+            @if (!string.IsNullOrWhiteSpace(item.ApplicationForm.Campus))
+            {
+                <div>
+                    <p><strong>Campus</strong>: @GetName(item.ApplicationForm.Campus, uhelper, SiteConstants.Fields.TaxonomyName)</p>
+                </div>                
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.AlevelCourseFirstChoice))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelAlevelsFirstChoice</strong>: @GetName(item.ApplicationForm.AlevelCourseFirstChoice, uhelper, SiteConstants.Fields.BannerHeading)
+                    </p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.AlevelCourseSecondChoice))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelAlevelsSecondChoice</strong>: @GetName(item.ApplicationForm.AlevelCourseSecondChoice, uhelper, SiteConstants.Fields.BannerHeading)
+                    </p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.AlevelCourseThirdChoice))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelAlevelsThirdChoice</strong>: @GetName(item.ApplicationForm.AlevelCourseThirdChoice, uhelper, SiteConstants.Fields.BannerHeading)
+                    </p>
+                </div>
+            }
+        </div>
+    }
+    else if (item.ApplicationForm.IsAdultLearning)
+    {
+        <div>
+            <h3>@(item.HeadingsAndLabels.CourseSelectionReviewHeading+"("+FormHelper.GetField(item.ApplicationForm.TypeOfStudy, SiteConstants.Fields.TaxonomyName)+")")</h3>
+
+        </div>
+        <div style="padding-left: 2rem;">
+            @if (!string.IsNullOrWhiteSpace(item.ApplicationForm.Campus))
+            {
+                <div>
+                    <p><strong>Campus</strong>: @GetName(item.ApplicationForm.Campus, uhelper, SiteConstants.Fields.TaxonomyName)</p>
+                </div>                
+            }
+
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.AlevelCourseFirstChoice))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelAdultLearningFirstChoice</strong>: @GetName(item.ApplicationForm.AlevelCourseFirstChoice, uhelper, SiteConstants.Fields.BannerHeading)</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.AlevelCourseSecondChoice))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelAdultLearningSecondChoice</strong>: @GetName(item.ApplicationForm.AlevelCourseSecondChoice, uhelper, SiteConstants.Fields.BannerHeading)</p>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.AlevelCourseThirdChoice))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelAdultLearningThirdChoice</strong>: @GetName(item.ApplicationForm.AlevelCourseThirdChoice, uhelper, SiteConstants.Fields.BannerHeading)</p>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div>
+            <h3>@(item.HeadingsAndLabels.YouAreApplyingForReviewHeading+"("+FormHelper.GetField(item.ApplicationForm.TypeOfStudy, SiteConstants.Fields.TaxonomyName)+")")</h3>
+        </div>
+        if (!string.IsNullOrEmpty(item.ApplicationForm.NameOfCourseOfTheTypeSelected))
+        {
+            <div style="padding-left: 2rem;">
+                @if (!string.IsNullOrWhiteSpace(item.ApplicationForm.Campus))
+                {
+                    <div>
+                        <p><strong>Campus</strong>: @GetName(item.ApplicationForm.Campus, uhelper, SiteConstants.Fields.TaxonomyName)</p>
+                    </div>                
+                }
+                <p>@GetName(item.ApplicationForm.NameOfCourseOfTheTypeSelected, uhelper, SiteConstants.Fields.BannerHeading)</p>
+            </div>
+        }
+    }
+
+    @if (!item.ApplicationForm.IsAdultLearning || !item.ApplicationForm.IsApprenticeships)
+    {
+        if (!string.IsNullOrEmpty(item.ApplicationForm.SportsAcademiesCsv))
+        {
+            <div>
+                <h3>@item.HeadingsAndLabels.SportsAcademiesReviewHeading</h3>
+            </div>
+            <div>
+                <p>@item.HeadingsAndLabels.LabelSportsAcademiesApplyingTo</p>
+                @foreach (var academy in item.ApplicationForm.SportsAcademiesCsv.Split(','))
+                {
+                    <p>@academy</p>
+                }
+            </div>
+        }
+    }
+
+@if (!item.ApplicationForm.IsAdultLearning && !string.IsNullOrEmpty(item.ApplicationForm.NameOfLastCollegeOrSchool))
+{
+    <div>
+        <h3>Last College Or School </h3>
+    </div>
+    <div>
+        <p>@item.ApplicationForm.NameOfLastCollegeOrSchool</p>
+    </div>
+}
+        <div>
+            <h3>@item.HeadingsAndLabels.PreviousQualificationsReviewHeading</h3>
+        </div>
+        <div style="padding-left: 2rem;">
+            @if (item.Qualifications != null)
+            {
+                <table>
+                    <tr>
+                        <th>@item.HeadingsAndLabels.LabelSubject</th>
+                        <th>@item.HeadingsAndLabels.LabelType</th>
+                        <th>@item.HeadingsAndLabels.LabelGrade</th>
+                        @if (item.ApplicationForm.IsAdultLearning)
+                        {
+                            <th>@item.HeadingsAndLabels.LabelYear</th>
+                        }
+                    </tr>
+                    @foreach (var qualification in item.Qualifications)
+                    {
+                        if (!string.IsNullOrEmpty(qualification.Subject) ||
+                            !string.IsNullOrEmpty(qualification.Type) ||
+                            !string.IsNullOrEmpty(qualification.GradeOrPredictedGrade)
+                            )
+                        {
+                            <tr>
+                                <td>
+                                    <p>@qualification.Subject</p>
+                                </td>
+                                <td>
+                                    <p>@qualification.Type</p>
+                                </td>
+                                <td>
+                                    <p>@qualification.GradeOrPredictedGrade</p>
+                                </td>
+                                @if (item.ApplicationForm.IsAdultLearning)
+                                {
+                                    <td>
+                                        <p>@qualification.Year</p>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    }
+                </table>
+            }
+        </div>
+
+        <div>
+            <h3>@item.HeadingsAndLabels.MedicalConditionsReviewHeading</h3>
+        </div >
+        <div style="padding-left: 2rem;">
+            @{
+                if (!item.ApplicationForm.HasDisabilityDifficulty.Value)
+                {
+                    <p>@item.HeadingsAndLabels.LabelNoLearningDisabilityDifficulty</p>
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(item.ApplicationForm.DisabilitiesDifficultiesCsv))
+                    {
+                        <ul>
+                            @foreach (var disabilityDifficulty in item.ApplicationForm.DisabilitiesDifficultiesCsv.Split(','))
+                            {
+                                <li>@disabilityDifficulty</li>
+                            }
+                        </ul>
+                    }
+                    if (!string.IsNullOrEmpty(item.ApplicationForm.PrimaryDisability))
+                    {
+                        <p><strong>@item.HeadingsAndLabels.LabelPrimaryDisabilityDifficulty</strong>: @item.ApplicationForm.PrimaryDisability</p>
+                    } 
+                }
+            }
+
+        </div>
+
+        <div>
+            <h3>@item.HeadingsAndLabels.EqualOpportunitiesReviewHeading</h3>
+        </div>
+        <div style="padding-left: 2rem;">
+            <div>
+                <p><strong>@item.HeadingsAndLabels.LabelEthinicity</strong>: @item.ApplicationForm.StudentsEthnicity</p>
+            </div>
+            <div>
+                <p><strong>@item.HeadingsAndLabels.LabelNationality</strong>: @item.ApplicationForm.StudentsNationality</p>
+            </div>
+            @if (!string.IsNullOrEmpty(item.ApplicationForm.StudentsReligion))
+            {
+                <div>
+                    <p><strong>@item.HeadingsAndLabels.LabelReligion</strong>: @item.ApplicationForm.StudentsReligion</p>
+                </div>
+            }
+            <div>
+                <p><strong>@item.HeadingsAndLabels.LabelFirstLanguage</strong>: @item.ApplicationForm.StudentsFirstLanguage</p>
+            </div>
+        </div>
+
+        <div>
+            <h3>@item.HeadingsAndLabels.EqualOpportunitiesReviewHeading</h3>
+        </div>
+        <div style="padding-left: 2rem;">
+            @{
+                if (item.ApplicationForm.ResidentOfUkEuForThreeYears.Value)
+                {
+                    <p>@item.HeadingsAndLabels.LabelResidentOfUkEuFor3Years</p>
+                }
+                else
+                {
+                    <p>
+                        You've not been a resident of the UK/European Union during the last three years.
+                        You lived in @(item.ApplicationForm.NameOfCountryOutsideUkEu) from
+                        @(item.ApplicationForm.DateOfResidenceOutsideUkEuFrom.Value.ToString("dd/MM/yyyy"))
+                        to
+                        @(item.ApplicationForm.DateOfResidenceOutsideUkEuTo.Value.ToString("dd/MM/yyyy"))
+                    </p>
+                }
+            }
+
+        </div>
+
+        <div>
+            <h3>@item.HeadingsAndLabels.CriminalConvictionsReviewHeading</h3>
+        </div>
+        <div style="padding-left: 2rem;">
+            @{
+                if (item.ApplicationForm.AnyCriminalConvictionOrFinalWarning.Value)
+                {
+                    <p>@item.HeadingsAndLabels.LabelHaveCriminalConviction</p>
+                }
+                else
+                {
+                    <p>@item.HeadingsAndLabels.LabelNoCriminalConviction</p>
+
+                }
+            }
+        </div>
+
+        <div>
+            <h3>Contact Preferences</h3>
+        </div>
+        <div style="padding-left: 2rem;">
+            @{
+                <p><strong>@item.HeadingsAndLabels.LabelReceiveMarketing</strong>: @((item.ApplicationForm.ReceiveMarketingEmails) ? "Yes" : "No")
+                </p>
+                <p><strong>@item.HeadingsAndLabels.LabelHowDidYouHearAboutUs</strong>: @(item.ApplicationForm.HowDidYouHearAboutThisCourse ?? "No Selection")
+                </p>
+                <p><strong>@item.HeadingsAndLabels.LabelMostInterestedSector</strong>: @(item.ApplicationForm.MostInterestedSector ?? "No Selection")
+                </p>
+            }
+        </div>
+    </div>
+    <hr/>
+}
+</body>
+</html>

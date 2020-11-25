@@ -1,0 +1,47 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageResetPassword>
+@{
+    Layout = "~/Views/_ContentLayout.cshtml";
+
+    var success = ViewData["success"] != null ? ViewData["success"].ToString() : null;
+    var error = ViewData["error"] != null ? ViewData["error"].ToString() : null;
+}
+
+@Html.Partial("ArticleGrid", Model)
+<div class="container">
+    <div class="col-md-8 offset-md-2">
+        @if (!string.IsNullOrEmpty(Model.Heading))
+        {
+            <h2>@Model.Heading</h2>
+        }
+
+        @if (Request.QueryString["success"] == "1")
+        {
+            <div class="highlight success">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>@library.GetDictionaryItem(SiteConstants.ResetPasswordSuccessMessageKey) . <a href="@Model.LoginPageUrlWithReturnUrl"> &nbsp; Login in to your account?</a></p>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (!string.IsNullOrEmpty(error))
+        {
+            <div class="highlight error">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>@error</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @*@if (Request.QueryString["success"] == "1")
+        {
+            <p>@library.GetDictionaryItem(SiteConstants.ResetPasswordSuccessMessageKey)</p>
+        }*@
+        @Html.Partial("ResetPassword", Model)
+    </div>
+</div>
+

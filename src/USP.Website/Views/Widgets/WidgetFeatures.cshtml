@@ -1,0 +1,92 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetFeatures>
+
+@if (Model == null || Model.FeaturesData == null || !Model.FeaturesData.Any())
+{
+    return;
+}
+
+@if (Request.QueryString["dtgePreview"] == "1")
+{
+    <h2>@Model.Title</h2>
+    <h4>@Model.Description</h4>
+    foreach (var feature in Model.FeaturesData)
+    {
+        <img src="@feature.Image.GetCropUrl(SiteConstants.Crops.GridEditorPreview)" alt="@feature.Image.Name" />
+        <h5>@feature.Title</h5>
+        <p>@feature.Description</p>
+    }
+}
+else
+{
+    <section class="mb-50 features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    @if (!string.IsNullOrEmpty(Model.Title))
+                    {
+                        <h2>@Model.Title</h2>
+                    }
+                    @if (Model.Description != null && !string.IsNullOrEmpty(Model.Description.ToString()))
+                    {
+                        <div class="mb-50">@Model.Description</div>
+                    }
+                    <div class="features-wrapper mobile-centered-carousel @(Model.FeaturesData != null && Model.FeaturesData.Count() == 1 ? " single_feature" : "") ">
+                        @foreach (var feature in Model.FeaturesData)
+                        {
+
+                            var feautureLink = feature.FeatureLink != null ? feature.FeatureLink.FirstOrDefault() : new Umbraco.Web.Models.RelatedLink() { Link = null };
+                            
+                        <div class="features-item">
+                            @if (!string.IsNullOrEmpty(feautureLink.Link))
+                            {
+                                <a href="@feautureLink.Link" @Html.NewWindow(feautureLink.NewWindow)>
+
+                                    @if (feature.Image != null)
+                                    {
+                                        <p class="features-item__img">
+                                            @Html.LazyImage(feature.Image, SiteConstants.Crops.CropFeaturesWidget)
+                                        </p>
+                                    }
+                                    @if (!string.IsNullOrEmpty(feature.Title))
+                                    {
+                                        <h4 class="mb-10">@feature.Title</h4>
+                                    }
+                                    @if (feature.Description != null && !string.IsNullOrEmpty(feature.Description.ToString()))
+                                    {
+                                        <div>@feature.Description</div>
+                                    }
+                                </a>
+                            }
+                            else
+                            {
+                                <div>
+
+                                    @if (feature.Image != null)
+                                    {
+                                        <p class="features-item__img">
+                                            @Html.LazyImage(feature.Image, SiteConstants.Crops.CropFeaturesWidget)
+                                        </p>
+                                    }
+                                    @if (!string.IsNullOrEmpty(feature.Title))
+                                    {
+                                        <h4 class="mb-10">@feature.Title</h4>
+                                    }
+                                    @if (feature.Description != null && !string.IsNullOrEmpty(feature.Description.ToString()))
+                                    {
+                                        <div>@feature.Description</div>
+                                    }
+                                </div>
+                            }
+
+                        </div>
+                            
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

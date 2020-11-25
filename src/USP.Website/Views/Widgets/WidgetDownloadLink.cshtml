@@ -1,0 +1,26 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetDownloadLink>
+
+
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+
+            @foreach (var downloadLink in Model.DownloadLinkList.Where(l => l != null && l.DownloadFile != null && !string.IsNullOrWhiteSpace(l.Title)))
+            {
+                <div class="download-file mb-50">
+                    <h3 class="mb-20">@downloadLink.Title</h3>
+                    @if (!string.IsNullOrWhiteSpace(downloadLink.Summary))
+                    {
+                        <p class="mb-20">@downloadLink.Summary</p>
+                    }
+                    <p class="mb-0">
+                        <a class="font-bold" href="@downloadLink.DownloadFile.Url" download><i class="icon-download" aria-hidden="true"></i> @downloadLink.FileType </a>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+    

@@ -1,0 +1,55 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<USP.Business.Models.ContentModels.WidgetRelatedCareers>
+
+@{
+    if (Model == null || Model.RelatedCareers.IsNullOrEmpty())
+    {
+        return;
+    }
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-10">@Model.Title</h2>
+            <div class="mb-20">@Model.Description</div>
+        </div>
+    </div>
+</div>
+
+<section class="spotlight__section bg-usp-navi mb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="spotlight__wrapper" data-elements="@Model.RelatedCareers.Count()">
+                    @foreach (var career in Model.RelatedCareers)
+                    {
+                        var overlay = "teal";
+                        if (career.Overlay != null)
+                        {
+                            overlay = career.Overlay.ToString().ToLower();
+                        }
+                        <div class="spotlight__component">
+                            <div class="spotlight spotlight--v2">
+                                <p class="mb-20 filter filter--@overlay">
+                                    @Html.LazyImage(career.BannerImage, SiteConstants.Crops.CropSpotlightSecondary)
+                                </p>
+                                <h3 class="mb-10">@career.BannerHeading</h3>
+                                <p class="mb-20">@career.BannerSummary</p>
+                                <a href="@career.Url" class="btn btn--blue btn--animated">
+                                    <span class="wrapper">
+                                        View
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- spotlight component -->
+                    }
+                </div><!-- end spotlight__wrapper -->
+            </div>
+        </div>
+    </div>
+</section>
+

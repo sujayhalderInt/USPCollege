@@ -1,0 +1,9 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageHome>
+@{
+    Layout = "~/Views/_MainLayout.cshtml";
+}
+
+@Html.Partial("HomeHero", Model)
+
+@Html.GetGridHtml(Model, "homeWidgets", "Trifstrap")

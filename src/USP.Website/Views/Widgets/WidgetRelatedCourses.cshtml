@@ -1,0 +1,80 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<USP.Business.Models.ContentModels.WidgetRelatedCourses>
+
+@{
+    if (Model == null || Model.RelatedCourse == null)
+    {
+        return;
+    }
+
+    var relatedcourse = Model.RelatedCourse.FirstOrDefault();
+
+    if (relatedcourse == null)
+    {
+        return;
+    }
+}
+
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <h2>@relatedcourse.Title</h2>
+            @relatedcourse.Description
+            <div class="related-course-list mobile-centered-carousel mb-50">
+                <!-- image size: 284.44 x 160 -->
+                @foreach (var course in relatedcourse.Courses.OfType<PageCourseDetail>())
+                {
+                    var showDesc = true;
+
+                    <article class="related-item">
+                        <aside class="related-item__img">
+                            <a href="@course.Url">
+                                @Html.LazyImage(course.BannerImage, "RelatedCourse", aspect: SiteConstants.Crops.AspectRatio.TwentyOneToNine)
+                            </a>
+                        </aside>
+                        <div class="related-item__details related_course_widget">
+                            @{
+                                var sector = course.CareerSector.OfType<DataTaxonomy>().First().TaxonomyName;
+                            }
+                            @if (!string.IsNullOrEmpty(course.BannerHeading))
+                            {
+                                var count = course.BannerHeading.Trim().Length;
+                                var title = "";
+                                if (count > 82)
+                                {
+                                    showDesc = false;
+                                    title = course.BannerHeading.Trim().Substring(0, 82) + "...";
+                                }
+                                else
+                                {
+                                    title = course.BannerHeading.Trim();
+                                }
+
+                                <h3 class="related-item__details__head"><a href="@course.Url">@title</a></h3>
+
+                            }
+
+                            <p class="related-item__details_desc c-usp-yellow">@course.Qualification</p>
+
+                            @if (!course.Campus.IsNullOrEmpty())
+                            {
+                                <div class="related-item__details__tags">
+                                    <p class="mb-10">Campus</p>
+                                    <div>
+                                        @foreach (var campus in course.Campus.OfType<DataTaxonomy>())
+                                        {
+                                            <span class="tags">@campus.TaxonomyName</span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </article>
+                }
+            </div>
+        </div>
+    </div>
+</section>

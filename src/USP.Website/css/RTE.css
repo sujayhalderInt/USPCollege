@@ -1,0 +1,29 @@
+
+
+/**umb_name:No Color*/
+.NoColor{color: #000;}
+.default-color {color: #fff;background-color: #333;}
+.violet-color {
+    background-color: #603c83;
+    color: #ffffff;
+}
+.light-violet-color {
+    background-color: #c786ba;
+    color: #ffffff;
+}
+.blue-color {
+    background-color: #17428b;
+    color: #ffffff;
+}
+.light-blue-color {
+    background-color: #287ab3;
+    color: #ffffff;
+}
+.orange-color {
+    background-color: #e6643b;
+    color: #ffffff;
+}
+.light-orange-color {
+    background-color: #f48580;
+    color: #ffffff;
+}

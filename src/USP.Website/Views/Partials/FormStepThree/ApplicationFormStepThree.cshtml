@@ -1,0 +1,82 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Helpers
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepThree>
+
+@using (Html.BeginUmbracoForm<FormStepThreeController>("HandleFormStepThreeSubmit"))
+{
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelFirstName))
+        {
+            @Html.LabelFor(model => model.PostBackModel.FirstName, Model.LabelFirstName)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.FirstName, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep3PlaceholderFirstName) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.FirstName)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelMiddleName))
+        {
+            @Html.LabelFor(model => model.PostBackModel.MiddleName, Model.LabelMiddleName)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.MiddleName, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep3PlaceholderMiddleName) })
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelLastName))
+        {
+            @Html.LabelFor(model => model.PostBackModel.LastName, Model.LabelLastName)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.LastName, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep3PlaceholderSurname) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.LastName)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelAnotherName))
+        {
+            @Html.LabelFor(model => model.PostBackModel.AnotherName, Model.LabelAnotherName)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.AnotherName, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep3PlaceholderAnotherName) })
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelDateOfBirth))
+        {
+            @Html.LabelFor(model => model.PostBackModel.DateOfBirth, Model.LabelDateOfBirth)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.DateOfBirth, new { @class = "date", @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep3PlaceholderDateOfBirth), autocomplete = "off" })
+        @Html.ValidationMessageFor(model => model.PostBackModel.DateOfBirth)
+    </div>
+     if (Model.PostBackModel.IsNIRequired)
+     {
+         <div class="form__check">
+             @if (!string.IsNullOrEmpty(Model.LabelNationalInsuranceNumber))
+             {
+                 @Html.LabelFor(model => model.PostBackModel.NationalInsuranceNumber, Model.LabelNationalInsuranceNumber)
+             }
+             @Html.TextBoxFor(model => model.PostBackModel.NationalInsuranceNumber, new {@maxlength=9, @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep3PlaceholderNI), autocomplete = "off"})
+             @Html.ValidationMessageFor(model => model.PostBackModel.NationalInsuranceNumber)
+         </div>
+     }
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelStudentsGender) && Model.RadioButtonListGenderOption != null)
+        {
+            <p class="form__check__label">@Model.LabelStudentsGender</p>
+
+            foreach (var list in Model.RadioButtonListGenderOption)
+            {
+                <div class="radio">
+                    <label>
+                        @* new { id = "gender-" + list } *@
+                        @Html.RadioButtonFor(model => model.PostBackModel.Gender, list) @list
+                        <span class="radiomark"></span>
+                    </label>
+                </div>
+            }
+            @Html.ValidationMessageFor(model => model.PostBackModel.Gender)
+        }
+    </div>
+    
+    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+    {
+        @Html.HiddenFor(m => m.PostBackModel.IsNIRequired)
+        <input type="submit" class="btn btn--inline" value="@FormHelper.GetButtonTextContinueOrSave(Model.ApplicationForm.IsStepThreeSubmitted, Model.TextContinueButton)"/>
+    }
+}

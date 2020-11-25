@@ -1,0 +1,81 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.MappingClasses.Search
+@model USP.Business.Models.ContentModels.PageEventListing
+
+@functions {
+    private string IsSelected(string key, string selectedKeys)
+    {
+        if (selectedKeys == null)
+            return "";
+
+        if (selectedKeys == key)
+        {
+            return "selected=\"selected\"";
+        }
+
+        return string.Empty;
+    }
+
+}
+<div class="results__wrapper">
+    <input type="hidden" name="@Html.NameFor(m => m.ListingPostback.Page)" value="@Model.ListingPostback.Page" class="hdnPageNo" />
+
+    @if (Model.SearchResults.HasResults)
+    {
+        <div class="results__head">
+            <p class="results__head__number">@Model.SearchResults.TotalItemCount  @((Model.SearchResults.TotalItemCount == 1) ? "result" : "results")</p>
+            <div class="form__check  mb-0">
+                <label for="single-select-sort">Sort by </label>
+                <p class="select-wrapper">
+                    <select id="single-select-sort" class="sort-by" name="@Html.NameFor(m => m.ListingPostback.SortBy)">
+                        <option value="@SiteConstants.Sort.Date" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.Date)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.EventListing.SortyByDateDescendingText)</option>
+                        <option value="@SiteConstants.Sort.DateDesc" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.DateDesc)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.EventListing.SortyByDateAscendingText)</option>
+
+                        @*<option value="@SiteConstants.Sort.Date" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.Date)>Date (Oldest)</option>*@
+                        @*<option value="@SiteConstants.Sort.EventType" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.EventType)>Event Type</option>*@
+                        <option value="@SiteConstants.Sort.Campus" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.Campus)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.EventListing.SortyByCampusAscendingText)</option>
+                        <option value="@SiteConstants.Sort.CampusDesc" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.CampusDesc)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.EventListing.SortyByCampusDescendingText)</option>
+                    </select>
+                </p>
+            </div>
+        </div>
+        <div class="results__body result__body--event">
+            @foreach (var item in Model.SearchResults.Results.OfType<EventDetailResultItem>())
+            {
+                    <a  href="@item.Url" class="event-listing">
+                        <p class="date-time">@item.StartDate.ToString("dd MMMM yyyy")
+                            @if (item.EndDate > DateTime.MinValue)
+                            {
+                                @:- @item.EndDate.ToString("dd MMMM yyyy")
+                            }
+                            <span>@item.StartTime - @item.EndTime</span>
+                        </p>
+                        <h3 >@item.Heading</h3>
+                        <footer class="event-listing__footer">
+                            <p>Campus</p>
+                            <p class="event-listing__footer__course mb-0">@item.Campus
+                            </p>
+                        </footer>
+                    </a>
+            }
+        </div>
+
+        if (Model.SearchResults.PageCount > Model.SearchResults.PageNumber)
+         {
+             <div class="text-center">
+                 <input name="@Html.NameFor(m => m.ListingPostback.BtnLoadMore)" type="submit" value="@library.GetDictionaryItem("CourseListing.LoadMore")" class="btn btn--inline btn-listing-submit" id="btnpageing" />
+             </div>
+
+         }
+    }
+    else
+    {
+        <div class="alert alert-primary" role="alert">
+            <i class="icon-exclamation_fill c-usp-orange"><span class="sr-only">@library.GetDictionaryItem("CourseListing.NoResultsLabel")</span></i> 
+            <div>
+                <p class="mb-0">@library.GetDictionaryItem("CourseListing.NoResultsText")</p>
+            </div>
+        </div>
+    }
+</div>

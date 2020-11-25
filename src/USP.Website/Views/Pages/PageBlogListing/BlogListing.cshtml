@@ -1,0 +1,124 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@using USP.Business.Models.MappingClasses.Search
+@inherits UmbracoViewPage<PageBlogListing>
+
+@functions {
+    private string IsSelected(string key, string selectedKeys)
+    {
+        if (selectedKeys == null)
+            return "";
+
+        if (selectedKeys == key)
+        {
+            return "selected=\"selected\"";
+        }
+
+        return string.Empty;
+    }
+}
+<div class="results__wrapper">
+    <input type="hidden" name="@Html.NameFor(m => m.ListingPostback.Page)" value="@Model.ListingPostback.Page" class="hdnPageNo"/>
+
+    @if (Model.SearchResults.HasResults)
+    {
+        <div class="results__head">
+            <p class="results__head__number">@Model.SearchResults.TotalItemCount  @((Model.SearchResults.TotalItemCount == 1) ? "result" : "results")</p>
+            <div class="form__check  mb-0">
+                <label for="single-select-sort">Sort by</label>
+                <p class="single-select-sort">
+                    <select id="single-select" class="sort-by" name="@Html.NameFor(m => m.ListingPostback.SortBy)">
+                        <option value="@SiteConstants.Sort.DateDesc" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.DateDesc)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.BlogListing.SortyByDateDescendingText)</option>
+                        <option value="@SiteConstants.Sort.Date" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.Date)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.BlogListing.SortyByDateAscendingText)</option>
+                        <option value="@SiteConstants.Sort.BlogAuthor" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.BlogAuthor)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.BlogListing.SortyByAuthorAscendingText)</option>
+                        <option value="@SiteConstants.Sort.BlogAuthorDesc" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.BlogAuthorDesc)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.BlogListing.SortyByAuthorDescendingText)</option>
+                    </select>
+                </p>
+            </div>
+        </div>
+        <div class="results__body related-course-list">
+            @foreach (var item in Model.SearchResults.Results.OfType<BlogDetailResultItem>())
+            {
+                var showDesc = true;
+                <article class="related-item">
+                    <aside class="related-item__img">
+                        <a href="@item.Url">
+                            @if (item.Image != null)
+                            {
+                                @*@Html.LazyImage(item.Image, SiteConstants.Crops.RelatedCourse, aspect: SiteConstants.Crops.AspectRatio.FourToThree)*@
+                                <img src="@item.Image.GetCropUrl(width:690,height:389)">
+                            }
+                        </a>
+                    </aside>
+                    <div class="related-item__details">
+                        @if (!string.IsNullOrEmpty(item.Heading))
+                        {
+                            var count = item.Heading.Trim().Length;
+                            var title = "";
+                            if (count > 82)
+                            {
+                                showDesc = false;
+                                title = item.Heading.Trim().Substring(0, 82) + "...";
+                            }
+                            else
+                            {
+                                title = item.Heading.Trim();
+                            }
+
+                            <h3 class="related-item__details__head"><a href="@item.Url">@title</a></h3>
+
+                        }
+                        <p class="related-item__details_desc c-usp-yellow">@item.PublishedDate.ToString("dd MMMM yyyy")</p>
+                        @if (!string.IsNullOrEmpty(item.Summary) && showDesc)
+                        {
+
+                            var summary = "";
+                            if (item.Summary.Trim().Length > 62)
+                            {
+                                summary = item.Summary.Trim().Substring(0, 62) + "...";
+                            }
+                            else
+                            {
+                                summary = item.Summary;
+                            }
+                            <div class="related-item__details__description">
+                                <p class="mb-20">
+                                    @summary
+                                </p>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(item.AuthorName) && item.AuthorPortraitImage != null)
+                        {
+                            <div class="blog-author">
+                                <div class="mb-10">
+                                    @*@Html.LazyImage(item.AuthorPortraitImage, SiteConstants.Crops.Author)*@
+                                    <img src="@item.AuthorPortraitImage.GetCropUrl(width:50,height:50)">
+
+                                </div>
+                                <p class="author">by @item.AuthorName</p>
+                            </div>
+                        }
+                    </div>
+                </article>
+            }
+        </div>
+
+        if (Model.SearchResults.PageCount > Model.SearchResults.PageNumber)
+        {
+            <div class="text-center">
+                <input name="@Html.NameFor(m => m.ListingPostback.BtnLoadMore)" type="submit" value="@library.GetDictionaryItem("CourseListing.LoadMore")" class="btn btn--inline btn-listing-submit" id="btnpageing" />
+            </div>
+
+        }
+    }
+    else
+    {
+        <div class="alert alert-primary" role="alert">
+            <i class="icon-exclamation_fill c-usp-orange"><span class="sr-only">@library.GetDictionaryItem("CourseListing.NoResultsLabel")</span></i>
+            <div>
+                <p class="mb-0">@library.GetDictionaryItem("CourseListing.NoResultsText")</p>
+            </div>
+        </div>
+    }
+</div>

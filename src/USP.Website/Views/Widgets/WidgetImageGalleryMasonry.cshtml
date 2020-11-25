@@ -1,0 +1,44 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetImageGalleryMasonry>
+
+@if (Model == null || Model.ImagesWithCaptionsAndAltTexts == null)
+{
+    return;
+}
+
+@if (Request.QueryString["dtgePreview"] == "1")
+{
+    <h2>@Model.Title</h2>
+    <h4>@Model.Description</h4>
+    foreach (var media in Model.ImagesWithCaptionsAndAltTexts)
+    {
+        <img src="@media.Image.GetCropUrl(SiteConstants.Crops.GridEditorPreview)" alt="@media.Caption" />
+    }
+}
+else
+{
+    <section class="gallery bg-usp-navi mb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>@Model.Title</h2>
+                    <div class="mb-50">@Model.Description</div>
+                    <div class="popup-gallery">
+                        @foreach (var media in Model.ImagesWithCaptionsAndAltTexts)
+                        {
+                            <div class="item">
+                                <a href="@media.Image.Url" title="@media.Caption">
+                                    <img src="#" class="lazy" data-src="@media.Image.Url" alt="@media.AltText" />
+                                </a>
+                                <noscript>
+                                    <img src="@media.Image.Url" alt="@media.AltText">
+                                </noscript>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

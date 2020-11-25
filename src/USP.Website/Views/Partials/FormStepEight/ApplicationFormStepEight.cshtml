@@ -1,0 +1,31 @@
+﻿@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEight>
+
+@using (Html.BeginUmbracoForm<FormStepEightController>("HandleFormStepEightSubmit"))
+{
+    var id = "checkbox";
+    var idNo = 1;
+    var selectedValues = "";
+    if (!string.IsNullOrEmpty(Model.PostBackModel.SportsAcademiesCsv))
+    {
+        selectedValues = "," + Model.PostBackModel.SportsAcademiesCsv + ",";
+    }
+    foreach (var sportAcademy in Model.CheckboxListSportAcademies)
+    {
+        id = "academy" + idNo++;
+        var isChecked = selectedValues.Contains("," + sportAcademy + ",");
+        <div class="checkbox">
+            <label for="@id">@sportAcademy</label>
+            <input id="@id" type="checkbox" name="@Html.NameFor(m => m.PostBackModel.SportsAcademiesCsv)" value="@sportAcademy" @{if (isChecked) { <text> checked='checked' </text>  }} />
+            <span class="checkmark"></span>
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+    {
+        <div>
+            <input type="submit" class="btn btn--inline" value="@Model.TextContinueButton" />
+        </div>
+    }
+}

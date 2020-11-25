@@ -1,0 +1,46 @@
+﻿@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEleven>
+@{
+    Layout = "~/Views/_MainLayout.cshtml";
+}
+<div class="mt-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                @if (!string.IsNullOrEmpty(Model.Heading))
+                {
+                    <h1 class="form-description">@Model.Heading</h1>
+                }
+                @if (!string.IsNullOrEmpty(Model.SubHeading))
+                {
+                    <p class="form-details">@Model.SubHeading</p>
+                }
+                @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+                {
+                    @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationSummary().ToHtmlString()))
+                }
+
+                @Html.Partial("StudentPersonalInformationReview", Model)
+                @Html.Partial("StudentContactInformationReview", Model)
+                @Html.Partial("EmergencyAndParentCarerContactInformationReview", Model)
+                @Html.Partial("PrimaryContactInformationReview", Model)
+                @Html.Partial("CourseSelectionReview", Model)
+                @Html.Partial("SportsAcademiesReview", Model)
+                @Html.Partial("PreviousQualificationReview", Model)
+                @Html.Partial("MedicalConditionsDisabilitiesReview", Model)
+                @Html.Partial("EqualOpportunitiesReview", Model)
+                @Html.Partial("CriminalConvictionsReview", Model)
+
+                @using (Html.BeginUmbracoForm<FormStepElevenController>("HandleFormStepElevenSubmit"))
+                {
+                    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+                    {
+                        <input type="submit" class="btn btn--inline" value="@Model.TextContinueButton" />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

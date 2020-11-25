@@ -1,0 +1,30 @@
+﻿@using USP.Business.Models.ContentModels
+@model Dictionary<IPublishedContent, BaseNavigation>
+
+@helper RenderCrumb(KeyValuePair<IPublishedContent, BaseNavigation> item)
+    {
+    var currentPage = UmbracoContext.Current.PageId;
+
+     if (item.Key.Id != currentPage)
+     {
+         <li><a href="@item.Key.Url">@item.Value.NavigationTitle</a></li>
+     }
+     else
+     {
+         <li><span>@item.Value.NavigationTitle</span></li>
+     }
+}
+
+@if (Model == null || Model.Count == 0 || UmbracoContext.Current == null)
+{
+    return;
+}
+
+<nav class="breadcrumb-wrapper">
+    <ol class="breadcrumb-list">
+        @foreach (var item in Model)
+        {
+            @RenderCrumb(item)
+        }
+    </ol>
+</nav>

@@ -1,0 +1,56 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEleven>
+
+<div class="review-headline">
+    <h3>@Model.HeadingsAndLabels.EqualOpportunitiesReviewHeading</h3>
+    <div>
+        <a href="@Model.FormStep10Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+    </div>
+</div>
+<div class="review-block review-block--inline">
+    <div>
+        <p class="review-block__label">@Model.HeadingsAndLabels.LabelEthinicity</p>
+        <p class="review-block__result">@Model.ApplicationForm.StudentsEthnicity</p>
+    </div>
+    <div>
+        <p class="review-block__label">@Model.HeadingsAndLabels.LabelNationality</p>
+        <p class="review-block__result">@Model.ApplicationForm.StudentsNationality</p>
+    </div>
+    @if (!string.IsNullOrEmpty(Model.ApplicationForm.StudentsReligion))
+    {
+        <div>
+            <p class="review-block__label">@Model.HeadingsAndLabels.LabelReligion</p>@*conditional*@
+            <p class="review-block__result">@Model.ApplicationForm.StudentsReligion</p>
+        </div>
+    }
+    <div>
+        <p class="review-block__label">@Model.HeadingsAndLabels.LabelFirstLanguage</p>
+        <p class="review-block__result">@Model.ApplicationForm.StudentsFirstLanguage</p>
+    </div>
+</div>
+
+<div class="review-headline">
+    <h3>@Model.HeadingsAndLabels.EqualOpportunitiesReviewHeading</h3>
+    <div>
+        <a href="@Model.FormStep10Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+    </div>
+</div>
+<div class="review-block review-block--inline">
+    @{
+        if (Model.ApplicationForm.ResidentOfUkEuForThreeYears ?? false)
+        {
+            <p class="review-block__label">@Model.HeadingsAndLabels.LabelResidentOfUkEuFor3Years</p>
+        }
+        else
+        {
+            <p class="review-block__label">
+                You've not been a resident of the UK/European Union during the last three years.
+                You lived in @(Model.ApplicationForm.NameOfCountryOutsideUkEu) from
+                @(Model.ApplicationForm.DateOfResidenceOutsideUkEuFrom.Value.ToString("dd/MM/yyyy"))
+                to
+                @(Model.ApplicationForm.DateOfResidenceOutsideUkEuTo.Value.ToString("dd/MM/yyyy"))
+            </p>
+        }
+    }
+</div>

@@ -1,0 +1,209 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Helpers
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepTen>
+
+@using (Html.BeginUmbracoForm<FormStepTenController>("Index"))
+{
+    if (!string.IsNullOrEmpty(Model.LabelDoYouHaveAdisability))
+    {
+        <p class="form__check__label">@Model.LabelDoYouHaveAdisability</p>
+        <div class="radio">
+            <label>
+                @Html.RadioButtonFor(model => model.PostBackModel.HasDisabilityDifficulty, true) Yes
+                @Html.ValidationMessageFor(model => model.PostBackModel.HasDisabilityDifficulty)
+                <span class="radiomark"></span>
+            </label>
+        </div>
+        <div class="radio mb-20">
+            <label>
+                @Html.RadioButtonFor(model => model.PostBackModel.HasDisabilityDifficulty, false) No
+                @Html.ValidationMessageFor(model => model.PostBackModel.HasDisabilityDifficulty)
+                <span class="radiomark"></span>
+            </label>
+        </div>
+    }
+
+
+    //TODO : Disability/Difficulty List Checkboxes
+    if (!string.IsNullOrEmpty(Model.LabelDisability))
+    {
+        <p class="form__check__label">@Model.LabelDisability</p>
+    }
+    if (Model.SortedDisabilitiesList != null)
+    {
+        var idNo = 0;
+        var selectedValues = "";
+        if (!string.IsNullOrEmpty(Model.PostBackModel.DisabilitiesDifficultiesCsv))
+        {
+            selectedValues = "," + Model.PostBackModel.DisabilitiesDifficultiesCsv + ",";
+        }
+        foreach (var disablity in FormHelper.GetDisabilitiesDifficultiesList(Model.SortedDisabilitiesList))
+        {
+            var id = "disability-"+ idNo++;
+            var isChecked = selectedValues.Contains("," + disablity.Value + ",");
+            <div class="checkbox">
+                <label for="@id">@disablity.Label</label>
+                <input id="@id" type="checkbox" name="@Html.NameFor(m => m.PostBackModel.DisabilitiesDifficultiesCsv)" value="@disablity.Value" @{if (isChecked) { <text> checked='checked' </text>  }} />
+                <span class="checkmark"></span>
+            </div>
+        }
+    }
+
+    <div class="mb-20"></div>
+
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelPrimaryDisability))
+        {
+            @Html.LabelFor(model => model.PostBackModel.PrimaryDisability, Model.LabelPrimaryDisability, new { @class = "form__check__label" })
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.PrimaryDisability, new { @placeholder = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplicationForm.Step10PlaceHolder.PrimaryDisabilityDifficulty) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.PrimaryDisability)
+    </div>
+
+    if (!string.IsNullOrEmpty(Model.EqualOpportunitiesHeading))
+    {
+        <h3 class="mb-20">@Model.EqualOpportunitiesHeading</h3>
+    }
+
+    if (!string.IsNullOrEmpty(Model.TextEqualOpportunitiesInformation))
+    {
+        <p class="form-details">@Model.TextEqualOpportunitiesInformation</p>
+    }
+
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelEthnicity) && Model.DropDownListEthnicity != null)
+        {
+            @Html.LabelFor(model => model.PostBackModel.Ethnicity, Model.LabelEthnicity, new { @class = "form__check__label" })
+            <p class="select-wrapper">
+                @Html.DropDownListFor(model => model.PostBackModel.Ethnicity, FormHelper.GetDropDownlistFromRepeatableString(Model.DropDownListEthnicity), new { @id = "single-select" })
+                @Html.ValidationMessageFor(model => model.PostBackModel.Ethnicity)
+            </p>
+        }
+    </div>
+
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelNationality))
+        {
+            @Html.LabelFor(model => model.PostBackModel.Nationality, Model.LabelNationality, new { @class = "form__check__label" })
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.Nationality, new { @placeholder = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplicationForm.Step10PlaceHolder.Nationality) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.Nationality)
+    </div>
+
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelReligion))
+        {
+            @Html.LabelFor(model => model.PostBackModel.Religion, Model.LabelReligion, new { @class = "form__check__label" })
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.Religion, new { @placeholder = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplicationForm.Step10PlaceHolder.Religion) })
+    </div>
+
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelFirstLanguage))
+        {
+            @Html.LabelFor(model => model.PostBackModel.FirstLanguage, Model.LabelFirstLanguage, new { @class = "form__check__label" })
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.FirstLanguage, new { @placeholder = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplicationForm.Step10PlaceHolder.FirstLanguage) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.FirstLanguage)
+    </div>
+
+    if (!string.IsNullOrEmpty(Model.ResidentHeading))
+    {
+        <h3 class="mb-20">@Model.ResidentHeading</h3>
+    }
+
+    if (!string.IsNullOrEmpty(Model.LabelResidentOfUkEuQuestion))
+    {
+        <div class="form__check">
+            <p class="form__check__label">@Model.LabelResidentOfUkEuQuestion</p>
+            <div class="radio">
+                <label>
+                    @Html.RadioButtonFor(model => model.PostBackModel.ResidentOfUkEuForThreeYears, true) Yes
+                    @Html.ValidationMessageFor(model => model.PostBackModel.ResidentOfUkEuForThreeYears)
+                    <span class="radiomark"></span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    @Html.RadioButtonFor(model => model.PostBackModel.ResidentOfUkEuForThreeYears, false) No
+                    @Html.ValidationMessageFor(model => model.PostBackModel.ResidentOfUkEuForThreeYears)
+                    <span class="radiomark"></span>
+                </label>
+            </div>
+        </div>
+    }
+
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelWhichCountry))
+        {
+            @Html.LabelFor(model => model.PostBackModel.NameOfCountryOutsideUkEu, Model.LabelWhichCountry, new { @class = "form__check__label" })
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.NameOfCountryOutsideUkEu, new { @placeholder = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplicationForm.Step10PlaceHolder.WhichCountry) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.NameOfCountryOutsideUkEu)
+    </div>
+
+    if (!string.IsNullOrEmpty(Model.TextWhichDates))
+    {
+        <p class="form-details">@Model.TextWhichDates</p>
+    }
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelDateFrom))
+        {
+            @Html.LabelFor(model => model.PostBackModel.DateOfResidenceOutsideUkEuFrom, Model.LabelDateFrom, new { @class = "form__check__label" })
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.DateOfResidenceOutsideUkEuFrom, new { @class = "date" , autocomplete = "off"})
+        @Html.ValidationMessageFor(model => model.PostBackModel.DateOfResidenceOutsideUkEuFrom)
+    </div>
+
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelDateTo))
+        {
+            @Html.LabelFor(model => model.PostBackModel.DateOfResidenceOutsideUkEuTo, Model.LabelDateTo, new { @class = "form__check__label" })
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.DateOfResidenceOutsideUkEuTo, new { @class = "date" , autocomplete = "off" })
+        @Html.ValidationMessageFor(model => model.PostBackModel.DateOfResidenceOutsideUkEuTo)
+    </div>
+     
+    if (!string.IsNullOrEmpty(Model.ConvictionsHeading))
+    {
+        <h3 class="mb-20">@Model.ConvictionsHeading</h3>
+    }
+
+    if (!string.IsNullOrEmpty(Model.LabelConvictions))
+    {
+        <p class="form__check__label">@Model.LabelConvictions</p>
+        <div class="radio">
+            <label>
+                @Html.RadioButtonFor(model => model.PostBackModel.AnyCriminalConvictionOrFinalWarning, true) Yes
+                @Html.ValidationMessageFor(model => model.PostBackModel.AnyCriminalConvictionOrFinalWarning)
+                <span class="radiomark"></span>
+            </label>
+        </div>
+
+        <div class="radio">
+            <label>
+                @Html.RadioButtonFor(model => model.PostBackModel.AnyCriminalConvictionOrFinalWarning, false) No
+                @Html.ValidationMessageFor(model => model.PostBackModel.AnyCriminalConvictionOrFinalWarning)
+                <span class="radiomark"></span>
+            </label>
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.TextAlertConvictionInformation))
+    {
+        <div class="alert alert-primary" role="alert">
+            <i class="icon-exclamation_fill c-usp-orange"><span class="sr-only">Alert icon</span></i>
+            <div>
+                <p class="mb-0">@Model.TextAlertConvictionInformation</p>
+            </div>
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+    {
+        <input type="submit" class="btn btn--inline" value="@Model.TextContinueButton" />
+    }
+}
+

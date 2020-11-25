@@ -1,0 +1,269 @@
+﻿@using ClientDependency.Core.Config
+@using USP.Business.Controllers.Pages
+@using USP.Business.Extensions
+@inherits UmbracoViewPage
+@{
+    //var instanceVersion = 3.1;
+    var instanceVersion = ClientDependencySettings.Instance.Version;
+}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    @*Sujay Start*@
+    <style>
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #2980B9;
+            }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+        .dropdown a:hover {
+            background-color: #c6c6c6;
+            color: #1b25e5;
+        }
+
+        .show {
+            display: block;
+        }
+        /*Added*/
+        .pojo-a11y-resize-font-130 {
+            font-size: 130% !important;
+        }
+        .pojo-a11y-resize-font-140 {
+            font-size: 140% !important;
+        }
+        .pojo-a11y-resize-font-150 {
+            font-size: 150% !important;
+        }
+        .pojo-a11y-resize-font-160 {
+            font-size: 160% !important;
+        }
+        .pojo-a11y-readable-font {
+            font-family: Verdana,Arial,Helvetica,sans-serif !important;
+        }
+        .pojo-a11y-high-contrast {
+            color: white !important;
+            background: black !important;
+            background-color: black !important;
+            text-shadow: none !important;
+            user-select: text !important;
+            box-shadow: none !important;
+        }
+        .pojo-a11y-light-background {
+            background: #fff !important;
+            color: #000 !important;
+        }
+    </style>
+    @*Sujay End*@
+
+    @Html.Action("Seo", "Seo")
+    <title>@(Model.GetPropertyValue<string>("navigationTitle"))</title>
+
+    <link rel="stylesheet" href="/assets/css/critical.css?cdv=@instanceVersion" />
+    <link rel="preload" href="/assets/css/base/base.css?cdv=@instanceVersion" as="style" onload="this.onload = null; this.rel = 'stylesheet';" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CQuicksand:400,700" rel="preload" as="style" onload="this.onload = null; this.rel = 'stylesheet';">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700&7CQuicksand:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/base/base.css?cdv=@instanceVersion">
+        <link rel="stylesheet" href="/assets/css/noscript.css?cdv=@instanceVersion">
+    </noscript>
+
+    @Html.Action("RenderAnalyticsScript", "Script")
+   
+</head>
+<body data-nav-path=",@(UmbracoContext.Current.PublishedContentRequest.PublishedContent.Path)," data-doctype="@UmbracoContext.Current.PublishedContentRequest.PublishedContent.ContentType.Alias" data-versioning="@instanceVersion">
+    @*Sujay Start*@
+    <div class="dropdown">
+        <button onclick="helpSubMenu()" class="dropbtn">Logo</button>
+        <div id="helpDropdown" class="dropdown-content">
+            <a href="#" id="increaseText" onclick="increaseText()">Increase text</a>
+            <a href="#" id="decreaseText" onclick="decreaseText()">Decrease Text</a>
+            <a href="#" id="normalText" onclick="normalText()">Normal Font</a>
+            <a href="#" id="darkBackGround" onclick="darkBackGround()">Dark Background</a>
+            <a href="#" id="lightBackground" onclick="lightBackground()">Light Background</a>
+            <a href="#" id="tabbedContent">Tabbed Content</a>
+            <a href="#" id="reset" onclick="resetAll()">Reset</a>
+        </div>
+    </div>
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function helpSubMenu() {
+            document.getElementById("helpDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function increaseText() {
+            if ($("body").hasClass("pojo-a11y-resize-font-130") == false &&
+                $("body").hasClass("pojo-a11y-resize-font-140") == false &&
+                $("body").hasClass("pojo-a11y-resize-font-150") == false &&
+                $("body").hasClass("pojo-a11y-resize-font-160") == false)
+            {
+                $('body').addClass('pojo-a11y-resize-font-130');
+            }
+            else if ($("body").hasClass("pojo-a11y-resize-font-130") == true) {
+                $('body').removeClass('pojo-a11y-resize-font-130');
+                $('body').addClass('pojo-a11y-resize-font-140');
+            }
+            else if ($("body").hasClass("pojo-a11y-resize-font-140") == true) {
+                $('body').removeClass('pojo-a11y-resize-font-140');
+                $('body').addClass('pojo-a11y-resize-font-150');
+            }
+            else if ($("body").hasClass("pojo-a11y-resize-font-150") == true) {
+                $('body').removeClass('pojo-a11y-resize-font-150');
+                $('body').addClass('pojo-a11y-resize-font-160');
+            }
+        }
+        function decreaseText() {
+             if ($("body").hasClass("pojo-a11y-resize-font-130") == true) {
+                $('body').removeClass('pojo-a11y-resize-font-130');
+            }
+            else if ($("body").hasClass("pojo-a11y-resize-font-140") == true) {
+                $('body').removeClass('pojo-a11y-resize-font-140');
+                $('body').addClass('pojo-a11y-resize-font-130');
+            }
+            else if ($("body").hasClass("pojo-a11y-resize-font-150") == true) {
+                $('body').removeClass('pojo-a11y-resize-font-150');
+                $('body').addClass('pojo-a11y-resize-font-140');
+            }
+            else if ($("body").hasClass("pojo-a11y-resize-font-160") == true) {
+                $('body').removeClass('pojo-a11y-resize-font-160');
+                $('body').addClass('pojo-a11y-resize-font-150');
+            }
+        }
+        function normalText() {
+            if ($("body").hasClass("pojo-a11y-readable-font") == false) {
+                $('body').addClass('pojo-a11y-readable-font');
+            }
+            else {
+                $('body').removeClass('pojo-a11y-readable-font');
+            }
+        }
+        function darkBackGround() {
+            if ($("body").hasClass("pojo-a11y-high-contrast") == false) {
+                $('body').removeClass('pojo-a11y-light-background');
+                $('body').addClass('pojo-a11y-high-contrast');
+            }
+            else {
+                $('body').removeClass('pojo-a11y-high-contrast');
+            }
+        }
+        function lightBackground() {
+            if ($("body").hasClass("pojo-a11y-light-background") == false) {
+                $('body').removeClass('pojo-a11y-high-contrast');
+                $('body').addClass('pojo-a11y-light-background');
+            }
+            else {
+                $('body').removeClass('pojo-a11y-light-background');
+            }
+        }
+        function resetAll() {
+            $('body').removeClass('pojo-a11y-resize-font-110');
+            $('body').removeClass('pojo-a11y-resize-font-130');
+            $('body').removeClass('pojo-a11y-resize-font-140');
+            $('body').removeClass('pojo-a11y-resize-font-150');
+            $('body').removeClass('pojo-a11y-resize-font-160');
+            $('body').removeClass('pojo-a11y-readable-font');
+            $('body').removeClass('pojo-a11y-high-contrast');
+            $('body').removeClass('pojo-a11y-light-background');
+        }
+    </script>
+    @*Sujay End*@
+    @Html.Action("Cookies", "CookiePolicy")
+
+    <header class="header">
+        <nav class="menu">
+            @Html.Action("Navigation", "Navigation")
+            <ul class="menu__tertiary" role="menubar">
+                <li role="menuitem" class="mobile-only"><a href="/" class="menu__logo--mobile"><img src="/assets/img/logo.png" alt="logo"></a></li>
+
+                @Html.Action("SignUp", "Navigation")
+
+                <li role="menuitem"><a class="header-search-btn" href="@Umbraco.GetSearchUrl()"><i class="icon-search" aria-hidden="true"></i> @library.GetDictionaryItem("Global Search.Labels.SearchMenuText")</a></li>
+
+                @Html.Action("RenderApply", "Navigation")
+            </ul>
+        </nav>
+        @Html.Action("RenderGlobalSearch", "Navigation")
+    </header>
+    <main id="mainContent">
+        @RenderBody()
+    </main>
+
+    @Html.Action("RenderFooter", "Footer")
+    <script src="/assets/js/vendors/jquery.js?cdv=@instanceVersion"></script>
+    <script src="/assets/js/vendors/jquery.validate.min.js?cdv=@instanceVersion"></script>
+    <script src="/assets/js/vendors/jquery.validate.unobtrusive.min.js?cdv=@instanceVersion"></script>
+    <script src="https://kingsora.github.io/_framework/js/jquery.overlayScrollbars.js?cdv=@instanceVersion"></script>
+    <script src="/assets/js/vendors/jquery.history.min.js?cdv=@instanceVersion"></script>
+    <script src="/assets/js/vendors/cssrelpreload.js?cdv=@instanceVersion"></script>
+    <script src="/assets/js/vendors/loadCSS.js?cdv=@instanceVersion"></script>
+
+    <script src="/assets/js/app.js?cdv=@instanceVersion"></script>
+    <script defer src="/assets/js/components.js?cdv=@instanceVersion"></script>
+
+    @RenderSection("PageScript", false)
+
+</body>
+</html>

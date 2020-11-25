@@ -1,0 +1,119 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Helpers
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepFive>
+
+@using (Html.BeginUmbracoForm<FormStepFiveController>("HandleFormStepFiveSubmit"))
+{
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelParentCarerFirstName))
+        {
+            @Html.LabelFor(model => model.PostBackModel.ParentOrCarerFirstName, Model.LabelParentCarerFirstName)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.ParentOrCarerFirstName, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep5PlaceholderParentOrCarerFirstName) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.ParentOrCarerFirstName)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelParentCarerLastName))
+        {
+            @Html.LabelFor(model => model.PostBackModel.ParentOrCarerLastName, Model.LabelParentCarerLastName)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.ParentOrCarerLastName, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep5PlaceholderParentOrCarerLastName) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.ParentOrCarerLastName)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelParentCarerRelationshipToStudent))
+        {
+            @Html.LabelFor(model => model.PostBackModel.ParentOrCarerRelationshipToStudent, Model.LabelParentCarerRelationshipToStudent)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.ParentOrCarerRelationshipToStudent, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep5PlaceholderParentOrCarerRelationshipToStudent) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.ParentOrCarerRelationshipToStudent)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelParentCarerPhoneNumber))
+        {
+            @Html.LabelFor(model => model.PostBackModel.ParentOrCarerPhoneNumber, Model.LabelParentCarerPhoneNumber)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.ParentOrCarerPhoneNumber, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep5PlaceholderParentOrCarerPhoneNumber) })
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelParentCarerEmail))
+        {
+            @Html.LabelFor(model => model.PostBackModel.ParentOrCarerEmailAddress, Model.LabelParentCarerEmail)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.ParentOrCarerEmailAddress, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep5PlaceholderParentOrCarerContactEmail) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.ParentOrCarerEmailAddress)
+    </div>
+
+    if (!string.IsNullOrEmpty(Model.LabelIsThisThePrimaryContact))
+    {
+        <div class="form__check">
+            <p class="form__check__label">@Model.LabelIsThisThePrimaryContact</p>
+            <div class="radio">
+                <label>
+                    @Html.RadioButtonFor(model => model.PostBackModel.IsParentOrCarerPrimaryContact, "true") Yes
+                    @Html.ValidationMessageFor(model => model.PostBackModel.IsParentOrCarerPrimaryContact)
+                    <span class="radiomark"></span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    @Html.RadioButtonFor(model => model.PostBackModel.IsParentOrCarerPrimaryContact, "false") No
+                    @Html.ValidationMessageFor(model => model.PostBackModel.IsParentOrCarerPrimaryContact)
+                    <span class="radiomark"></span>
+                </label>
+            </div>
+        </div>
+    }
+
+
+
+    if (!string.IsNullOrEmpty(Model.PrimaryContactSubHeading))
+    {
+        <h3 class="mb-20">@Model.PrimaryContactSubHeading</h3>
+    }
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelPrimaryContactFirstName))
+        {
+            @Html.LabelFor(model => model.PostBackModel.PrimaryContactFirstName, Model.LabelPrimaryContactFirstName)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.PrimaryContactFirstName, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep5PlaceholderPrimaryContactFirstName) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.PrimaryContactFirstName)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelPrimaryContactLastName))
+        {
+            @Html.LabelFor(model => model.PostBackModel.PrimaryContactLastName, Model.LabelPrimaryContactLastName)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.PrimaryContactLastName, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep5PlaceholderPrimaryContactLastName) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.PrimaryContactLastName)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelPrimaryContactRelationshipToStudent))
+        {
+            @Html.LabelFor(model => model.PostBackModel.PrimaryContactRelationshipToStudent, Model.LabelPrimaryContactRelationshipToStudent)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.PrimaryContactRelationshipToStudent, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep5PlaceholderParentOrCarerRelationshipToStudent) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.PrimaryContactRelationshipToStudent)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelPrimaryContactPhoneNumber))
+        {
+            @Html.LabelFor(model => model.PostBackModel.PrimaryContactPhoneNumber, Model.LabelPrimaryContactPhoneNumber)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.PrimaryContactPhoneNumber, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep5PlaceholderParentOrCarerPhoneNumber) })
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelPrimaryContactEmail))
+        {
+            @Html.LabelFor(model => model.PostBackModel.PrimaryContactEmailAddress, Model.LabelPrimaryContactEmail)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.PrimaryContactEmailAddress, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep5PlaceholderPrimaryContactEmail) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.PrimaryContactEmailAddress)
+    </div>
+    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+    {
+        <input type="submit" class="btn btn--inline" value="@FormHelper.GetButtonTextContinueOrSave(Model.ApplicationForm.IsStepFiveSubmitted , Model.TextContinueButton)" />
+    }
+}

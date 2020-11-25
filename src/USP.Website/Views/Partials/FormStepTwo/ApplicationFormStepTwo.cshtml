@@ -1,0 +1,40 @@
+﻿@using System.Web.Mvc.Html
+@using USP.Business.Constants
+@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Helpers
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepTwo>
+
+@using (Html.BeginUmbracoForm<FormStepTwoController>("HandleFormStepTwoSubmit"))
+{
+
+    if (!string.IsNullOrEmpty(Model.LabelTypeOfStudy) && Model.TaxonomyFolderTypeOfStudy != null)
+    {
+        <div class="form__check ">
+            @Html.LabelFor(model => model.PostBackModel.TypeOfStudy, Model.LabelTypeOfStudy, new { @class = SiteConstants.CssClass.FormCheckLabel })
+            <p class="select-wrapper">
+                @Html.DropDownListFor(model => model.PostBackModel.TypeOfStudy, FormHelper.GetDropDownList(Model.TaxonomyFolderTypeOfStudy), new { @id = SiteConstants.HtmlId.SingleSelect })
+                @Html.ValidationMessageFor(model => model.PostBackModel.TypeOfStudy)
+            </p>
+        </div>
+    }
+
+
+    if (!string.IsNullOrEmpty(Model.LabelWhichCampus) && Model.TaxonomyFolderCampus != null)
+    {
+        <div class="form__check">
+            @Html.LabelFor(model => model.PostBackModel.Campus, Model.LabelWhichCampus, new { @class = SiteConstants.CssClass.FormCheckLabel })
+            <p class="select-wrapper">
+                @Html.DropDownListFor(model => model.PostBackModel.Campus, FormHelper.GetDropDownList(Model.TaxonomyFolderCampus), new { @id = (SiteConstants.HtmlId.SingleSelect) + 1 })
+                @Html.ValidationMessageFor(model => model.PostBackModel.Campus)
+            </p>
+        </div>
+    }
+
+
+
+    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+    {
+        <input type="submit" class="btn btn--inline" value="@FormHelper.GetButtonTextContinueOrSave(Model.ApplicationForm.IsStepTwoSubmitted, @Model.TextContinueButton)"/>
+    }
+}

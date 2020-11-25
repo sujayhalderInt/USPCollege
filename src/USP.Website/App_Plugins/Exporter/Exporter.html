@@ -1,0 +1,18 @@
+﻿
+<div class="exporter" ng-controller="ExportController">
+    <h3 class="bold">Export application data</h3>
+    <div style="margin-top: 30px;">
+        <label>
+            <span style="display: inline-block; width: 8rem;">Start Date</span>
+            <input type="date" ng-model="startDate" ng-change="setHref()"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            <span style="display: inline-block; width: 8rem;">End Date</span>
+            <input type="date" ng-model="endDate" ng-change="setHref()" />
+        </label>
+    </div>
+
+    <a class="btn btn-success" ng-href="{{exportUrl}}" download>Download report</a>
+</div>

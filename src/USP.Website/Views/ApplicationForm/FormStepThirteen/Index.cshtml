@@ -1,0 +1,24 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepThirteen>
+@{
+    Layout = "~/Views/_MainLayout.cshtml";
+}
+<div class="mt-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                @if (!string.IsNullOrEmpty(Model.Heading))
+                {
+                    <h1 class="form-description mb-20">@Model.Heading</h1>
+                }
+                <p class="form-success-tick"><span class="sr-only">Tick icon</span><i class="icon-tick_circle" aria-hidden="true"></i></p>
+                @if (!string.IsNullOrEmpty(Model.MessageNextSteps))
+                {
+                    <p class="form-details">@Model.MessageNextSteps</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

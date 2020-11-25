@@ -1,0 +1,22 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ViewModels
+@inherits UmbracoViewPage<TwitterFeedViewModel>
+    
+@if (Model == null || Model.Tweets == null || !Model.Tweets.Any())
+{
+    return;
+}
+
+<h2>@Model.Parameters.Title</h2>
+
+<ul class="">
+    @foreach (var tweet in Model.Tweets)
+    {
+        <li class="">
+            <span class="">@tweet.TimeCreated.ToString("dd MMM")</span> <a class="" href='@HttpUtility.UrlPathEncode(SiteConstants.TwitterUrl + tweet.UserScreenName)' @Html.NewWindow(true)>@tweet.UserScreenName</a>
+            <p class="">@Html.Raw(tweet.Text)</p>
+        </li>
+    }
+</ul>
+<a href="@HttpUtility.UrlPathEncode(SiteConstants.TwitterUrl + Model.Settings.AccountUsername)" @Html.NewWindow(true) class="">@Html.Raw(Model.Parameters.ReadMoreLabel)</a>

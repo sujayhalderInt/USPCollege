@@ -1,0 +1,85 @@
+﻿@using USP.Business.Controllers.Pages
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageSearch>
+
+
+
+<div class="results__wrapper">
+
+    @if (Model.SearchResults.HasResults)
+    {
+        <input type="hidden" name="@Html.NameFor(m => m.ListingPostback.Page)" value="@Model.ListingPostback.Page" class="hdnPageNo" />
+
+        <div class="results__head">
+            <p class="results__head__number">@Model.SearchResults.TotalItemCount @((Model.SearchResults.TotalItemCount == 1) ? "result" : "results")</p>
+
+        </div>
+        <div class="results__body">
+            @foreach (var result in Model.SearchResults.Results)
+            {
+                <div class="search-listing">
+                    <p class="search-listing__type">@result.SearchResultType</p>
+                    @if (!string.IsNullOrWhiteSpace(result.SubHeading))
+                    {
+                        <p class="search-listing__level">@result.SubHeading</p>
+                    }
+                    <a href="@result.Url">
+                        <h3 class="mb-10">@result.Heading</h3>
+                    </a>
+                    <p>
+                        @result.Summary
+                    </p>
+                </div>
+
+            }
+        </div>
+
+        var currentPage = Model.ListingPostback.Page;
+        var pageCount = Model.SearchResults.PageCount;
+        var startPage = (currentPage - 2).Clamp(1, pageCount);
+        var endPage = (startPage + 4).Clamp(1, pageCount);
+
+        if (endPage - startPage < 5)
+        {
+            startPage = (endPage - 4).Clamp(1, pageCount);
+        }
+
+        if (pageCount > 1)
+        {
+            <ul class="pagination">
+                @if (currentPage > 1)
+                {
+                    <li class="pagination__item">
+                        <input type="submit" name="@Html.NameFor(m => m.ListingPostback.BtnPagePrev)" value="&lt;" id="btnprev"/>
+                    </li>
+                }
+                @for (var page = startPage; page <= endPage; page++)
+                {
+                    var modifier = page == currentPage ? "pagination__item pagination__item--selected" : "pagination__item";
+
+                    <li class="@modifier">
+                        <input type="submit" name="@Html.NameFor(m => m.ListingPostback.BtnPage)" value="@page" class="btnpageing" />
+                    </li>
+                }
+                @if (currentPage < pageCount)
+                {
+                    <li class="pagination__item">
+                        <input type="submit" name="@Html.NameFor(m => m.ListingPostback.BtnPageNext)" value="&gt;" id="btnnext" />
+                    </li>
+                }
+            </ul>
+        }
+    }
+    else
+    {
+        <input type="hidden" name="@Html.NameFor(m => m.ListingPostback.Page)" value="@Model.ListingPostback.Page" />
+
+        <div class="alert alert-primary" role="alert">
+            <i class="icon-exclamation_fill c-usp-orange"><span class="sr-only">@library.GetDictionaryItem("CourseListing.NoResultsLabel")</span></i>
+            <div>
+                <p class="mb-0">@library.GetDictionaryItem("CourseListing.NoResultsText")</p>
+            </div>
+        </div>
+    }
+</div>

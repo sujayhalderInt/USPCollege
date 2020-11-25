@@ -1,0 +1,18 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageEventDetail>
+@{
+    Layout = "~/Views/_ContentLayout.cshtml";
+}
+
+@if (!Model.BookingCta.IsNullOrEmpty())
+{
+    var cta = Model.BookingCta.First();
+
+    <div data-cta-link="@cta.Link" data-cta-text="@(cta.Caption ?? "Book Now")" data-cta-newwindow='@Html.NewWindow(cta.NewWindow)'></div>
+}
+
+@Html.Partial("Content", Model)
+@Html.Partial("ArticleGrid", Model)
+

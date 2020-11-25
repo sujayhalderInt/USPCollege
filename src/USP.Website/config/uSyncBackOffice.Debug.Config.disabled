@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- For more information on using transformations 
+     see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134. -->
+<uSyncBackOfficeSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <Folder xdt:Transform="Replace">C:\inetpub\wwwroot\usp\Data\uSync\data\</Folder>
+  <Import xdt:Transform="Replace">true</Import>
+  <Handlers Group="default" EnableMissing="true" xdt:Transform="Replace" xdt:Locator="Match(Group)">
+    <HandlerConfig Name="uSync: DataTypeHandler" Enabled="true"/>
+    <HandlerConfig Name="uSync: TemplateHandler" Enabled="true"/>
+    <HandlerConfig Name="uSync: ContentTypeHandler" Enabled="true"/>
+    <HandlerConfig Name="uSync: MediaTypeHandler" Enabled="true"/>
+    <HandlerConfig Name="uSync: LanguageHandler" Enabled="true"/>
+    <HandlerConfig Name="uSync: DictionaryHandler" Enabled="true"/>
+    <HandlerConfig Name="uSync: MacroHandler" Enabled="true"/>
+    <HandlerConfig Name="uSync: DataTypeMappingHandler" Enabled="true"/>
+    <HandlerConfig Name="uSync: MemberTypeHandler" Enabled="true"/>
+
+    <!-- content edition - if installed -->
+    <HandlerConfig Name="uSync: ContentHandler" Enabled="true"/>
+    <HandlerConfig Name="uSync: MediaHandler" Enabled="true"/>
+  </Handlers>
+
+</uSyncBackOfficeSettings>

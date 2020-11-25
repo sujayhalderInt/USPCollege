@@ -1,0 +1,81 @@
+﻿@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<USP.Business.Models.ContentModels.WidgetTertiarySpotlight>
+
+@if (Model == null || Model.Items.IsNullOrEmpty())
+{
+    return;
+}
+@{
+    var items = FilterItems(Model.Items);
+}
+
+
+<section class="bg-usp-navi">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="spotlight-tertiary">
+      
+                    <div>
+                        <h2>@Model.Title</h2>
+                        <p>@Model.Description</p>
+                    </div>
+
+                    @RenderSpotlights(FilterItems(Model.Items))   
+      
+                </div>
+            </div>
+        </div>
+    </div>
+</section>    
+
+@functions
+{
+
+    public List<DataSpotlightItem> FilterItems(IEnumerable<DataSpotlightItem> originalItems)
+    {
+        var results = new List<DataSpotlightItem>();
+
+        foreach (var item in originalItems.ToList())
+        {
+            var page = item.Page.FirstOrDefault() as IBaseContentBanner;
+            if (page != null)
+            {
+                results.Add(item);
+            }
+        }
+
+        return results;
+    }
+}
+
+@helper RenderSpotlights(IEnumerable<DataSpotlightItem> spotlightItems)
+{
+    var list = spotlightItems.ToList();
+
+    if (!list.IsNullOrEmpty())
+    {
+        foreach (var item in list)
+        {
+            var page = item.Page.First() as IBaseContentBanner;
+                @* Show Cut down Preview in DTGE*@
+            if (Request.QueryString["dtgePreview"] == "1")
+            {
+                <div>[Page: @page.Id] @page.BannerHeading</div>
+                continue;
+            }
+            <div>
+                <a href="@page.Url">
+                    <h3>@page.BannerHeading</h3>
+                    <p>@page.BannerSummary</p>
+                </a>
+                <div class="spotlight-tertiary__img">
+                    @Html.LazyImage(page.BannerImage, "Spotlight-Tertiary") 
+                </div>
+            </div>
+        }
+    }
+}
+
+

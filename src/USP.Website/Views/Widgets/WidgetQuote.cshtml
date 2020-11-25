@@ -1,0 +1,63 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@using HtmlHelperTExtensions = USP.Business.Extensions.HtmlHelperTExtensions
+@inherits UmbracoViewPage<USP.Business.Models.ContentModels.WidgetQuote>
+
+
+@if (Model.Portrait == null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+
+                <blockquote >
+                    <div class="blockquote__desc">
+                        @Model.QuoteText
+                    </div>
+                    <footer>
+                        <p class="author">@Model.Citation</p>
+                        @if (!Model.CallToAction.IsNullOrEmpty())
+                        {
+                            var cta = Model.CallToAction.First();
+
+                            <a href="@cta.Link" class="btn btn--line-blue btn--animated" @Html.NewWindow(cta.NewWindow)>
+                                <span class="wrapper">@cta.Caption</span>
+                            </a>
+                        }
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+
+                <blockquote class="blockquote">
+                    <div class="blockquote__desc">
+                        @Model.QuoteText
+                    </div>
+                    <footer>
+                        <p class="blockquote__img">
+                            @Html.LazyImage(Model.Portrait, SiteConstants.Crops.CropQuote)
+                        </p>
+                        <p class="author">@Model.Citation</p>
+                        @if (!Model.CallToAction.IsNullOrEmpty())
+                        {
+                            var cta = Model.CallToAction.First();
+                            <div class="cta">
+                                <a href="@cta.Link" class="btn btn--line-blue btn--animated" @Html.NewWindow(cta.NewWindow)>
+                                    <span class="wrapper">@cta.Caption</span>
+                                </a>
+                            </div>
+                        }
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+}

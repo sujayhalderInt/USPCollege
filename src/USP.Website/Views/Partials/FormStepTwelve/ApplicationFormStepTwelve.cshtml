@@ -1,0 +1,44 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Helpers
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepTwelve>
+
+@using (Html.BeginUmbracoForm<FormStepTwelveController>("HandleFormStepTwelveSubmit"))
+{
+    if (!string.IsNullOrEmpty(Model.LabelReceiveMarketingEmailsCheckbox))
+    {
+        <div class="checkbox">
+            @Html.CheckBoxFor(model => model.PostBackModel.ReceiveMarketingEmails)
+            @Html.LabelFor(model => model.PostBackModel.ReceiveMarketingEmails, Model.LabelReceiveMarketingEmailsCheckbox)
+            <span class="checkmark"></span>
+        </div>
+    }
+
+    if (Model.DropDownListHowDidYouHearAboutThisCourse.Any() && Model.DropDownListHowDidYouHearAboutThisCourse != null && !string.IsNullOrEmpty(Model.LabelHowDidYouHearAboutThisCourseDropdown))
+    {
+        <div class="form__check">
+            @Html.LabelFor(model => model.PostBackModel.HowDidYouHearAboutThisCourse, Model.LabelHowDidYouHearAboutThisCourseDropdown, new { @class = SiteConstants.CssClass.FormCheckLabel })
+            <p class="select-wrapper">
+                @Html.DropDownListFor(model => model.PostBackModel.HowDidYouHearAboutThisCourse, FormHelper.GetDropDownlistFromRepeatableString(Model.DropDownListHowDidYouHearAboutThisCourse), new { @id = SiteConstants.HtmlId.SingleSelect })
+                @Html.ValidationMessageFor(model => model.PostBackModel.HowDidYouHearAboutThisCourse)
+            </p>
+        </div>
+    }
+
+    if (Model.DropDownListMostInterestedSector.Any() && Model.DropDownListMostInterestedSector != null && !string.IsNullOrEmpty(Model.LabelMostInterestedSector))
+    {
+        <div class="form__check">
+            @Html.LabelFor(model => model.PostBackModel.MostInterestedSector, Model.LabelMostInterestedSector, new { @class = SiteConstants.CssClass.FormCheckLabel })
+            <p class="select-wrapper">
+                @Html.DropDownListFor(model => model.PostBackModel.MostInterestedSector, FormHelper.GetDropDownlistFromRepeatableString(Model.DropDownListMostInterestedSector), new { @id = (SiteConstants.HtmlId.SingleSelect) + 1 })
+            </p>
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+    {
+        <input type="submit" class="btn btn--inline" value="@Model.TextContinueButton"/>
+    }
+}
+

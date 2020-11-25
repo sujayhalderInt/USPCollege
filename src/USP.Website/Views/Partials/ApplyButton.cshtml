@@ -1,0 +1,30 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ViewModels
+@inherits UmbracoViewPage<NavigationApplyButtonModel>
+
+
+@{
+    string buttonText = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplyButton.ApplyNow);
+    string buttonDisabledClass = "";
+    if (library.IsLoggedOn())
+    {
+        if (!Model.ApplicationForm.IsStepTwelveSubmitted)
+        {
+            buttonText = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplyButton.ContinueApplication);
+        }
+        else
+        {
+            buttonText = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplyButton.ApplicationSubmitted);
+            buttonDisabledClass = "btn--disabled";
+        }
+    }
+}
+
+<li role="menuitem" class="mobile-only"><a href="@Model.FormUrl"><i class="icon-apply" aria-hidden="true"></i> @buttonText</a></li>
+<li role="menuitem" class="mobile-only">
+    <a href="" class="nav-toggle">
+        <i class="icon-burger" aria-hidden="true"></i>
+        <span class="sr-only"> Navigation button</span>
+    </a>
+</li>
+<li role="menuitem" class="desktop-only"><a href="@Model.FormUrl" class="btn btn--blue btn--animated btn--apply @buttonDisabledClass"><span class="wrapper">@buttonText</span></a></li>

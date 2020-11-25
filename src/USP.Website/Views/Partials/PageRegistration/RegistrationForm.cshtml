@@ -1,0 +1,83 @@
+﻿@using USP.Business.Controllers.Pages
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageRegistration>
+
+@if (Model == null)
+{
+    return;
+}
+
+
+@using (Html.BeginUmbracoForm<PageRegistrationController>("HandleRegistration"))
+{
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelEmail))
+        {
+            @Html.LabelFor(model => model.EmailAddress, Model.LabelEmail)
+        }
+        @Html.TextBoxFor(model => model.EmailAddress)
+        @Html.ValidationMessageFor(model => model.EmailAddress)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelPassword))
+        {
+            @Html.LabelFor(model => model.Password, Model.LabelPassword)
+        }
+        @Html.PasswordFor(model => model.Password)
+        @Html.ValidationMessageFor(model => model.Password)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelRepeatPassword))
+        {
+            @Html.LabelFor(model => model.RepeatPassword, Model.LabelRepeatPassword)
+        }
+        @Html.PasswordFor(model => model.RepeatPassword)
+        @Html.ValidationMessageFor(model => model.RepeatPassword)
+    </div>
+    if (!string.IsNullOrEmpty(Model.PasswordRequirementAlertHeading) && !Model.PasswordRequirementListItems.IsNullOrEmpty())
+    {
+        <div class="alert alert-primary" role="alert">
+            <i class="icon-exclamation_fill c-usp-orange"><span class="sr-only">Alert icon</span></i>
+            <div>
+                <p>@Model.PasswordRequirementAlertHeading</p>
+                <ul class="mb-0">
+                    @foreach (var item in Model.PasswordRequirementListItems)
+                    {
+                        <li>@item</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+    if (Model.RichTextTermsAndConditions != null)
+    {
+        @Html.Raw(Model.RichTextTermsAndConditions)
+    }
+    <div class="checkbox">
+        @if (!string.IsNullOrEmpty(Model.LabelAcceptTermsAndConditions))
+        {
+            @Html.CheckBoxFor(model => model.AgreeToPrivacyStatement)
+            @Html.LabelFor(model => model.AgreeToPrivacyStatement, Model.LabelAcceptTermsAndConditions)
+            @*@Html.ValidationMessageFor(model => model.AgreeToPrivacyStatement)*@
+            <span class="checkmark"></span>
+        }
+    </div>
+    <div class="recaptcha-align">
+        <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey=@(!string.IsNullOrEmpty(library.GetDictionaryItem("Recaptcha Site Key")) ? library.GetDictionaryItem("Recaptcha Site Key")  : "")></div>
+    </div>
+    if (!string.IsNullOrEmpty(Model.TextCreateAccountButton))
+    {
+        <p>
+            <input type="submit" class="btn btn--blue btn--inline" value="@Model.TextCreateAccountButton">
+        </p>
+    }
+}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script>
+    function recaptchaCallback() {
+        $(".generic-error-message").text("");
+    }
+</script>
+
+

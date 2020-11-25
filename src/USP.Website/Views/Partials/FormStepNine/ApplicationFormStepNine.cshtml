@@ -1,0 +1,94 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepNine>
+
+@if (!Model.PostBackModel.IsAdultLearning && !string.IsNullOrEmpty(Model.LastSchoolCollegeHeading))
+{
+    <h3 class="mb-20">@Model.LastSchoolCollegeHeading</h3>
+}
+@using (Html.BeginUmbracoForm<FormStepNineController>("HandleFormStepNineSubmit"))
+{
+        if (!string.IsNullOrEmpty(Model.Heading))
+        {
+            <h1 class="mb-40">@Model.Heading</h1>
+        }
+        @Html.Partial("FormSubHeadingAndTextInformation", Model)
+
+    @Html.HiddenFor(model => model.PostBackModel.IsAdultLearning)
+
+    if (!Model.PostBackModel.IsAdultLearning && !string.IsNullOrEmpty(Model.LabelPreviousSchoolCollege))
+    {
+        <div class="form__check">
+            @Html.LabelFor(model => model.PostBackModel.LastCollegeOrSchool, Model.LabelPreviousSchoolCollege, new { @class = SiteConstants.CssClass.FormCheckLabel })
+            @Html.TextBoxFor(model => model.PostBackModel.LastCollegeOrSchool, new { @class = SiteConstants.UmbracoDictionaryKey.ApplicationForm.Step9PlaceHolder.LastSchoolOrCollege })
+            @Html.ValidationMessageFor(model => model.PostBackModel.LastCollegeOrSchool)
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.QualificationsHeading))
+    {
+        <h3 class="mb-20">@Model.QualificationsHeading</h3>
+    }
+
+    if (Model.TextQualificationsInformation != null)
+    {
+        <div class="form-details">@Html.Raw(Model.TextQualificationsInformation)</div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.TextAlert))
+    {
+        <div class="alert alert-primary" role="alert">
+            <i class="icon-exclamation_fill c-usp-orange"><span class="sr-only">Alert icon</span></i>
+            <div>
+                <p class="mb-0">@Model.TextAlert</p>
+            </div>
+        </div>
+    }
+
+    if (Model.PostBackModel.IsAlevelsOrProfessionlQualifications && Model.TextMinimumGradeRequirements != null)
+    {
+        <p class="form-details">@Html.Raw(Model.TextMinimumGradeRequirements)</p>
+    }
+
+    for (var i = 0; i < Model.PostBackModel.Qualifications.Count; i++)
+    {
+        <div class="qualifications">
+
+            <div class="form__check">
+                @Html.LabelFor(model => model.PostBackModel.Qualifications[i].Subject, Model.LabelSubject, new { @class = SiteConstants.CssClass.FormCheckLabel })
+                @Html.TextBoxFor(model => model.PostBackModel.Qualifications[i].Subject, new { placeholder = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplicationForm.Step9PlaceHolder.Subject) })
+            </div>
+            <div class="form__check">
+                @Html.LabelFor(model => model.PostBackModel.Qualifications[i].Type, Model.LabelType, new { @class = SiteConstants.CssClass.FormCheckLabel })
+                @Html.TextBoxFor(model => model.PostBackModel.Qualifications[i].Type, new { placeholder = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplicationForm.Step9PlaceHolder.Type) })
+            </div>
+            <div class="form__check">
+                @Html.LabelFor(model => model.PostBackModel.Qualifications[i].GradeOrPredictedGrade, Model.LabelGradeOrPredictedGrade, new { @class = SiteConstants.CssClass.FormCheckLabel })
+                @Html.TextBoxFor(model => model.PostBackModel.Qualifications[i].GradeOrPredictedGrade, new { placeholder = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplicationForm.Step9PlaceHolder.GradePredictedGrade) })
+            </div>
+            @if (Model.ApplicationForm.IsAdultLearning)
+            {
+                <div class="form__check">
+                    @Html.LabelFor(model => model.PostBackModel.Qualifications[i].Year, Model.LabelYear, new { @class = SiteConstants.CssClass.FormCheckLabel })
+                    @Html.TextBoxFor(model => model.PostBackModel.Qualifications[i].Year, new { placeholder = library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ApplicationForm.Step9PlaceHolder.Year) })
+                </div>
+            }
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.CtaAddAnotherButtonText))
+    {
+        <div>
+            <input name="addButton" type="submit" class="btn btn--animated btn--line-blue add-qualification  mb-30 btn--inline" value="@Model.CtaAddAnotherButtonText">
+            @*<input name="addButton" type="submit" class="btn btn--animated btn--line-blue mb-30 add-qualification btn--inline" value="@Model.CtaAddAnotherButtonText">*@
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+    {
+        <div>
+            <input name="continue" type="submit" class="btn btn--inline" value="@Model.TextContinueButton" />
+        </div>
+    }
+}

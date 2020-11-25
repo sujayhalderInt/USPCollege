@@ -1,0 +1,45 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEleven>
+
+<div class="review-headline">
+    <h3>@Model.HeadingsAndLabels.PreviousQualificationsReviewHeading</h3>
+    <div>
+        <a href="@Model.FormStep9Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+    </div>
+</div>
+<div class="review-block review-block--inline mb-20">
+    @if (Model.Qualifications != null)
+    {
+        foreach (var qualification in Model.Qualifications)
+        {
+            if (!string.IsNullOrEmpty(qualification.Subject) ||
+                !string.IsNullOrEmpty(qualification.Type) ||
+                !string.IsNullOrEmpty(qualification.GradeOrPredictedGrade)
+                )
+            {
+                <div>
+                    <p class="review-block__label">@Model.HeadingsAndLabels.LabelSubject</p>
+                    <p class="review-block__result">@qualification.Subject</p>
+                </div>
+                <div>
+                    <p class="review-block__label">@Model.HeadingsAndLabels.LabelType</p>
+                    <p class="review-block__result">@qualification.Type</p>
+                </div>
+
+                <div class="@(!Model.ApplicationForm.IsAdultLearning ? "mb-20" : "")">
+                    <p class="review-block__label">@Model.HeadingsAndLabels.LabelGrade</p>
+                    <p class="review-block__result">@qualification.GradeOrPredictedGrade</p>
+                </div>
+
+                if (Model.ApplicationForm.IsAdultLearning)
+                {
+                    <div class="mb-20">
+                        <p class="review-block__label">@Model.HeadingsAndLabels.LabelYear</p>@*conditional*@
+                        <p class="review-block__result">@qualification.Year</p>@*conditional*@
+                    </div>
+                }
+            }
+        }
+    }
+</div>

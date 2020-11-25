@@ -1,0 +1,21 @@
+﻿@using USP.Business.Extensions
+@inherits UmbracoViewPage<Skybrud.Social.Instagram.Objects.InstagramMedia[]>
+
+@{
+    if (Model == null || Model.Length == 0)
+    {
+        return;
+    }
+    <div class="section-content">
+        <div class="instagram-feed">
+            @foreach (var instagramMedia in Model)
+            {
+                <div class="instagram-feed-item">
+                    <a href="@instagramMedia.Link" @Html.NewWindow(true)>
+                        @Html.LazyImage(instagramMedia.Images.LowResolution.Url, new {alt= instagramMedia.CaptionText })
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+}

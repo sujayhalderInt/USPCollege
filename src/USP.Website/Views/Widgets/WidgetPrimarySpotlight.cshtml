@@ -1,0 +1,101 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<USP.Business.Models.ContentModels.WidgetPrimarySpotlight>
+
+@if (Model == null || Model.Item == null)
+{
+    return;
+}
+
+@{
+    var page = Model.Item.Page.FirstOrDefault() as IBaseContentBanner;
+    if (page == null)
+    {
+        return;
+    }
+
+    var overlay = "teal";
+    if (page.Overlay != null)
+    {
+        overlay = page.Overlay.ToString().ToLower();
+    }
+} 
+
+@if (Request.QueryString["dtgePreview"] == "1")
+{
+    <div>[Page: @page.Id] @page.BannerHeading</div>
+}
+else
+{
+    <section class="spotlight__fullwidth bg-usp-navi-dark">
+        <p class="spotlight__fullwidth__img filter filter--@overlay">
+            @Html.LazyImage(page.BannerImage, "Spotlight-Primary", aspect: SiteConstants.Crops.AspectRatio.SixteenToNine)
+        </p>
+        <div class="container">
+            <div class="row">
+                <div class="offset-lg-6 col-lg-6">
+                    <h2>@page.BannerHeading</h2>
+                    
+                    @if (page is PageEventDetail)
+                    {
+                        var eventDetail = (PageEventDetail) page;
+
+                        <div class="spotlight-details mb-20">
+                            @if (eventDetail.EndDate > DateTime.MinValue)
+                            {
+                                <div>
+                                    <p class="mb-0">
+                                        @eventDetail.StartTime - @eventDetail.EndTime
+                                    </p>
+                                    <span>@eventDetail.StartDate.ToString("dd MMMM yyyy") - @eventDetail.EndDate.ToString("dd MMMM yyyy")</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <p class="mb-0">
+                                        @eventDetail.StartTime - @eventDetail.EndTime
+                                    </p>
+                                    <span>@eventDetail.StartDate.ToString("dd MMMM yyyy")</span>
+                                </div>
+                            }
+                            @if (!eventDetail.Campus.IsNullOrEmpty())
+                            {
+                                var campus = eventDetail.Campus.OfType<DataTaxonomy>().FirstOrDefault();
+
+                                if (campus != null)
+                                {
+                                    <p class="mb-0">
+                                        @campus.TaxonomyName Campus
+                                    </p>
+                                }
+                            }
+                        </div>
+                    }
+
+
+                    <p class="mb-30">
+                        @page.BannerSummary
+                    </p>
+                    <div class="inline-buttons">
+
+                        <a href="@page.Url" class="btn btn--blue btn--animated">
+                            <span class="wrapper">
+                                @Model.Item.CTacopy
+                            </span>
+                        </a>
+                        @if (page is PageEventDetail && Model.MainEventListing != null && Model.MainEventListing.Page != null)
+                        {
+                            <a href="@Model.MainEventListing.Page.Url" class="btn btn-default btn--white btn--animated">
+                                <span class="wrapper">
+                                    @Model.MainEventListing.CallToAction
+                                </span>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

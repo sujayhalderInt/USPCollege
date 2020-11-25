@@ -1,0 +1,39 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetSinglePinMap>
+
+@if (Model == null || string.IsNullOrWhiteSpace(Model.Longitude) || string.IsNullOrWhiteSpace(Model.Latitude) || string.IsNullOrWhiteSpace(Model.ApiKey))
+{
+    return;
+}
+ 
+@if (Request.QueryString["dtgePreview"] != null)
+{
+    <div>MAP: Click here to edit</div>
+}
+else
+{
+
+    <section class="locations-map mb-50"
+             data-map-apiKey="@Model.ApiKey"
+             data-locations-long="@Model.Longitude"
+             data-locations-lat="@Model.Latitude">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    @if (!string.IsNullOrWhiteSpace(Model.Title))
+                    {
+                        <h2>@Model.Title</h2>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Description))
+                    {
+                        <p>
+                            @Model.Description
+                        </p>
+                    }
+                    <div class="map">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

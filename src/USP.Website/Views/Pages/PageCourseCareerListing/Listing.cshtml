@@ -1,0 +1,137 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.MappingClasses.Search
+@model USP.Business.Models.ContentModels.PageCourseCareerListing
+@{
+    var txt = "";
+
+    if (Model.SearchResults.TotalCareerItemCount != null && Model.SearchResults.TotalCareerItemCount.Value > 0)
+    {
+        txt += "<span>"+ Model.SearchResults.TotalCareerItemCount+"</span>" + ((Model.SearchResults.TotalCareerItemCount == 1) ? " career" : " careers");
+
+        if (Model.SearchResults.TotalCourseItemCount != null && Model.SearchResults.TotalCourseItemCount.Value > 0)
+        {
+            txt += " and ";
+        }
+    }
+
+    if(Model.SearchResults.TotalCourseItemCount != null && Model.SearchResults.TotalCourseItemCount.Value > 0)
+    {
+        txt += "<span>"+Model.SearchResults.TotalCourseItemCount + "</span>" + ((Model.SearchResults.TotalCourseItemCount == 1) ? " course" : " courses");
+    }
+}
+@functions {
+    private string IsSelected(string key, string selectedKeys)
+    {
+        if (selectedKeys == null)
+            return "";
+
+        if (selectedKeys == key)
+        {
+            return "selected=\"selected\"";
+        }
+
+        return string.Empty;
+    }
+
+}
+<div class="results__wrapper">
+    <input type="hidden" name="@Html.NameFor(m => m.ListingPostback.Page)" value="@Model.ListingPostback.Page" class="hdnPageNo" />
+
+    @if (Model.SearchResults.HasResults)
+    {
+        <div class="results__head">
+            @*<p class="results__head__number">@Model.SearchResults.TotalItemCount @((Model.SearchResults.TotalItemCount == 1) ? "result" : "results")</p>*@
+            <p class="results__head__number">
+                @Html.Raw(txt)
+            </p>
+        </div>
+        <div class="results__body">
+            @foreach (var result in Model.SearchResults.Results)
+            {
+                if (result is CourseDetailResultItem)
+                {
+                    var item = result as CourseDetailResultItem;
+
+                    <article class="listing-item">
+                        <aside class="listing-item__img">
+                            <a href="@item.Url">
+                                @if (item.Image != null)
+                                {
+                                    @*@Html.LazyImage(item.Image, "CourseListing", aspect: SiteConstants.Crops.AspectRatio.FourToThree)*@
+                                    <img src="@item.Image.GetCropUrl(width:720,height:540)">
+                                }
+                            </a>
+                        </aside>
+                        <div class="listing-item__details">
+                            <h3 class="listing-item__details__head">
+                                <a href="@item.Url">
+                                    @item.Heading
+                                    @if (!string.IsNullOrWhiteSpace(item.CareerSector))
+                                    {
+                                        <span>(@item.CareerSector)</span>
+                                    }
+                                </a>
+                            </h3>
+                            <p class="listing-item__details_desc c-usp-yellow">@item.Qualification</p>
+                            @if (item.Campuses != null && item.Campuses.Length > 0)
+                            {
+                                <div class="listing-item__details__tags">
+                                    <p class="mb-10">@library.GetDictionaryItem("CourseListing.ResultItemCampus")</p>
+                                    <div>
+                                        @foreach (var campus in item.Campuses)
+                                        {
+                                            <span class="tags">@campus</span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </article>
+                }
+                else
+                {
+                    var item = result as CareerDetailResultItem;
+
+                    <article class="listing-item">
+                        <aside class="listing-item__img">
+                            <a href="@item.Url">
+                                @if (item.Image != null)
+                                {
+                                    @*@Html.LazyImage(item.Image, "CourseListing", aspect: SiteConstants.Crops.AspectRatio.FourToThree)*@
+                                    <img src="@item.Image.GetCropUrl(width:720,height:540)">
+                                }
+                            </a>
+                        </aside>
+                        <div class="listing-item__details listing-item__details--career">
+                            <h3 class="listing-item__details__head">
+                                <a href="@item.Url">
+                                    @item.Heading
+                                </a>
+                            </h3>
+                            <p class="listing-item__details_desc c-usp-yellow">Career</p>
+
+                        </div>
+                    </article>
+                }
+            }
+        </div>
+
+        if (Model.SearchResults.PageCount > Model.SearchResults.PageNumber)
+        {
+            <div class="text-center">
+                <input name="@Html.NameFor(m => m.ListingPostback.BtnLoadMore)" type="submit" value="@library.GetDictionaryItem("CourseListing.LoadMore")" class="btn btn--inline btn-listing-submit" id="btnpageing"/>
+            </div>
+
+        }
+    }
+    else
+    {
+        <div class="alert alert-primary" role="alert">
+            <i class="icon-exclamation_fill c-usp-orange"><span class="sr-only">@library.GetDictionaryItem("CourseListing.NoResultsLabel")</span></i>
+            <div>
+                <p class="mb-0">@library.GetDictionaryItem("CourseListing.NoResultsText")</p>
+            </div>
+        </div>
+    }
+</div>

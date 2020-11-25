@@ -1,0 +1,59 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<USP.Business.Models.ContentModels.WidgetContactInformation>
+
+@if (Model == null || Model.ContactList.IsNullOrEmpty())
+{
+    return;
+}
+
+@{
+    var alignerClass = Model.ContactList.Any(c => c.Image != null) ? "no-image" : "";
+}
+
+@if (!string.IsNullOrEmpty(Model.Title))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11 offset-md-1">
+                <h3>@Model.Title</h3>
+            </div>
+        </div>
+    </div>
+}
+<div class="mb-50">
+@foreach (var contact in Model.ContactList)
+{
+    <div class="bg-usp-blue-light mb-10">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-2">
+                    <div class="more-info">
+                        @if (contact.Image != null)
+                        {
+                            <p class="more-info__user">
+                                @Html.LazyImage(contact.Image, SiteConstants.Crops.CropContact)
+                            </p>
+                        }
+                        <div class="more-info__desc @(contact.Image == null ? alignerClass : "")">
+                            <h3>@contact.ContactName</h3>
+                            @if (!string.IsNullOrEmpty(contact.RoleSubtitle))
+                            {
+                                <p class="more-info__position">@contact.RoleSubtitle</p>
+                            }
+                            <p>
+                                <a href="tel:@contact.PhoneNumber"><i class="icon-phone"><span class="sr-only">Telephone number </span></i> @contact.PhoneNumber </a>
+                            </p>
+                            <p>
+                                <a href="mailto:@(contact.EmailAddress)"><i class=" icon-mail"><span class="sr-only">Email address</span></i> @contact.EmailAddress</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+</div>

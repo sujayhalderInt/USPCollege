@@ -1,0 +1,121 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Helpers
+@using USP.Business.Models.ContentModels
+@model USP.Business.Models.ContentModels.IBaseContentBanner
+
+@{
+    if (Model.BannerImage == null)
+    {
+        return;
+    }
+
+    var overlay = "teal";
+    if (Model.Overlay != null)
+    {
+        overlay = Model.Overlay.ToString().ToLower();
+    }
+
+    var key = SettingHelper.GetXmlSetting(SettingType.Settings, "Addthis:AccountKey");
+
+    var eventDetail = Model as PageEventDetail;
+}
+
+<header class="hero-banner">
+    @Html.Action("RenderBreadCrumb", "Breadcrumb")
+    <div class="hero-banner__img filter filter--@overlay">
+        @Html.LazyImage(Model.BannerImage, "Banner", aspect: SiteConstants.Crops.AspectRatio.TwentyOneToNine)
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="hero-banner__content">
+
+                    <div class="hero-banner__content__details">
+                        <div>
+                            @{
+                                if (Model is PageCourseDetail)
+                                {
+                                    <p class="hero-home__headline">@(((PageCourseDetail)Model).Qualification)</p>
+                                }
+                                else if (Model is PageNewsDetail)
+                                {
+                                    <p class="hero-home__headline">@(((PageNewsDetail)Model).PublishedDate.ToString("dd MMMM yyyy"))</p>
+                                }
+                                else if (Model is PageBlogDetail)
+                                {
+                                    <p class="hero-home__headline">@(((PageBlogDetail)Model).PublishedDate.ToString("dd MMMM yyyy"))</p>
+
+                                }
+                            }
+
+                            @if (eventDetail != null)
+                            {
+                                if (eventDetail.EndDate > DateTime.MinValue)
+                                {
+                                    <div class="hero-home__headline">
+                                        <span itemprop="startDate">@eventDetail.StartDate.ToString("dd MMMM yyyy")</span> - <span itemprop="endDate">@eventDetail.EndDate.ToString("dd MMMM yyyy")</span>
+                                        <p>@eventDetail.StartTime - @eventDetail.EndTime</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="hero-home__headline" itemprop="startDate">
+                                        @eventDetail.StartDate.ToString("dd MMMM yyyy")
+                                        <p>@eventDetail.StartTime - @eventDetail.EndTime</p>
+                                    </div>
+                                }
+                            }
+
+                            <h1>@Model.BannerHeading</h1>
+                            <p class="hero-home__headline">@Model.BannerSummary</p>
+
+                            @if (eventDetail != null)
+                            {
+                                var campus = eventDetail.Campus.OfType<DataTaxonomy>().FirstOrDefault();
+                                if (campus != null)
+                                {
+                                    <p class="hero-home__headline" itemprop="location">
+                                        <i class="icon-map_pin" aria-hidden="true"></i> @campus.TaxonomyName
+                                    </p>
+                                }
+                            }
+
+                            @{
+                                if (Model is PageBlogDetail)
+                                {
+                                    var blogPageModel = (PageBlogDetail)Model;
+                                    if (blogPageModel.BlogAuthor != null && blogPageModel.BlogAuthor.Any())
+                                    {
+                                        var author = blogPageModel.BlogAuthor.FirstOrDefault().OfType<DataAuthor>();
+                                        <p class="hero-home__author" itemprop="author">
+                                            @Html.LazyImage(author.PortraitImage, SiteConstants.Crops.Author)
+                                            <span>by @author.FirstName @author.LastName</span>
+                                        </p>
+                                    }
+                                }
+                            }
+                        </div>
+                        @if (CookieHelper.GetCookieBool(SiteConstants.CookieName, "other", false) && !string.IsNullOrWhiteSpace(key))
+                        {
+                            <div class="social-share mb-10" data-key="@key">
+                                <a href="#">Share <i class="icon-share" aria-hidden="true"></i></a>
+                                <div class="share-wrapper">
+                                    <div class="addthis_inline_share_toolbox">
+                                        <div class="at-share-btn-elements">
+                                            <a class="addthis_button_facebook"><img src="/Assets/img/facebook.svg"  border="0" alt="Share to Facebook"></a>
+                                            <a class="addthis_button_linkedin"><img src="/Assets/img/linkedin.svg"  border="0" alt="Share to LinkedIn"></a>
+                                            <a class="addthis_button_email"><img src="/Assets/img/envelope.svg"  border="0" alt="Share via Email"></a>
+                                            <a class="addthis_button_twitter"><img src="/Assets/img/twitter.svg"  border="0" alt="Share to Twitter"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>  

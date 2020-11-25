@@ -1,0 +1,43 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEleven>
+
+<div class="review-headline">
+    <h3>@Model.HeadingsAndLabels.StudentsPersonalInformationReviewHeading</h3>
+    <div>
+        <a href="@Model.FormStep3Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+    </div>
+</div>
+
+<div class="review-block review-block--inline">
+    <div>
+        <p class="review-block__label">@Model.HeadingsAndLabels.LabelFirstName</p>
+        <p class="review-block__result">@Model.ApplicationForm.StudentsFirstName</p>
+    </div>
+    @if (!string.IsNullOrEmpty(Model.ApplicationForm.StudentsMiddleName))
+    {
+        <div>
+            <p class="review-block__label">@Model.HeadingsAndLabels.LabelMiddleName</p>@*conditional*@
+            <p class="review-block__result">@Model.ApplicationForm.StudentsMiddleName</p>
+        </div>
+    }
+    <div>
+        <p class="review-block__label">@Model.HeadingsAndLabels.LabelLastName</p>
+        <p class="review-block__result">@Model.ApplicationForm.StudentsLastName</p>
+    </div>
+    @if (!string.IsNullOrEmpty(Model.ApplicationForm.StudentsPreferedName))
+    {
+        <div>
+            <p class="review-block__label">@Model.HeadingsAndLabels.LabelPreferredName</p>@*conditional*@
+            <p class="review-block__result">@Model.ApplicationForm.StudentsPreferedName</p>
+        </div>
+    }
+    <div>
+        <p class="review-block__label">@Model.HeadingsAndLabels.LabelDateOfBirth</p>
+        <p class="review-block__result">@Model.ApplicationForm.StudentsDateOfBirth.Value.ToString("dd/MM/yyyy")</p>
+    </div>
+    <div>
+        <p class="review-block__label">@Model.HeadingsAndLabels.LabelGender</p>
+        <p class="review-block__result">@Model.ApplicationForm.StudentsGender</p>
+    </div>
+</div>

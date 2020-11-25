@@ -1,0 +1,43 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@model USP.Business.Models.ViewModels.GlobalSearchViewModel
+
+<div class="header-search">
+    <form class="search" role="search" method="get" action="@Model.SearchUrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-right">
+                    <a class="header-search-close" href="#"><i class="icon-close" aria-hidden="true"></i> Close</a>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <div class="form__check mb-0">
+                        <label for="single-select" class="form__check__label">@library.GetDictionaryItem("Global Search.Labels.SearchForLabel")</label>
+                        <p class="select-wrapper">
+                            <select id="single-select">
+                                <option value="@Model.SearchUrl">Everything</option>
+                                <option value="@Model.CourseCareerUrl">Courses and careers</option>
+                            </select>
+                        </p>
+                    </div>
+                </div><!-- end col-md-6 -->
+                <div class="col-md-6">
+
+                    <div class="hero-search__form" role="search">
+                        <div class="search mb-0">
+                            <label for="global-search"><span class="sr-only">@library.GetDictionaryItem("Global Search.Labels.SearchForLabel")</span></label>
+                            <input type="search" autocomplete="off" id="global-search" name="term" placeholder="@library.GetDictionaryItem("Global Search.Labels.SearchBoxPlaceholder")" data-predictive="/umbraco/api/PredictiveSearch/getresults">
+                            <input class="btn btn--inline" type="submit" id="btn-global-search" value="@library.GetDictionaryItem("Global Search.Labels.SearchButtonText")">
+                        </div>
+                        <div class="hero-search__results hidden">
+
+                        </div>
+                    </div>
+
+                </div><!-- end col-md-6 -->
+
+            </div>
+        </div>
+    </form>
+</div>

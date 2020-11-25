@@ -1,0 +1,19 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetAccordion>
+
+@{
+    if (Model == null || Model.AccordionItems == null || !Model.AccordionItems.Any())
+    {
+        return;
+    }
+}
+
+<ul>
+@foreach (var item in Model.AccordionItems.OfType<DataAccordionItem>())
+{
+    <li>
+        <h2>@item.AccordionItemTitle</h2>
+        @Html.Raw(item.AccordionItemContent)
+    </li>
+}
+</ul>

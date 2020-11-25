@@ -1,0 +1,28 @@
+﻿@model USP.Business.Models.ContentModels.IBaseContent
+
+@functions {
+    private string GetColor()
+    {
+        var color = Model.MainContentTableColour as string;
+        return !string.IsNullOrWhiteSpace(color) ? color.ToLower() : "";
+    }
+
+}
+
+@if (Model != null && Model.MainContent != null && !string.IsNullOrWhiteSpace(Model.MainContent.ToHtmlString()))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 mb-50 rte" data-table-color="@GetColor()">
+                @if (!string.IsNullOrWhiteSpace(Model.SectionNavigationTitle))
+                {
+                    <a aria-hidden="true" data-anchor="@Model.SectionNavigationTitle"></a>
+                }
+                @if (Model.MainContent != null)
+                {
+                    @Html.Raw(Model.MainContent)
+                }
+            </div>
+        </div>
+    </div>
+}

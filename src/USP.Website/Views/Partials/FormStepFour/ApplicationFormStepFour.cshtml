@@ -1,0 +1,120 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Helpers
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepFour>
+
+@using (Html.BeginUmbracoForm<FormStepFourController>("HandleFormStepFourSubmit"))
+{
+    @Html.HiddenFor(model => model.PostBackModel.IsAdultLearning)
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelHomeAddress))
+        {
+            @Html.LabelFor(model => model.PostBackModel.FirstLineOfAddress, Model.LabelHomeAddress)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.FirstLineOfAddress, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderHomeAddress) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.FirstLineOfAddress)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelSecondLineOfAddress))
+        {
+            @Html.LabelFor(model => model.PostBackModel.SecondLineOfAddress, Model.LabelSecondLineOfAddress)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.SecondLineOfAddress, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderSecondLineOfAddress) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.SecondLineOfAddress)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelPostCode))
+        {
+            @Html.LabelFor(model => model.PostBackModel.PostCode, Model.LabelPostCode)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.PostCode, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderPostCode) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.PostCode)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelTownOrCity))
+        {
+            @Html.LabelFor(model => model.PostBackModel.TownOrCity, Model.LabelTownOrCity)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.TownOrCity, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderTownOrCity) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.TownOrCity)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelMobileNumber))
+        {
+            @Html.LabelFor(model => model.PostBackModel.MobileNumber, Model.LabelMobileNumber)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.MobileNumber, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderPhoneNumber) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.MobileNumber)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelHomeNumber))
+        {
+            @Html.LabelFor(model => model.PostBackModel.HomeNumber, Model.LabelHomeNumber)
+        } 
+        @Html.TextBoxFor(model => model.PostBackModel.HomeNumber, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderPhoneNumber) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.HomeNumber)
+    </div>
+    <div class="form__check">
+        @if (!string.IsNullOrEmpty(Model.LabelEmail))
+        {
+            @Html.LabelFor(model => model.PostBackModel.EmailAddress, Model.LabelEmail)
+        }
+        @Html.TextBoxFor(model => model.PostBackModel.EmailAddress, new { @placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderEmailAddress) })
+        @Html.ValidationMessageFor(model => model.PostBackModel.EmailAddress)
+    </div>
+
+
+    //This section only appears if the user is doing Adult Learning
+    if (Model.PostBackModel.IsAdultLearning)
+    {
+        if (!string.IsNullOrEmpty(Model.EmergencyContactSubHeading))
+        {
+            <h3 class="mb-20">@Model.EmergencyContactSubHeading</h3>
+        }
+        <div class="form__check">
+            @if (!string.IsNullOrEmpty(Model.LabelEmergencyContactFirstName))
+            {
+                @Html.LabelFor(model => model.PostBackModel.EmergencyContactFirstName, Model.LabelEmergencyContactFirstName)
+            }
+            @Html.TextBoxFor(model => model.PostBackModel.EmergencyContactFirstName, new {@placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderEmergencyContactFirstName)})
+            @Html.ValidationMessageFor(model => model.PostBackModel.EmergencyContactFirstName)
+        </div>
+        <div class="form__check">
+            @if (!string.IsNullOrEmpty(Model.LabelEmergencyContactLastName))
+            {
+                @Html.LabelFor(model => model.PostBackModel.EmergencyContactLastName, Model.LabelEmergencyContactLastName)
+            }
+            @Html.TextBoxFor(model => model.PostBackModel.EmergencyContactLastName, new {@placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderEmergencyContactLastName)})
+            @Html.ValidationMessageFor(model => model.PostBackModel.EmergencyContactLastName)
+        </div>
+        <div class="form__check">
+            @if (!string.IsNullOrEmpty(Model.LabelEmergencyContactRelationship))
+            {
+                @Html.LabelFor(model => model.PostBackModel.EmergencyContactRelationship, Model.LabelEmergencyContactRelationship)
+            }
+            @Html.TextBoxFor(model => model.PostBackModel.EmergencyContactRelationship, new {@placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderEmergencyContactRelationshipToStudent)})
+            @Html.ValidationMessageFor(model => model.PostBackModel.EmergencyContactRelationship)
+        </div>
+        <div class="form__check">
+            @if (!string.IsNullOrEmpty(Model.LabelEmergencyContactPhoneNumber))
+            {
+                @Html.LabelFor(model => model.PostBackModel.EmergencyContactPhoneNumber, Model.LabelEmergencyContactPhoneNumber)
+            }
+            @Html.TextBoxFor(model => model.PostBackModel.EmergencyContactPhoneNumber, new {@placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderEmergencyContactPhoneNumber)})
+            @Html.ValidationMessageFor(model => model.PostBackModel.EmergencyContactPhoneNumber)
+        </div>
+        <div class="form__check">
+            @if (!string.IsNullOrEmpty(Model.LabelEmergencyContactEmail))
+            {
+                @Html.LabelFor(model => model.PostBackModel.EmergencyContactEmailAddress, Model.LabelEmergencyContactEmail)
+            }
+            @Html.TextBoxFor(model => model.PostBackModel.EmergencyContactEmailAddress, new {@placeholder = library.GetDictionaryItem(SiteConstants.ApplicationFormStep4PlaceholderEmergencyContactEmailAddress)})
+            @Html.ValidationMessageFor(model => model.PostBackModel.EmergencyContactEmailAddress)
+        </div>
+    }
+    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+    {
+        <input type="submit" class="btn btn--inline" value="@FormHelper.GetButtonTextContinueOrSave(Model.ApplicationForm.IsStepFourSubmitted , Model.TextContinueButton)" />
+    }
+}

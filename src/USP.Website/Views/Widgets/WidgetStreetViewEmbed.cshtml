@@ -1,0 +1,31 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetStreetViewEmbed>
+
+@if (Model == null)
+{
+    return;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            @if (!string.IsNullOrEmpty(Model.Title))
+            {
+                <h2>@Model.Title</h2>
+            }
+            @if (Model.Description != null && !string.IsNullOrEmpty(Model.Description.ToString()))
+            {
+                <div class="mb-50">@Model.Description</div>
+            }
+            @if (!string.IsNullOrEmpty(Model.GoogleStreetViewEmbedUrl))
+            {
+                <div class="iframe-container">
+
+                    <iframe src="@Model.GoogleStreetViewEmbedUrl"
+                            frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
+            }
+        </div>
+    </div>
+</div>

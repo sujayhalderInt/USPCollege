@@ -1,0 +1,15 @@
+﻿@using USP.Business.Extensions
+@inherits UmbracoViewPage<USP.Business.Models.ContentModels.WidgetButton>
+
+@{
+    if (Model == null || Model.ButtonLink == null || !Model.ButtonLink.Any())
+    {
+        return;
+    }
+
+    var cta = Model.ButtonLink.First();
+}
+
+<div class="button">
+    <span><a href="@cta.Link"  @Html.NewWindow(cta.NewWindow) @Html.GoogleCTAEvent("cta", "Button", "Clicked", Model)>@cta.Caption</a></span>
+</div>

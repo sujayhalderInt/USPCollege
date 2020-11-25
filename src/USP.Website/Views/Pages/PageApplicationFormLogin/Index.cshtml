@@ -1,0 +1,25 @@
+﻿@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageApplicationFormLogin>
+@{
+    Layout = "~/Views/_ContentLayout.cshtml";
+}
+
+@Html.Partial("ArticleGrid", Model)
+<div class="container">
+    <div class="col-md-8 offset-md-2">
+        @if (!string.IsNullOrEmpty(Model.Heading))
+        {
+            <h2>@Model.Heading</h2>
+        }
+        @if (!string.IsNullOrEmpty(Model.DontHaveAnAccountHeader) && !Model.AccountCreationPage.IsNullOrEmpty() && !string.IsNullOrEmpty(Model.TextAccountCreation))
+        {
+            <p class="under-headline">@Model.DontHaveAnAccountHeader<a href="@Model.AccountCreationPage.First().Url">@Model.TextAccountCreation</a></p>
+        }
+        @Html.ValidationSummary()
+        @Html.Partial("ApplicationFormLogin", Model)
+    </div>
+</div>
+
+
+

@@ -1,0 +1,75 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<USP.Business.Models.ContentModels.WidgetUpcomingEvents>
+
+@{
+    if (Model == null || Model.EventList.IsNullOrEmpty())
+    {
+        return;
+    }
+}
+
+<section class="@if( Model.ShowBackground){<text>upcoming-events bg-usp-navi-dark</text>}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="mb-10">@Model.Title</h2>
+                <div class="mb-20">@Model.Description</div>
+
+                <div class="upcoming-events__listing mobile-centered-carousel">
+                    @foreach (var eventDetail in Model.EventList)
+                    {
+
+                        <div class="event-listing">
+
+                            @if (eventDetail.EndDate > DateTime.MinValue)
+                            {
+                                <p class="date-time">
+                                    @eventDetail.StartDate.ToString("dd MMMM yyyy") - @eventDetail.EndDate.ToString("dd MMMM yyyy")
+                                    <span>@eventDetail.StartTime - @eventDetail.EndTime</span>
+                                </p>
+                            }
+                            else
+                            {
+                                <p class="date-time">
+                                    @eventDetail.StartDate.ToString("dd MMMM yyyy")
+                                    <span>@eventDetail.StartTime - @eventDetail.EndTime</span>
+                                </p>
+                            }
+
+                            <h3>
+                                <a href="@eventDetail.Url">@eventDetail.BannerHeading</a>
+                            </h3>
+                            <footer class="event-listing__footer">
+                                <p>Campus</p>
+                                <p class="event-listing__footer__course mb-0">
+                                    @{
+                                        var campus = eventDetail.Campus.OfType<DataTaxonomy>().FirstOrDefault();
+                                    }
+                                    @if (campus != null)
+                                    {
+                                        <span class="tags">@campus.TaxonomyName</span>
+                                    }
+                                </p>
+                            </footer>
+                        </div>
+                    }
+                </div>
+
+                @if (Model.MainEventListing != null && Model.MainEventListing.Page != null)
+                {
+                    <div class="col-12">
+                        <a href="@Model.MainEventListing.Page.Url" class="btn btn--default btn--white btn--animated">
+                            <span class="wrapper">
+                                @Model.MainEventListing.CallToAction
+                            </span>
+                        </a>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+

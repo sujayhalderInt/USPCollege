@@ -1,0 +1,74 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetRelatedNews>
+
+@if (Model == null || Model.RelatedNews == null || !Model.RelatedNews.Any())
+{
+    return;
+}
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            @if (!string.IsNullOrEmpty(Model.Title))
+            {
+                <h3>@Model.Title</h3>
+            }
+                <div class="related-course-list mobile-centered-carousel mb-50">
+                    @foreach (var news in Model.RelatedNews.OrderByDescending(x => x.PublishedDate))
+                    {
+                        var showDesc = true;
+
+                        <article class="related-item">
+                            <aside class="related-item__img">
+                                <a href="@news.Url">
+                                    @Html.LazyImage(news.BannerImage, SiteConstants.Crops.RelatedCourse)
+                                </a>
+                            </aside>
+                            <div class="related-item__details related_news_widget">
+                            <p class="related-item__details_desc c-usp-yellow">@news.PublishedDate.ToString("dd MMMM yyyy")</p>
+                                @if (!string.IsNullOrEmpty(news.BannerHeading))
+                                {
+                                    var count = news.BannerHeading.Trim().Length;
+                                    var title = "";
+                                    if (count > 82)
+                                    {
+                                        showDesc = false;
+                                        title = news.BannerHeading.Trim().Substring(0, 82) + "...";
+                                    }
+                                    else
+                                    {
+                                        title = news.BannerHeading.Trim();
+                                    }
+
+                                    <h3 class="related-item__details__head"><a href="@news.Url">@title</a></h3>
+
+                                }
+
+                                
+                                @if (!string.IsNullOrEmpty(news.BannerSummary) && showDesc)
+                                {
+                                    var summary = "";
+                                    if (news.BannerSummary.Trim().Length > 62)
+                                    {
+                                        summary = news.BannerSummary.Trim().Substring(0, 62) + "...";
+                                    }
+                                    else
+                                    {
+                                        summary = news.BannerSummary;
+                                    }
+                                    <div class="related-item__details__description">
+                                        <p class="mb-20">
+                                            @summary
+                                        </p>
+                                    </div>
+                                }
+
+                            </div>
+                        </article>
+                    }
+                </div>
+        </div>
+    </div>
+</section>

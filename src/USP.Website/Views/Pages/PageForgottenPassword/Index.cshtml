@@ -1,0 +1,48 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageForgottenPassword>
+@{
+    Layout = "~/Views/_ContentLayout.cshtml";
+
+    var success = ViewData["success"] != null ? ViewData["success"].ToString() : null;
+    var error = ViewData["error"] != null ? ViewData["error"].ToString() : null;
+}
+
+@Html.Partial("ArticleGrid", Model)
+<div class="container">
+    <div class="col-md-8 offset-md-2">
+        @if (!string.IsNullOrEmpty(Model.Heading))
+        {
+            <h2>@Model.Heading</h2>
+        }
+
+        
+        @if (!string.IsNullOrEmpty(success))
+        {
+            <div class="highlight success msg">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>@success</p>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (!string.IsNullOrEmpty(error))
+        {
+            <div class="highlight error">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>@error</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.TextPleaseEnterYourEmail))
+        {
+            <p class="mb-30">@Model.TextPleaseEnterYourEmail</p>
+        }
+        @Html.Partial("ForgottenPassword", Model)
+    </div>
+</div>
+
+

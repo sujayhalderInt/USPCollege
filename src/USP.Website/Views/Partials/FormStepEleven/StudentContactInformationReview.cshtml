@@ -1,0 +1,37 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEleven>
+
+<div class="review-headline">
+    <h3>@Model.HeadingsAndLabels.StudentsContactInformationReviewHeading</h3>
+    <div>
+        <a href="@Model.FormStep4Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+    </div>
+</div>
+<div class="review-block review-block--inline">
+    <p class="review-block__label">@Model.HeadingsAndLabels.LabelHomeAddress</p>
+    <p class="review-block__result">@Model.ApplicationForm.StudentsHomeAddressLine1</p>
+    <p class="review-block__result">@Model.ApplicationForm.StudentsHomeAddressLine2</p>
+    <p class="review-block__result">@Model.ApplicationForm.StudentsTownOrCity</p>
+    <p class="review-block__result">@Model.ApplicationForm.StudentsHomePostCode</p>
+
+    @if (!string.IsNullOrEmpty(Model.ApplicationForm.StudentsMobileNumber))
+    {
+        <p class="review-block__label">@Model.HeadingsAndLabels.LabelMobileNumber</p> @*conditional*@
+        <p class="review-block__result">@Model.ApplicationForm.StudentsMobileNumber</p>
+    }
+    @if (!string.IsNullOrEmpty(Model.ApplicationForm.StudentsHomeNumber))
+    {
+        <p class="review-block__label">@Model.HeadingsAndLabels.LabelHomeNumber</p> @*conditional*@
+        <p class="review-block__result">@Model.ApplicationForm.StudentsHomeNumber</p>
+    }
+    <p class="review-block__label">@Model.HeadingsAndLabels.LabelStudentsEmail</p>
+    <p class="review-block__result">@Model.ApplicationForm.StudentsEmailAddress</p>
+
+    @if (!string.IsNullOrWhiteSpace(Model.ApplicationForm.NationalInsuranceNumber))
+    {
+        <p class="review-block__label">@Model.HeadingsAndLabels.LabelNationalInsuranceNumber</p>
+        <p class="review-block__result">@Model.ApplicationForm.NationalInsuranceNumber</p>
+    }
+
+</div>

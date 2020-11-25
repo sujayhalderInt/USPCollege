@@ -1,0 +1,82 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Helpers
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEleven>
+    
+@if (Model.ApplicationForm.IsALevels)
+{
+    <div class="review-headline">
+        <h3>@(Model.HeadingsAndLabels.CourseSelectionReviewHeading + "(" + FormHelper.GetField(Model.ApplicationForm.TypeOfStudy, SiteConstants.Fields.TaxonomyName) + ")")</h3>
+        <div>
+            <a href="@Model.FormStep6Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+        </div>
+    </div>
+    <div class="review-block review-block--inline">
+        @if (!string.IsNullOrEmpty(Model.ApplicationForm.AlevelCourseFirstChoice))
+        {
+            <div>
+                <p class="review-block__label">@Model.HeadingsAndLabels.LabelAlevelsFirstChoice</p>
+                <p class="review-block__result">@FormHelper.GetField(Model.ApplicationForm.AlevelCourseFirstChoice)</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.ApplicationForm.AlevelCourseSecondChoice))
+        {
+            <div>
+                <p class="review-block__label">@Model.HeadingsAndLabels.LabelAlevelsSecondChoice</p>
+                <p class="review-block__result">@FormHelper.GetField(Model.ApplicationForm.AlevelCourseSecondChoice)</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.ApplicationForm.AlevelCourseThirdChoice))
+        {
+            <div>
+                <p class="review-block__label">@Model.HeadingsAndLabels.LabelAlevelsThirdChoice</p>
+                <p class="review-block__result">@FormHelper.GetField(Model.ApplicationForm.AlevelCourseThirdChoice)</p>
+            </div>
+        }
+    </div>
+}
+
+@if (!Model.ApplicationForm.IsALevels)
+{
+    <div class="review-headline">
+        <h3>@(Model.HeadingsAndLabels.YouAreApplyingForReviewHeading + "(" + FormHelper.GetField(Model.ApplicationForm.TypeOfStudy, SiteConstants.Fields.TaxonomyName) + ")")</h3>
+        <div>
+            <a href="@Model.FormStep7Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+        </div>
+    </div>
+    <div class="review-block review-block--inline">
+        @if (Model.ApplicationForm.IsAdultLearning)
+        {
+            if (!string.IsNullOrEmpty(Model.ApplicationForm.AlevelCourseFirstChoice))
+            {
+                <div>
+                    <p class="review-block__label">@Model.HeadingsAndLabels.LabelAdultLearningFirstChoice</p>
+                    <p class="review-block__result">@FormHelper.GetField(Model.ApplicationForm.AlevelCourseFirstChoice)</p>
+                </div>
+            }
+            if (!string.IsNullOrEmpty(Model.ApplicationForm.AlevelCourseSecondChoice))
+            {
+                <div>
+                    <p class="review-block__label">@Model.HeadingsAndLabels.LabelAdultLearningSecondChoice</p>
+                    <p class="review-block__result">@FormHelper.GetField(Model.ApplicationForm.AlevelCourseSecondChoice)</p>
+                </div>
+            }
+            if (!string.IsNullOrEmpty(Model.ApplicationForm.AlevelCourseThirdChoice))
+            {
+                <div>
+                    <p class="review-block__label">@Model.HeadingsAndLabels.LabelAdultLearningThirdChoice</p>
+                    <p class="review-block__result">@FormHelper.GetField(Model.ApplicationForm.AlevelCourseThirdChoice)</p>
+                </div>
+            }
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(Model.ApplicationForm.NameOfCourseOfTheTypeSelected))
+            {
+                <div class="review-block">
+                    <span class="review-block__result">@FormHelper.GetField(Model.ApplicationForm.NameOfCourseOfTheTypeSelected)</span>
+                </div>
+            }
+        }
+    </div>
+}

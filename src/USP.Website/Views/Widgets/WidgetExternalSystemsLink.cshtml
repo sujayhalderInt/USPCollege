@@ -1,0 +1,33 @@
+﻿@using USP.Business.Extensions
+@using USP.Business.Models.ViewModels
+@inherits UmbracoViewPage<WidgetExternalSystemsLinkViewModel>
+@{
+    Layout = null;
+}
+@{
+    if (!Model.ExternalSystems.Any() || Model.ExternalSystems == null)
+    {
+        return;
+    }
+}
+<div class="col-md-10 offset-md-1">
+    @foreach (var externalSystem in Model.ExternalSystems)
+    {
+        if (!string.IsNullOrEmpty(externalSystem.Title))
+        {
+            <h2 class="mb-20">@externalSystem.Title</h2>
+        }
+        if (externalSystem.Description != null)
+        {
+            <p class="mb-20">@Html.Raw(externalSystem.Description)</p>
+        }
+        if (!string.IsNullOrEmpty(externalSystem.CallToActionUrl) && !string.IsNullOrEmpty(externalSystem.CallToActionText))
+        {
+            <a href="@Html.EnsureSchema(externalSystem.CallToActionUrl)" @Html.NewWindow(true) class="btn btn--blue btn--animated mb-50">
+                <span class="wrapper">
+                    @externalSystem.CallToActionText
+                </span>
+            </a>
+        }
+    }
+</div>

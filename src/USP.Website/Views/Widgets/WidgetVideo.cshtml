@@ -1,0 +1,45 @@
+﻿@using ImageProcessor.Processors
+@using USP.Business.Helpers
+@using USP.Business.Models.ContentModels
+@using umbraco.MacroEngines
+
+@if (Model == null || string.IsNullOrWhiteSpace(Model.YouTubeID) || string.IsNullOrWhiteSpace(Model.ApiKey))
+{
+    return;
+}
+@{
+    var overlay = (Model.Overlay != null) ? Model.Overlay.ToString().ToLower() : "";
+}
+
+@if (Request.QueryString["dtgePreview"] != null)
+{
+    <div>VIDEO: Click here to edit</div>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <section class="video-wrapper">
+                    <div class="video-wrapper-single is-loading" data-youTubeId="@Model.YouTubeID" data-ytkey="@Model.ApiKey">                    
+                        <div class="video-player" id=""></div>
+                        @if (Model.CoverImage != null)
+                        {
+                            <div class="video-poster filter filter--@overlay lazy" data-src="@Model.CoverImage.Url">
+                                <a href="#" class="btn-play"><i class="icon-next" aria-hidden="true"></i><span class="sr-only">Play Video</span></a>
+                            </div>                           
+                        }
+                        
+                    </div>
+                    <div class="video-player-content">
+                        @*USP-4_18/11/2020 Begin*@
+                        @*<h2 class="video-title">@Model.VideoTitle</h2>*@
+                        <h2 class="video-title" id="vt-@Model.YouTubeID"></h2>
+                        @*USP-4_18/11/2020 End*@
+                        <p class="video-duration" id="v-@Model.YouTubeID"></p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+}

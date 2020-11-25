@@ -1,0 +1,110 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetPointsCalculator>
+
+@if (Request.QueryString["dtgePreview"] == "1")
+{
+    <img src ="/Assets/img/PointsCalculator.PNG" alt ="Points Calculator">
+}
+else
+{
+    <section class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Points calculator</h2>
+                <noscript>
+                    <div class="alert alert-primary" role="alert">
+                        <i class="icon-exclamation_fill c-usp-orange"><span class="sr-only">Alert icon</span></i>
+                        <div>
+                            <p class="mb-0">This component is based on javascript, will not work with javascript turned off.</p>
+                        </div>
+                    </div>
+                </noscript>
+                <div class="points">
+                    <div class="points__system">
+                        <div class="form__check">
+                            <label for="single-select" class="form__check__label">Grading system</label>
+                            <p class="select-wrapper mb-20">
+                                <select id="single-select">
+                                    <option value="aflabetic">A, B, C, D, E...</option>
+                                    <option value="numeric">9, 8, 7, 6, 5...</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="points__grades">
+                        <div class="points__grades__desc">
+                            <p class="form__check__label mb-20">Grade</p>
+                            <p class="form__check__label">Number of subjects at that grade</p>
+                        </div>
+                        <div class="form__check">
+                            <label for="a*" class="form__check__label">
+                                <span class="aflabetic">A*</span>
+                                <span class="numeric hidden">9</span>
+                            </label>
+                            <input type="text" id="a*" name="grade for a*" data-multiplier-aflabetic="8.5" data-multiplier-numeric="9.0" maxlength="2">
+                        </div>
+                        <div class="form__check">
+                            <label for="a" class="form__check__label">
+                                <span class="aflabetic">A</span>
+                                <span class="numeric hidden">8</span>
+                            </label>
+                            <input type="text" id="a" name="grade for a" data-multiplier-aflabetic="7.0" data-multiplier-numeric="8.0" maxlength="2">
+                        </div>
+                        <div class="form__check">
+                            <label for="b" class="form__check__label">
+                                <span class="aflabetic">B</span>
+                                <span class="numeric hidden">7</span>
+                            </label>
+                            <input type="text" id="b" name="grade for b" data-multiplier-aflabetic="5.5" data-multiplier-numeric="7.0" maxlength="2">
+                        </div>
+                        <div class="form__check">
+                            <label for="c" class="form__check__label">
+                                <span class="aflabetic">C</span>
+                                <span class="numeric hidden">6</span>
+                            </label>
+                            <input type="text" id="c" name="grade for c" data-multiplier-aflabetic="4.0" data-multiplier-numeric="6.0" maxlength="2">
+                        </div>
+                        <div class="form__check">
+                            <label for="d" class="form__check__label">
+                                <span class="aflabetic">D</span>
+                                <span class="numeric hidden">5</span>
+                            </label>
+                            <input type="text" id="d" name="grade for d" data-multiplier-aflabetic="3.0" data-multiplier-numeric="5.0" maxlength="2">
+                        </div>
+                        <div class="form__check">
+                            <label for="e" class="form__check__label">
+                                <span class="aflabetic">E</span>
+                                <span class="numeric hidden">4</span>
+                            </label>
+                            <input type="text" id="e" name="grade for e" data-multiplier-aflabetic="2.0" data-multiplier-numeric="4.0" maxlength="2">
+                        </div>
+                        <div class="form__check">
+                            <label for="f" class="form__check__label">
+                                <span class="aflabetic">F</span>
+                                <span class="numeric hidden">3</span>
+                            </label>
+                            <input type="text" id="f" name="grade for f" data-multiplier-aflabetic="1.5" data-multiplier-numeric="3.0" maxlength="2">
+                        </div>
+                        <div class="form__check">
+                            <label for="g" class="form__check__label">
+                                <span class="aflabetic">G</span>
+                                <span class="numeric hidden">2</span>
+                            </label>
+                            <input type="text" id="g" name="grade for g" data-multiplier-aflabetic="1.0" data-multiplier-numeric="2.0" maxlength="2">
+                        </div>
+                        <div class="form__check">
+                            <label for="u" class="form__check__label">
+                                <span class="aflabetic">U</span>
+                                <span class="numeric hidden">1</span></label>
+                            <input type="text" id="u" name="grade for u" data-multiplier-aflabetic="0" data-multiplier-numeric="1.0" maxlength="2">
+                        </div>
+                    </div>
+                    <div class="points__grades-calc">
+                        <p>Your GCSE Average: </p>
+                        <p class="grade-calc">-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

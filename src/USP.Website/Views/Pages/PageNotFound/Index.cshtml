@@ -1,0 +1,31 @@
+﻿@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageNotFound>
+@{
+    Layout = "~/Views/_ContentLayout.cshtml";
+}
+
+<div class="container mb-50">
+    <div class="row align-items-end">
+        <div class="offset-md-1 col-md-8">
+            <h2 class="mb-50">@Model.Header</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-md-1 col-md-8">
+            <form class="search" role="search" method="post" action="@Umbraco.GetSearchUrl()">
+                <div>
+                    <label for="search404" class="form__check__label">@Model.SearchLabel</label>
+                </div>
+                <div class="hero-search__form" role="search">
+                    <div class="search mb-0">
+                        <input type="search" id="search404" name="term" placeholder="@library.GetDictionaryItem("Global Search.Labels.SearchBoxPlaceholder")">
+                        <input class="btn btn--inline" type="submit" value="@library.GetDictionaryItem("Global Search.Labels.SearchButtonText")">
+                    </div>
+                    <div class="hero-search__results hidden">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

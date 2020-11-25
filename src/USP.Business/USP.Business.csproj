@@ -1,0 +1,657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78D7816E-CA74-493C-B1BF-390E26FB354C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>USP.Business</RootNamespace>
+    <AssemblyName>USP.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.0.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="businesslogic, Version=1.0.6750.39772, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\businesslogic.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientDependency.Core, Version=1.9.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClientDependency.1.9.6\lib\net45\ClientDependency.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientDependency.Core.Mvc, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClientDependency-Mvc5.1.8.0.0\lib\net45\ClientDependency.Core.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="cms, Version=1.0.6750.39772, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\cms.dll</HintPath>
+    </Reference>
+    <Reference Include="controls, Version=1.0.6750.39773, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DevTrends.MvcDonutCaching, Version=1.3.0.0, Culture=neutral, PublicKeyToken=73c58d802958a09f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcDonutCaching.1.3.0\lib\net40\DevTrends.MvcDonutCaching.dll</HintPath>
+    </Reference>
+    <Reference Include="Examine, Version=0.1.89.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Examine.0.1.89\lib\net45\Examine.dll</HintPath>
+    </Reference>
+    <Reference Include="Hammock.ClientProfile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Hammock.ClientProfile.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageProcessor, Version=2.5.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.2.5.6\lib\net45\ImageProcessor.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageProcessor.Web, Version=4.8.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageProcessor.Web.4.8.7\lib\net45\ImageProcessor.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="interfaces, Version=1.0.6750.39762, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Log4Net.Async, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Log4Net.Async.2.0.4\lib\net40\Log4Net.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.9.4.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lucene.Net.2.9.4.1\lib\net40\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkdownSharp, Version=1.14.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Markdown.1.14.7\lib\net45\MarkdownSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.1559.20655, Culture=neutral">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.0\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.2.2\lib\net45\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Our.Umbraco.DocTypeGridEditor, Version=0.5.6626.9203, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Our.Umbraco.DocTypeGridEditor.0.5.0\lib\net45\Our.Umbraco.DocTypeGridEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Semver, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\semver.1.1.2\lib\net451\Semver.dll</HintPath>
+    </Reference>
+    <Reference Include="Skybrud.Social, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Skybrud.Social.0.9.6.0\lib\net40\Skybrud.Social.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLCE4Umbraco, Version=1.0.6750.39772, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\SQLCE4Umbraco.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe.Entity, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\System.Data.SqlServerCe.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=1.0.21.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.1.0.21\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.7.0\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\TidyNet.dll</HintPath>
+    </Reference>
+    <Reference Include="TweetSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <HintPath>..\packages\TweetSharp.2.3.1\lib\4.0\TweetSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="uComponents.nuPickers, Version=1.7.0.300, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\nuPickers.1.7.0\lib\net45\uComponents.nuPickers.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco, Version=1.0.6750.39773, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\umbraco.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Core, Version=1.0.6750.39767, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\Umbraco.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.DataLayer, Version=1.0.6750.39771, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\umbraco.DataLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.editorControls, Version=1.0.6750.39778, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\umbraco.editorControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Core, Version=7.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\USP.Website\bin\Umbraco.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Core.Providers, Version=7.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\USP.Website\bin\Umbraco.Forms.Core.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web, Version=7.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\USP.Website\bin\Umbraco.Forms.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web.XmlSerializers, Version=7.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\USP.Website\bin\Umbraco.Forms.Web.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.MacroEngines, Version=1.0.6750.39778, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\umbraco.MacroEngines.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.ModelsBuilder, Version=3.0.10.102, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Umbraco.ModelsBuilder.3.0.10\lib\Umbraco.ModelsBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.providers, Version=1.0.6750.39773, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\umbraco.providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Web.UI, Version=1.0.6750.39779, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\Umbraco.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UmbracoExamine, Version=0.7.0.39772, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UmbracoCms.Core.7.11.1\lib\net45\UmbracoExamine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Binders\StringTrimModelBinder.cs" />
+    <Compile Include="Constants\SiteConstants.cs" />
+    <Compile Include="Controllers\API\ApplicationApiController.cs" />
+    <Compile Include="Controllers\API\CourseImportApiController.cs" />
+    <Compile Include="Controllers\API\PredictiveSearchController.cs" />
+    <Compile Include="Controllers\Base\BaseListingController.cs" />
+    <Compile Include="Controllers\Pages\PageEventListingController.cs" />
+    <Compile Include="Controllers\Pages\PageEventDetailController.cs" />
+    <Compile Include="Controllers\Pages\PageBlogDetailController.cs" />
+    <Compile Include="Controllers\Pages\PageBlogListingController.cs" />
+    <Compile Include="Controllers\Pages\PageNewsDetailController.cs" />
+    <Compile Include="Controllers\Pages\PageCourseCareerListingController.cs" />
+    <Compile Include="Controllers\Pages\PageNewsListingController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetFeaturesSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetPointsCalculatorSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetUpcomingEventsSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetRelatedBlogsSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetRelatedCareersSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetRelatedNewsSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetSectionStartSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetImageGalleryMasonrySurfaceController.cs" />
+    <Compile Include="Controllers\Pages\PageCareerDetailController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetStatisticsSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetStreetViewEmbedSurfaceController.cs" />
+    <Compile Include="Extensions\UmbracoHelperExtensions.cs" />
+    <Compile Include="Models\Api\ApiMessage.cs" />
+    <Compile Include="Models\Api\ApiResult.cs" />
+    <Compile Include="Models\ContentModels\DataAuthor.generated.cs" />
+    <Compile Include="Models\ContentModels\DataCourseLocation.generated.cs" />
+    <Compile Include="Models\ContentModels\DataDownloadLinkExtended.cs" />
+    <Compile Include="Models\ContentModels\DataExistingDownloadLink.generated.cs" />
+    <Compile Include="Models\ContentModels\DataFeature.generated.cs" />
+    <Compile Include="Models\ContentModels\DataFeatureTreePicker.generated.cs" />
+    <Compile Include="Models\ContentModels\DataMasonryImageExtended.cs" />
+    <Compile Include="Models\ContentModels\DataMasonryImage.generated.cs" />
+    <Compile Include="Models\ContentModels\DataStatistic.generated.cs" />
+    <Compile Include="Models\ContentModels\DataStatisticTreePicker.generated.cs" />
+    <Compile Include="Models\ContentModels\FileExtension.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderAuthors.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderDownloadLink.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderFeatures.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderStatistics.generated.cs" />
+    <Compile Include="Models\ContentModels\ImageWithCaption.cs" />
+    <Compile Include="Models\ContentModels\PageBlogDetail.generated.cs" />
+    <Compile Include="Models\ContentModels\PageBlogListing.generated.cs" />
+    <Compile Include="Models\ContentModels\PageBlogListingExtended.cs" />
+    <Compile Include="Models\ContentModels\PageCareerDetail.generated.cs" />
+    <Compile Include="Models\ContentModels\PageNewsDetail.generated.cs" />
+    <Compile Include="Models\ContentModels\PageCourseCareerListing.generated.cs" />
+    <Compile Include="Models\ContentModels\PageCourseCareerListingExtended.cs" />
+    <Compile Include="Models\ContentModels\PageEventListingExtended.cs" />
+    <Compile Include="Models\ContentModels\PageEventDetail.generated.cs" />
+    <Compile Include="Models\ContentModels\PageEventListing.generated.cs" />
+    <Compile Include="Models\ContentModels\PageNewsListing.generated.cs" />
+    <Compile Include="Models\ContentModels\PageNewsListingExtended.cs" />
+    <Compile Include="Models\ContentModels\SettingsBlogListingFilters.generated.cs" />
+    <Compile Include="Models\ContentModels\SettingsCourseImport.generated.cs" />
+    <Compile Include="Models\ContentModels\SettingsEventListingFilters.generated.cs" />
+    <Compile Include="Models\ContentModels\SettingsNewsListingFilters.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetDownloadLinkExtended.cs" />
+    <Compile Include="Controllers\Widgets\WidgetProfileSurfaceController.cs" />
+    <Compile Include="Models\ContentModels\DataProfileItem.generated.cs" />
+    <Compile Include="Models\ContentModels\DataProfileTreePicker.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderProfiles.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetEnquiryForm.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetFeatures.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetFeaturesExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetImageGalleryMasonry.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetImageGalleryMasonryExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetPointsCalculator.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetProfile.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetProfileExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetRelatedBlogs.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetRelatedBlogsExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetRelatedCareers.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetRelatedCareersExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetRelatedNews.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetRelatedNewsExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetSectionStart.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetStatistics.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetStatisticsExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetStreetViewEmbed.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetUpcomingEvents.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetUpcomingEventsExtended.cs" />
+    <Compile Include="Models\Dapper\CourseInformationRow.cs" />
+    <Compile Include="Models\Data\PreviousPageModel.cs" />
+    <Compile Include="Models\MappingClasses\Search\PredictiveSearchParameters.cs" />
+    <Compile Include="Models\PredictiveSearch\PredictiveSearch.cs" />
+    <Compile Include="Models\PredictiveSearch\PredictiveSearchItem.cs" />
+    <Compile Include="Models\ViewModels\FormApplicationViewModel.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepEightController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepElevenController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepFiveController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepFourController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepNineController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepSevenController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepSixController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepTenController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepThirteenController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepThreeController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepTwelveController.cs" />
+    <Compile Include="Controllers\ApplicationForm\FormStepTwoController.cs" />
+    <Compile Include="Controllers\BreadcrumbController.cs" />
+    <Compile Include="Controllers\CookiePolicyController.cs" />
+    <Compile Include="Controllers\FooterController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\Pages\PageNotFoundController.cs" />
+    <Compile Include="Controllers\Pages\PageCourseListingController.cs" />
+    <Compile Include="Controllers\Pages\PageCourseDetailController.cs" />
+    <Compile Include="Controllers\Pages\PageContentController.cs" />
+    <Compile Include="Controllers\Pages\PageApplicationFormLoginController.cs" />
+    <Compile Include="Controllers\Pages\PageExternalSystemsLinkController.cs" />
+    <Compile Include="Controllers\Pages\PageForgottenPasswordController.cs" />
+    <Compile Include="Controllers\Pages\PageRegistrationController.cs" />
+    <Compile Include="Controllers\Pages\PageResetPasswordController.cs" />
+    <Compile Include="Controllers\Pages\PageSearchController.cs" />
+    <Compile Include="Controllers\Pages\PageHomeController.cs" />
+    <Compile Include="Controllers\Partials\FormStepsListingController.cs" />
+    <Compile Include="Controllers\Partials\SeoController.cs" />
+    <Compile Include="Controllers\RenderMvcSurfaceController.cs" />
+    <Compile Include="Controllers\Sitemap\SitemapController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetExternalSystemsLinkSurfaceController.cs" />
+    <Compile Include="Controllers\Pages\PageManageCookiesController.cs" />
+    <Compile Include="Controllers\ScriptController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetRelatedCoursesSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetVideoSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetSinglePinMapSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetImageSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetContactInformationSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetTertiarySpotlightSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetSecondarySpotlightSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetCarouselSpotlightSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetTimelineSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetButtonSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetAlertSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetAccordionSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetDownloadLinkSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetQuoteSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetPrimarySpotlightSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetTwitterFeedSurfaceController.cs" />
+    <Compile Include="Controllers\Widgets\WidgetInstagramFeedSurfaceController.cs" />
+    <Compile Include="DataTypeSource\ContentTypePageDataSource.cs" />
+    <Compile Include="Controllers\Widgets\WidgetRTESurfaceController.cs" />
+    <Compile Include="Enums\EmailTokens.cs" />
+    <Compile Include="Enums\FormErrorKeys.cs" />
+    <Compile Include="EventHandler\GlobalSearchIndexer.cs" />
+    <Compile Include="Extensions\DBServerRegistrar.cs" />
+    <Compile Include="Enums\SortOrder.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\GuidExtensions.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\HtmlHelperTExtensions.cs" />
+    <Compile Include="Extensions\HttpClientExtensions.cs" />
+    <Compile Include="Extensions\JsonExtensions.cs" />
+    <Compile Include="Extensions\MvcHtmlStringExtensions.cs" />
+    <Compile Include="Extensions\NumberExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UrlExtensions.cs" />
+    <Compile Include="Helpers\CookieHelper.cs" />
+    <Compile Include="Helpers\FormHelper.cs" />
+    <Compile Include="Helpers\FormMappingHelper.cs" />
+    <Compile Include="Helpers\PocoHelper.cs" />
+    <Compile Include="Helpers\SettingHelper.cs" />
+    <Compile Include="Helpers\SettingsMappingHelper.cs" />
+    <Compile Include="Models\ContentModels\ApplicationFormStepsHolder.generated.cs" />
+    <Compile Include="Helpers\UmbracoContextFake.cs" />
+    <Compile Include="Models\ContentModels\BaseArticleGrid.generated.cs" />
+    <Compile Include="Models\ContentModels\BaseContent.generated.cs" />
+    <Compile Include="Models\ContentModels\BaseContentBanner.generated.cs" />
+    <Compile Include="Models\ContentModels\BaseDocTypeSearchFilter.generated.cs" />
+    <Compile Include="Models\ContentModels\BaseForm.generated.cs" />
+    <Compile Include="Models\ContentModels\BaseGoogleTrackableItem.generated.cs" />
+    <Compile Include="Models\ContentModels\BaseHeading.generated.cs" />
+    <Compile Include="Models\ContentModels\BaseMetaInformation.generated.cs" />
+    <Compile Include="Models\ContentModels\BaseNavigation.generated.cs" />
+    <Compile Include="Models\ContentModels\DataAccordionItem.generated.cs" />
+    <Compile Include="Models\ContentModels\DataCampusAddress.generated.cs" />
+    <Compile Include="Models\ContentModels\DataContactInformation.generated.cs" />
+    <Compile Include="Models\ContentModels\DataDownloadLink.generated.cs" />
+    <Compile Include="Models\ContentModels\DataDocTypeFilter.generated.cs" />
+    <Compile Include="Models\ContentModels\DataExternalSystem.generated.cs" />
+    <Compile Include="Models\ContentModels\DataExistingRelatedCourse.generated.cs" />
+    <Compile Include="Models\ContentModels\DataExistingTimelineItem.generated.cs" />
+    <Compile Include="Models\ContentModels\DataExternalLogo.generated.cs" />
+    <Compile Include="Models\ContentModels\DataRelatedCourses.generated.cs" />
+    <Compile Include="Models\ContentModels\DataSearchFilter.generated.cs" />
+    <Compile Include="Models\ContentModels\DataSharedContactInformation.generated.cs" />
+    <Compile Include="Models\ContentModels\DataSpotlightItem.generated.cs" />
+    <Compile Include="Models\ContentModels\DataSpotlightTreePicker.generated.cs" />
+    <Compile Include="Models\ContentModels\DataTaxonomy.generated.cs" />
+    <Compile Include="Models\ContentModels\DataTimelineItem.generated.cs" />
+    <Compile Include="Models\ContentModels\File.generated.cs" />
+    <Compile Include="Models\ContentModels\Folder.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderContactInformation.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderRelatedCourses.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderSearchFilterDocTypes.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderSiteData.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderSpotlight.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepEight.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepEightExtended.cs" />
+    <Compile Include="Models\ContentModels\FormStepEleven.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepElevenExtended.cs" />
+    <Compile Include="Models\ContentModels\FormStepFive.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepFiveExtended.cs" />
+    <Compile Include="Models\ContentModels\FormStepFour.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepFourExtended.cs" />
+    <Compile Include="Models\ContentModels\FormStepNine.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepNineExtended.cs" />
+    <Compile Include="Models\ContentModels\FormStepNineQualifications.cs" />
+    <Compile Include="Models\ContentModels\FormStepSeven.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepSevenExtended.cs" />
+    <Compile Include="Models\ContentModels\FormStepSix.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepSixExtended.cs" />
+    <Compile Include="Models\ContentModels\FormStepTen.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepTenExtended.cs" />
+    <Compile Include="Models\ContentModels\FormStepThirteen.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepThree.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepThreeExtended.cs" />
+    <Compile Include="Models\ContentModels\FormStepTwelve.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepTwelveExtended.cs" />
+    <Compile Include="Models\ContentModels\FormStepTwo.generated.cs" />
+    <Compile Include="Models\ContentModels\FormStepTwoExtended.cs" />
+    <Compile Include="Models\ContentModels\FolderTaxonomyFolder.generated.cs" />
+    <Compile Include="Models\ContentModels\FolderTimeline.generated.cs" />
+    <Compile Include="Models\ContentModels\Image.generated.cs" />
+    <Compile Include="Models\ContentModels\Member.generated.cs" />
+    <Compile Include="Models\ContentModels\PageApplicationFormLogin.generated.cs" />
+    <Compile Include="Models\ContentModels\PageApplicationFormLoginExtended.cs" />
+    <Compile Include="Models\ContentModels\PageContent.generated.cs" />
+    <Compile Include="Models\ContentModels\PageExternalSystemsLink.generated.cs" />
+    <Compile Include="Models\ContentModels\PageCourseDetail.generated.cs" />
+    <Compile Include="Models\ContentModels\PageForgottenPassword.generated.cs" />
+    <Compile Include="Models\ContentModels\PageForgottenPasswordExtended.cs" />
+    <Compile Include="Models\ContentModels\PageCourseListingExtended.cs" />
+    <Compile Include="Models\ContentModels\PageCourseListing.generated.cs" />
+    <Compile Include="Models\ContentModels\PageHome.generated.cs" />
+    <Compile Include="Models\ContentModels\PageManageCookies.generated.cs" />
+    <Compile Include="Models\ContentModels\PageRegistration.generated.cs" />
+    <Compile Include="Models\ContentModels\PageRegistrationExtended.cs" />
+    <Compile Include="Models\ContentModels\PageNotFound.generated.cs" />
+    <Compile Include="Models\ContentModels\PageResetPassword.generated.cs" />
+    <Compile Include="Models\ContentModels\PageResetPasswordExtended.cs" />
+    <Compile Include="Models\ContentModels\PageSearch.generated.cs" />
+    <Compile Include="Models\ContentModels\PageSearchExtended.cs" />
+    <Compile Include="Models\ContentModels\SettingsCookieMessage.generated.cs" />
+    <Compile Include="Models\ContentModels\PageManageCookiesExtended.cs" />
+    <Compile Include="Models\ContentModels\SettingsCookieMessageExtended.cs" />
+    <Compile Include="Models\ContentModels\SettingsCourseListingFilters.generated.cs" />
+    <Compile Include="Models\ContentModels\SettingsSite.generated.cs" />
+    <Compile Include="Models\ContentModels\SettingsTwitter.generated.cs" />
+    <Compile Include="Models\ContentModels\SettingsSiteExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetAccordion.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetButton.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetCarouselSpotlightExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetCarouselSpotlight.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetContactInformationExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetContactInformation.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetDownloadLink.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetExternalSystemsLink.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetImage.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetInstagramFeed.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetPrimarySpotlight.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetRelatedCourses.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetRelatedCoursesExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetSinglePinMap.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetSinglePinMapExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetTertiarySpotlightExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetSecondarySpotlightExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetQuote.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetRte.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetAlert.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetPrimarySpotlightExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetSecondarySpotlight.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetTertiarySpotlight.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetTimeline.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetTimelineExtended.cs" />
+    <Compile Include="Models\ContentModels\WidgetTwitterFeed.generated.cs" />
+    <Compile Include="Models\Dapper\ApplicationForm.cs" />
+    <Compile Include="Models\ContentModels\WidgetVideo.generated.cs" />
+    <Compile Include="Models\ContentModels\WidgetVideoExtended.cs" />
+    <Compile Include="Models\Data\ApplicationSubmission.cs" />
+    <Compile Include="Models\Data\ListingPostback.cs" />
+    <Compile Include="Models\Data\GridLayout.cs" />
+    <Compile Include="Models\Data\Sitemap.cs" />
+    <Compile Include="Models\Data\Tweet.cs" />
+    <Compile Include="Models\Form\CheckBox.cs" />
+    <Compile Include="Models\Form\FormStep.cs" />
+    <Compile Include="Models\Form\Step11HeadingsAndLabels.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepEightPostBackModel.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepElevenPostBackModel.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepFivePostBackModel.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepFourPostBackModel.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepNinePostBackModel.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepSevenPostBackModel.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepSixPostBackModel.cs" />
+    <Compile Include="Models\Form\FormStepsListing.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepTenPostBackModel.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepThreePostBackModel.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepTwelvePostBackModel.cs" />
+    <Compile Include="Models\PostBackModels\Application\FormStepTwoPostBackModel.cs" />
+    <Compile Include="Models\Form\FormProgressBar.cs" />
+    <Compile Include="Models\PostBackModels\RegistrationPostBackModel.cs" />
+    <Compile Include="Models\ViewModels\FormApplicationItem.cs" />
+    <Compile Include="Models\ViewModels\GlobalSearchViewModel.cs" />
+    <Compile Include="Models\ViewModels\NavigationViewModel.cs" />
+    <Compile Include="Models\ViewModels\SignupViewModel.cs" />
+    <Compile Include="Models\ViewModels\TwitterFeedViewModel.cs" />
+    <Compile Include="Models\ViewModels\WidgetExternalSystemsLinkViewModel.cs" />
+    <Compile Include="Models\MappingClasses\Search\PagingBoundsModel.cs" />
+    <Compile Include="Models\MappingClasses\Search\SearchResultsModel.cs" />
+    <Compile Include="Models\MappingClasses\Search\SearchParameters.cs" />
+    <Compile Include="Models\MappingClasses\Search\SearchResultsViewModel.cs" />
+    <Compile Include="Models\MappingClasses\SeoMetaData.cs" />
+    <Compile Include="Mvc\GetRootNodeByDocType.cs" />
+    <Compile Include="Mvc\UmbracoDonutOutputCacheAttribute.cs" />
+    <Compile Include="Mvc\UmbracoPublishCacheHandler.cs" />
+    <Compile Include="Mvc\XmlResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AuthorizationService.cs" />
+    <Compile Include="Services\DatabaseService.cs" />
+    <Compile Include="Services\FileTypeService.cs" />
+    <Compile Include="Services\CourseImportService.cs" />
+    <Compile Include="Services\Interfaces\ICourseImportService.cs" />
+    <Compile Include="Services\Interfaces\IFileTypeService.cs" />
+    <Compile Include="Services\Interfaces\IPredictiveSearchService.cs" />
+    <Compile Include="Services\Interfaces\IRemsDatabaseService.cs" />
+    <Compile Include="Services\FakeRemsDatabaseService.cs" />
+    <Compile Include="Services\RemsDatabaseService.cs" />
+    <Compile Include="Services\PredictiveSearchService.cs" />
+    <Compile Include="Services\WidgetIndexers\GridComponentIndexer.cs" />
+    <Compile Include="Services\Interfaces\IWidgetIndexer.cs" />
+    <Compile Include="Services\WidgetIndexers\RichTextWidgetIndexer.cs" />
+    <Compile Include="Services\InstagramFeedService.cs" />
+    <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\Interfaces\IAuthorizationService.cs" />
+    <Compile Include="Services\Interfaces\IDatabaseService.cs" />
+    <Compile Include="Services\Interfaces\IEmailService.cs" />
+    <Compile Include="Services\Interfaces\IInstagramFeedService.cs" />
+    <Compile Include="Services\Interfaces\IRecaptchaService.cs" />
+    <Compile Include="Services\Interfaces\ISearchMappingService.cs" />
+    <Compile Include="Services\Interfaces\ISearchService.cs" />
+    <Compile Include="Services\Interfaces\ISeoService.cs" />
+    <Compile Include="Services\Interfaces\ITwitterManagerService.cs" />
+    <Compile Include="Services\RecaptchaService.cs" />
+    <Compile Include="Services\SearchMappingService.cs" />
+    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Services\SeoService.cs" />
+    <Compile Include="Services\TwitterManagerService.cs" />
+    <Compile Include="Services\WidgetIndexFactory.cs" />
+    <Compile Include="UmbracoStartUp.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoCompare.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoConditionalValidationAttribute.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoDataType.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoDisplay.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoEmail.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoMustBeTrue.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoRange.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoRegexValidation.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoRemote.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoRequired.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoRequiredIf.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoStringLength.cs" />
+    <Compile Include="UmbracoValidationAttributes\UmbracoValidationHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DevTrends.MvcDonutCaching.README.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+</Project>

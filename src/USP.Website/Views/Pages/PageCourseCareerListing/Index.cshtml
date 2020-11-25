@@ -1,0 +1,121 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Controllers.Pages
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@using USP.Business.Models.MappingClasses.Search
+@inherits UmbracoViewPage<PageCourseCareerListing>
+
+@functions {
+    private string IsChecked(string key, string[] selectedKeys)
+    {
+        if (selectedKeys == null || selectedKeys.Length == 0)
+            return "";
+
+        if (selectedKeys.Contains(key))
+        {
+            return "checked=\"checked\"";
+        }
+
+        return string.Empty;
+    }
+
+}
+@{
+    Layout = "~/Views/_CourseLayout.cshtml";
+}
+
+
+@using (Html.BeginUmbracoForm<PageCourseCareerListingController>("Index", null, new {@class="listing-page"}))
+{
+    <section class="hero-search bg-usp-navi-dark mb-50">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-3">
+                    <h2 class="listing_title">@library.GetDictionaryItem("CareerAndCourseListing.Title")</h2>
+                </div>
+                <div class="col-md-6">
+
+                    <h2 class="hero-home__headline">@library.GetDictionaryItem("CareerAndCourseListing.SearchHeader")</h2>
+                    <div class="hero-search__form">
+                        <div class="search mb-0">
+                            <label for="@Html.IdFor(m => m.ListingPostback.SearchText)"><span class="sr-only">@library.GetDictionaryItem("CareerAndCourseListing.Search")</span></label>
+                            @*@Html.TextBoxFor(m => m.ListingPostback.SearchText, new { type = "search", placeholder = library.GetDictionaryItem("CareerAndCourseListing.SearchPlaceholder") })*@
+                            @Html.TextBoxFor(m => m.ListingPostback.SearchText, new { type = "search", id = "page-search", placeholder = library.GetDictionaryItem("CareerAndCourseListing.SearchPlaceholder"), data_predictive = "/umbraco/api/PredictiveSearch/getresults" })
+                            <input id="btn-listing-search" name="@Html.NameFor(m => m.ListingPostback.BtnSearch)" class="btn btn--inline btn-listing-submit" type="submit" value="@library.GetDictionaryItem("CourseListing.SearchButton")">
+                        </div>
+                        <div class="hero-search__results hidden">
+                        </div>
+                    </div>
+
+                </div><!-- end col-sm-6 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section><!-- end hero-search -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="sidebar-filter">
+                    <h2 class="sidebar-filter__head">Filter by</h2>
+                    <input id="btn-clear-all" class="btn btn--line-blue mb-20" type="submit" name="@Html.NameFor(m => m.ListingPostback.BtnClearFilters)" value="@library.GetDictionaryItem("CourseListing.ClearFilters")" />
+
+                    <div class="sidebar-filter__body">
+                        <div class="sidebar-filter__section">
+                            <p class="sidebar-filter__section__head">@Model.CourseOrCareerFilterTitle</p>
+                            <div class="sidebar-filter__section__body is-hidden">
+                                <div class="checkbox">
+                                    <label for="filter-career">Careers</label>
+                                    <input id="filter-career" class="doc-type-filter" name="@Html.NameFor(m => m.ListingPostback.SelectedDocTypes)" type="checkbox" value="@PageCareerDetail.ModelTypeAlias" @IsChecked(PageCareerDetail.ModelTypeAlias, Model.ListingPostback.SelectedDocTypes)>
+                                    <span class="checkmark"></span>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="filter-course">Courses</label>
+                                    <input id="filter-course" class="doc-type-filter" name="@Html.NameFor(m => m.ListingPostback.SelectedDocTypes)" type="checkbox" value="@PageCourseDetail.ModelTypeAlias" @IsChecked(PageCourseDetail.ModelTypeAlias, Model.ListingPostback.SelectedDocTypes)>
+                                    <span class="checkmark"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        @foreach (var filter in Model.FilterItems)
+                        {
+                            var taxonomyFolder = filter.Taxonomies.FirstOrDefault();
+                            if (taxonomyFolder != null)
+                            {
+                                var taxonomies = taxonomyFolder.Children.OfType<DataTaxonomy>();
+
+
+                                <div class="sidebar-filter__section">
+                                    <p class="sidebar-filter__section__head">@filter.FilterTitle</p>
+                                    <div class="sidebar-filter__section__body is-hidden">
+                                        @foreach (var taxonomy in taxonomies)
+                                        {
+                                            var key = taxonomyFolder.Id + "|" + taxonomy.GetKey().ToIndexString();
+                                            <div class="checkbox">
+                                                <label for="filter-@(taxonomy.Id)">@taxonomy.TaxonomyName</label>
+                                                <input id="filter-@(taxonomy.Id)" name="@Html.NameFor(m => m.ListingPostback.SelectedTaxonomy)" type="checkbox" value="@key" @IsChecked(key, Model.ListingPostback.SelectedTaxonomy)>
+                                                <span class="checkmark"></span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <!-- end .sidebar-filter__section -->
+                            }
+                        }
+
+                    </div>
+                    
+                <noscript>
+                    <input class="btn" type="submit" name="@Html.NameFor(m => m.ListingPostback.BtnApplyFilters)" value="@library.GetDictionaryItem("CourseListing.ApplyFilters")" />
+                </noscript>
+            </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="loader" aria-hidden="true">
+                    <img src="/assets/img/loader.gif" alt="loader-gif"/>
+                </div>
+                @Html.Partial("~/Views/Pages/PageCourseCareerListing/Listing.cshtml", Model)
+            </div>
+        </div><!-- end row -->
+    </div><!-- end container -->
+}
+

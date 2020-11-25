@@ -1,0 +1,15 @@
+﻿@model USP.Business.Models.ContentModels.IBaseForm
+
+@if (Model == null)
+{
+    return;
+}
+
+@if (!string.IsNullOrEmpty(Model.SubHeading))
+{
+    <h3 class="mb-20">@Model.SubHeading</h3>
+}
+@if (Model.TextInformation != null)
+{
+    <p class="form-details">@Html.Raw(Model.TextInformation)</p>
+}

@@ -1,0 +1,34 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepEleven>
+    
+<div class="review-headline">
+    <h3>@Model.HeadingsAndLabels.MedicalConditionsReviewHeading</h3>
+    <div>
+        <a href="@Model.FormStep10Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
+    </div>
+</div>
+<div class="review-block review-block--inline">
+    @{
+        if (!Model.ApplicationForm.HasDisabilityDifficulty.Value)
+        {
+            <p class="review-block__label">@Model.HeadingsAndLabels.LabelNoLearningDisabilityDifficulty</p>
+        }
+        else
+        {
+            <p class="review-block__label">@Model.HeadingsAndLabels.LabelHaveLearningDisabilityDifficulty</p>
+            if (!string.IsNullOrEmpty(Model.ApplicationForm.DisabilitiesDifficultiesCsv))
+            {
+                foreach (var disabilityDifficulty in Model.ApplicationForm.DisabilitiesDifficultiesCsv.Split(','))
+                {
+                    <p class="review-block__result">@disabilityDifficulty</p>
+                }
+            }
+            if (!string.IsNullOrEmpty(Model.ApplicationForm.PrimaryDisability))
+            {
+                <p class="review-block__label">@Model.HeadingsAndLabels.LabelPrimaryDisabilityDifficulty</p>
+                <p class="review-block__result">@Model.ApplicationForm.PrimaryDisability</p>
+            }
+        }
+    }
+</div>

@@ -1,0 +1,99 @@
+﻿@using USP.Business.Controllers.Pages
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageSearch>
+@{
+    Layout = "~/Views/_MainLayout.cshtml";
+
+    var filterDocTypes = new Dictionary<string,string>
+    {
+        {"Site Content",PageContent.ModelTypeAlias},
+        {"News",PageNewsDetail.ModelTypeAlias + "|" + PageNewsListing.ModelTypeAlias},
+        {"Blogs",PageBlogDetail.ModelTypeAlias + "|" + PageBlogListing.ModelTypeAlias},
+        {"Careers",PageCareerDetail.ModelTypeAlias},
+        {"Courses",PageCourseDetail.ModelTypeAlias+ "|" + PageCourseListing.ModelTypeAlias},
+        {"Events",PageEventDetail.ModelTypeAlias+ "|" + PageEventListing.ModelTypeAlias},
+    };
+}
+@functions {
+    private string IsChecked(string key, string[] selectedKeys)
+    {
+        if (selectedKeys == null || selectedKeys.Length == 0)
+            return "";
+
+        if (selectedKeys.Contains(key))
+        {
+            return "checked=\"checked\"";
+        }
+
+        return string.Empty;
+    }
+
+}
+
+@using (Html.BeginUmbracoForm<PageSearchController>("Index", null, new { @class = "listing-page" }))
+{
+    <section class="hero-search bg-usp-navi-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+
+                    <h2 class="hero-home__headline">Search results</h2>
+                    <div class="hero-search__form">
+                        <div class="search mb-0">
+                            <label for="@Html.IdFor(m => m.ListingPostback.SearchText)"><span class="sr-only">@library.GetDictionaryItem("CourseListing.Search")</span></label>
+                            @Html.TextBoxFor(m => m.ListingPostback.SearchText, new { type = "search", id = "page-search", placeholder = library.GetDictionaryItem("CourseListing.SearchPlaceholder"), data_predictive = "/umbraco/api/PredictiveSearch/getresults" })
+                            <input id="btn-listing-search" name="@Html.NameFor(m => m.ListingPostback.BtnSearch)" class="btn btn--inline btn-listing-submit" type="submit" value="@library.GetDictionaryItem("Global Search.Labels.SearchButtonText")">
+
+                        </div>
+                        <div class="hero-search__results hidden">
+                        </div>
+                    </div>
+
+                </div><!-- end col-sm-6 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section><!-- end hero-search -->
+
+    <div class="container mt-50">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="sidebar-filter">
+                    <h2 class="sidebar-filter__head">Filter</h2>
+
+                    <div class="sidebar-filter__body">
+
+                        <div class="sidebar-filter__section">
+                            <p class="sidebar-filter__section__head">Filter by type</p>
+                            <div class="sidebar-filter__section__body is--hidden mb-50">
+                                
+                                @foreach (var docType in filterDocTypes)
+                                {
+                                    <div class="checkbox">
+                                        <label for="filter-@docType.Key">@docType.Key</label>
+                                        <input id="filter-@docType.Key" class="doc-type-filter" name="@Html.NameFor(m => m.ListingPostback.SelectedDocTypes)" type="checkbox" value="@docType.Value" @IsChecked(docType.Value, Model.ListingPostback.SelectedDocTypes)>
+                                        <span class="checkmark"></span>
+                                    </div>
+                                }
+                                
+
+                            </div>
+                            <noscript>
+                                <input class="btn" type="submit" name="@Html.NameFor(m => m.ListingPostback.BtnApplyFilters)" value="@library.GetDictionaryItem("CourseListing.ApplyFilters")"/>
+                            </noscript>
+                        </div><!-- end .sidebar-filter__section -->
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="loader" aria-hidden="true">
+                    <img src="/assets/img/loader.gif" alt="loader-gif">
+                </div>
+                @Html.Partial("~/Views/Pages/PageSearch/Listing.cshtml", Model)
+
+            </div>
+        </div><!-- end row -->
+    </div><!-- end container-->
+
+}

@@ -1,0 +1,43 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetProfile>
+
+@if (Model == null || Model.Item == null || Model.Item.ItemImage == null)
+{
+    return;
+}
+
+@if (Request.QueryString["dtgePreview"] == "1")
+{
+    if (!string.IsNullOrEmpty(Model.Item.ItemName) && !string.IsNullOrEmpty(Model.Item.ItemProfile))
+    {
+        <img src="@Model.Item.ItemImage.GetCropUrl(SiteConstants.Crops.GridEditorPreview)" alt="@Model.Item.ItemImage.Name" />
+        <p><b>@Model.Item.ItemName</b></p>
+        <p>@Model.Item.ItemRoleSubtitle</p>
+        <p>@Model.Item.ItemProfile</p>
+    }
+}
+else
+{
+    if (!string.IsNullOrEmpty(Model.Item.ItemName) && !string.IsNullOrEmpty(Model.Item.ItemProfile))
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="people">
+                        <header>
+                            <p class="people__img">@Html.LazyImage(Model.Item.ItemImage, SiteConstants.Crops.CropContact) </p>
+                            <h3 class="people__details">
+                                @Model.Item.ItemName<small>@Model.Item.ItemRoleSubtitle</small>
+                            </h3>
+                        </header>
+                        <p>
+                            @Model.Item.ItemProfile
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

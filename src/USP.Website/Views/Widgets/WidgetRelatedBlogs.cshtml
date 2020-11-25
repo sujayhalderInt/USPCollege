@@ -1,0 +1,86 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<WidgetRelatedBlogs>
+
+@if (Model == null || Model.RelatedBlogs == null || !Model.RelatedBlogs.Any())
+{
+    return;
+}
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            @if (!string.IsNullOrEmpty(Model.Title))
+            {
+                <h3>@Model.Title</h3>
+            }
+                <div class="related-course-list mobile-centered-carousel mb-50">
+                    @foreach (var blog in Model.RelatedBlogs)
+                    {
+                        var showDesc = true;
+
+                        <article class="related-item">
+                            <aside class="related-item__img">
+                                <a href="@blog.Url">
+                                    @Html.LazyImage(blog.BannerImage, SiteConstants.Crops.RelatedCourse)
+                                </a>
+                            </aside>
+                            <div class="related-item__details related_blog_widget">
+                                <p class="related-item__details_desc c-usp-yellow">@blog.PublishedDate.ToString("dd MMMM yyyy")</p>
+
+                                @if (!string.IsNullOrEmpty(blog.BannerHeading))
+                                {
+                                    var count = blog.BannerHeading.Trim().Length;
+                                    var title = "";
+                                    if (count > 82)
+                                    {
+                                        showDesc = false;
+                                        title = blog.BannerHeading.Trim().Substring(0, 82) + "...";
+                                    }
+                                    else
+                                    {
+                                        title = blog.BannerHeading.Trim();
+                                    }
+
+                                    <h3 class="related-item__details__head"><a href="@blog.Url">@title</a></h3>
+
+                                }
+
+                                
+                                @if (!string.IsNullOrEmpty(blog.BannerSummary) && showDesc)
+                                {
+                                    var summary = "";
+                                    if (blog.BannerSummary.Trim().Length > 62)
+                                    {
+                                        summary = blog.BannerSummary.Trim().Substring(0, 62) + "...";
+                                    }
+                                    else
+                                    {
+                                        summary = blog.BannerSummary;
+                                    }
+                                    <div class="related-item__details__description">
+                                        <p class="mb-20">
+                                            @summary
+                                        </p>
+                                    </div>
+                                }
+
+                                @if (blog.BlogAuthor != null && blog.BlogAuthor.Any())
+                                {
+                                    var author = blog.BlogAuthor.FirstOrDefault().OfType<DataAuthor>();
+                                    <div class="blog-author">
+                                        <div class="mb-10">
+                                            @Html.LazyImage(author.PortraitImage, SiteConstants.Crops.Author)
+                                        </div>
+                                        <p class="author">by @author.FirstName @author.LastName</p>
+                                    </div>
+                                }
+                            </div>
+                        </article>
+                    }
+                </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,68 @@
+﻿@using System.Web.Mvc.Html
+@using USP.Business.Constants
+@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepSix>
+
+@using (Html.BeginUmbracoForm<FormStepSixController>("HandleFormStepSixSubmit"))
+{
+    if (!string.IsNullOrEmpty(Model.LabelFirstChoice))
+    {
+        <div class="form__check">
+            @Html.LabelFor(model => model.PostBackModel.AlevelCourseFirstChoice, Model.LabelFirstChoice, new { @class = SiteConstants.CssClass.FormCheckLabel })
+            <p class="select-wrapper">
+                @Html.DropDownListFor(model => model.PostBackModel.AlevelCourseFirstChoice, Model.AlevelCoursesDropDownListFirstChoice, new { @id = SiteConstants.HtmlId.SingleSelect })
+                @Html.ValidationMessageFor(model => model.PostBackModel.AlevelCourseFirstChoice)
+            </p>
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.LabelSecondChoice))
+    {
+        <div class="form__check">
+            @Html.LabelFor(model => model.PostBackModel.AlevelCourseSecondChoice, Model.LabelSecondChoice, new { @class = SiteConstants.CssClass.FormCheckLabel })
+            <p class="select-wrapper">
+                @Html.DropDownListFor(model => model.PostBackModel.AlevelCourseSecondChoice, Model.AlevelCoursesDropDownListSecondChoice, new { @id = (SiteConstants.HtmlId.SingleSelect) + 1 })
+                @Html.ValidationMessageFor(model => model.PostBackModel.AlevelCourseSecondChoice)
+            </p>
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.LabelThirdChoice))
+    {
+        <div class="form__check">
+            @Html.LabelFor(model => model.PostBackModel.AlevelCourseThirdChoice, Model.LabelThirdChoice, new { @class = SiteConstants.CssClass.FormCheckLabel })
+            <p class="select-wrapper">
+                @Html.DropDownListFor(model => model.PostBackModel.AlevelCourseThirdChoice, Model.AlevelCoursesDropDownListThirdChoice, new { @id = (SiteConstants.HtmlId.SingleSelect) + 2 })
+                @Html.ValidationMessageFor(model => model.PostBackModel.AlevelCourseThirdChoice)
+            </p>
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.LabelFirstLevel3QualificationQuestion))
+    {
+        <div class="form__check">
+            <p class="form__check__label">@Model.LabelFirstLevel3QualificationQuestion</p>
+            <div class="radio">
+                <label>
+                    @Html.RadioButtonFor(model => model.PostBackModel.IsFirstFullLevel3Qualification, "true") Yes
+                    @Html.ValidationMessageFor(model => model.PostBackModel.IsFirstFullLevel3Qualification)
+                    <span class="radiomark"></span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    @Html.RadioButtonFor(model => model.PostBackModel.IsFirstFullLevel3Qualification, "false") No
+                    @Html.ValidationMessageFor(model => model.PostBackModel.IsFirstFullLevel3Qualification)
+                    <span class="radiomark"></span>
+                </label>
+            </div>
+        </div>
+    }
+
+    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+    {
+        <input type="submit" class="btn btn--inline" value="@Model.TextContinueButton" />
+    }
+
+}

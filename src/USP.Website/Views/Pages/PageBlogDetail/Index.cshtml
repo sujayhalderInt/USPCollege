@@ -1,0 +1,8 @@
+﻿@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageBlogDetail>
+@{
+    Layout = "~/Views/_ContentLayout.cshtml";
+}
+
+@Html.Partial("Content", Model)
+@Html.Partial("ArticleGrid", Model)

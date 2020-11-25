@@ -1,0 +1,58 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Controllers.ApplicationForm
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepSeven>
+
+@using (Html.BeginUmbracoForm<FormStepSevenController>("HandleFormStepSevenSubmit"))
+{
+    @Html.HiddenFor(model => model.PostBackModel.IsAdultLearning)
+    if (Model.PostBackModel.IsAdultLearning)
+    {
+        if (!string.IsNullOrEmpty(Model.LabelAdultEducationFirstChoice))
+        {
+            <div class="form__check">
+                @Html.LabelFor(model => model.PostBackModel.AdultLearningCourseOne, Model.LabelAdultEducationFirstChoice, new { @class = SiteConstants.CssClass.FormCheckLabel })
+                <p class="select-wrapper">
+                    @Html.DropDownListFor(model => model.PostBackModel.AdultLearningCourseOne, Model.AdultLearningCourseListDropDownFirst, new { @id = SiteConstants.HtmlId.SingleSelect + 1 })
+                    @Html.ValidationMessageFor(model => model.PostBackModel.AdultLearningCourseOne)
+                </p>
+            </div>
+        }
+        if (!string.IsNullOrEmpty(Model.LabelAdultEducationSecondChoice))
+        {
+            <div class="form__check">
+                @Html.LabelFor(model => model.PostBackModel.AdultLearningCourseTwo, Model.LabelAdultEducationSecondChoice, new { @class = SiteConstants.CssClass.FormCheckLabel })
+                <p class="select-wrapper">
+                    @Html.DropDownListFor(model => model.PostBackModel.AdultLearningCourseTwo, Model.AdultLearningCourseListDropDownSecond, new { @id = SiteConstants.HtmlId.SingleSelect + 2 })
+                </p>
+            </div>
+        }
+        if (!string.IsNullOrEmpty(Model.LabelAdultEducationThirdChoice))
+        {
+            <div class="form__check">
+                @Html.LabelFor(model => model.PostBackModel.AdultLearningCourseThree, Model.LabelAdultEducationThirdChoice, new { @class = SiteConstants.CssClass.FormCheckLabel })
+                <p class="select-wrapper">
+                    @Html.DropDownListFor(model => model.PostBackModel.AdultLearningCourseThree, Model.AdultLearningCourseListDropDownThird, new { @id = SiteConstants.HtmlId.SingleSelect + 3 })
+                </p>
+            </div>
+        }
+    }
+    else
+    {
+        if (!string.IsNullOrEmpty(Model.LabelSelectCourse))
+        {
+            <div class="form__check">
+                @Html.LabelFor(model => model.PostBackModel.NameOfCourse, Model.LabelSelectCourse, new { @class = SiteConstants.CssClass.FormCheckLabel })
+                <p class="select-wrapper">
+                    @Html.DropDownListFor(model => model.PostBackModel.NameOfCourse, Model.CourseListDropDown, new { @id = SiteConstants.HtmlId.SingleSelect })
+                    @Html.ValidationMessageFor(model => model.PostBackModel.NameOfCourse)
+                </p>
+            </div>
+        }
+    }
+
+    if (!string.IsNullOrEmpty(Model.TextContinueButton))
+    {
+        <input type="submit" class="btn btn--inline" value="@Model.TextContinueButton" />
+    }
+}

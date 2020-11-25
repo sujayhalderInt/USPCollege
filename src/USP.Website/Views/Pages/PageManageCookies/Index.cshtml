@@ -1,0 +1,33 @@
+﻿@using USP.Business.Controllers
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<PageManageCookies>
+@{
+    Layout = "~/Views/_MainLayout.cshtml";
+}
+
+<div class="cookie-banner cookie-banner--page mb-50">
+    @using (Html.BeginUmbracoForm<CookiePolicyController>("SaveCookies", null, new { @class = "cookie exclude-form" }))
+    {
+        <div>
+            <h3>@Model.Title</h3>
+            <div class="cookie__desc">
+                @Model.CookieMessage
+            </div>
+            <div class="switch-wrapper">
+                <input type='checkbox' class='switch' id='cookie-1' checked disabled>
+                <label for='cookie-1'>@Model.EssentialCookieText</label>
+            </div>
+            <div class="switch-wrapper">
+                <input type="checkbox" class="switch other-cookie" id="cookie-2" name="otherCookies" value="true" @{ if (Model.OtherCookie) { <text> checked </text>  }}>
+                <label for='cookie-2'>@Model.OtherCookieText</label>
+            </div>
+        </div>
+        <p class="mb-0 cookie-agree-wrapper">
+            <input type="submit" class="btn btn--inline cookie-agree" value="@Model.CookieAcceptText">
+        </p>
+    }
+</div><!-- end cookie-banner -->
+
+
+@Html.Partial("Content", Model)
+@Html.Partial("ArticleGrid", Model)

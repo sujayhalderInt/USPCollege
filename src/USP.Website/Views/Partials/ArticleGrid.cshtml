@@ -1,0 +1,7 @@
+﻿@using USP.Business.Constants
+@model IPublishedContent
+
+@if (Model.IsComposedOf(SiteConstants.AliasBaseArticleGrid))
+{
+    @Html.GetGridHtml(Model, "mainContentPlaceholder", "Trifstrap")
+}

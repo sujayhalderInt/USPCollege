@@ -1,0 +1,235 @@
+﻿@using USP.Business.Extensions
+@using USP.Business.Models.ContentModels
+@model PageHome
+
+@if (Model.ShowAlert)
+{
+    
+    <div class="bg-usp-purple">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="hero-alert" role="alert">
+                        <i class="icon-info_line"><span class="sr-only">Alert icon</span></i>
+                        <p class="mb-0 mr-15">@Model.TextAlert</p>
+                        @if (Model.CallToAction != null && Model.CallToAction.Any())
+                        {
+                            <p class="call-to">
+                                <a href="@Model.CallToAction.First().Link" @Html.NewWindow(Model.CallToAction.First().NewWindow) class="btn btn--white btn--animated">
+                                    <span class="wrapper">
+                                        @Model.CallToAction.First().Caption
+                                    </span>
+                                </a>
+                            </p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<section class="hero-home bg-usp-navi">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <h1>
+                    @Html.Raw(Model.Title)                   
+                </h1>
+            </div><!-- end .col-md-4 -->
+            <div class="col-md-4">
+                <div class="hero-home__headline">
+                    @Model.ShortCopy
+                </div>
+            </div><!-- end .col-md-8 -->
+            <div class="col-12">
+                <div class="hero-home__content mobile-carousel">
+                    @if (!string.IsNullOrEmpty(Model.CreativeAndDigitalLabel) && !Model.CreativeAndDigitalLink.IsNullOrEmpty())
+                    {
+                        <a href="@Model.CreativeAndDigitalLink.First().Url" class="hero-home__content__icon">
+                            <h2 id="creative">@Model.CreativeAndDigitalLabel</h2>
+                            <svg id="creative-svg" aria-describedby="creative" width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>@Model.CreativeAndDigitalLabel</title>
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect fill-rule="nonzero" x="0" y="0" width="128" height="128"></rect>
+                                    <path d="M94,32 L120,6" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M13.5,94.5 L13.5,21.9569094" stroke="#3EC2CF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M10,16 L118,16 C120.209139,16 122,17.790861 122,20 L122,91 C122,93.209139 120.209139,95 118,95 L10,95 C7.790861,95 6,93.209139 6,91 L6,20 C6,17.790861 7.790861,16 10,16 Z" stroke="#EBDE55" stroke-width="4"></path>
+                                    <path d="M91,13 L95,9" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M7.53773585,78 L121,78" stroke="#EBDE55" stroke-width="4"></path>
+                                    <path d="M57,97.5263158 L57,116.590285" stroke="#EBDE55" stroke-width="4" stroke-linecap="square"></path>
+                                    <path d="M71,97.5263158 L71,116.590285" stroke="#EBDE55" stroke-width="4" stroke-linecap="square"></path>
+                                    <path d="M45,119 L83,119" stroke="#EBDE55" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M70.4214728,68 L70.1330937,68.5015289 C69.7497613,69.168194 70.2309837,70 71,70 L94,70 C94.7690163,70 95.2502387,69.168194 94.8669063,68.5015289 L83.3669063,48.5015289 C82.9824008,47.8328237 82.0175992,47.8328237 81.6330937,48.5015289 L80.9970275,49.607731 L80.9970275,53.6199995 L82.5,51.0061343 L92.2714728,68 L70.4214728,68 Z" stroke="#3EC2CF" stroke-width="2" fill-rule="nonzero"></path>
+                                    <path d="M54,62 L54,41 L75,41 L75,62 L54,62 Z M53,39 C52.4477153,39 52,39.4477153 52,40 L52,63 C52,63.5522847 52.4477153,64 53,64 L76,64 C76.5522847,64 77,63.5522847 77,63 L77,40 C77,39.4477153 76.5522847,39 76,39 L53,39 Z" stroke="#EBDE55" stroke-width="2" fill-rule="nonzero"></path>
+                                    <path d="M58,52.4558017 C61.1325746,49.7399649 63,45.7794807 63,41.5 C63,33.4918711 56.5081289,27 48.5,27 C40.4918711,27 34,33.4918711 34,41.5 C34,49.340785 40.2233879,55.7280198 48,55.9915409 L48,53.9901828 C41.3282334,53.7277309 36,48.2361032 36,41.5 C36,34.5964406 41.5964406,29 48.5,29 C55.4035594,29 61,34.5964406 61,41.5 C61,44.5230266 59.9214613,47.3801708 58,49.6244108 L58,52.4558017 Z" stroke="#FFFFFF" stroke-width="2" fill-rule="nonzero"></path>
+                                    <circle stroke="#FFFFFF" stroke-width="2" cx="64" cy="87" r="1"></circle>
+                                </g>
+
+                            </svg>
+
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.HealthcareAndMedicalLabel) && !Model.HealthcareAndMedicalLink.IsNullOrEmpty())
+                    {
+                        <a href="@Model.HealthcareAndMedicalLink.First().Url" class="hero-home__content__icon">
+                            <h2 id="medical">@Model.HealthcareAndMedicalLabel</h2>
+                            <svg id="medical-svg" aria-describedby="medical" width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>@Model.HealthcareAndMedicalLabel</title>
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect fill-rule="nonzero" x="0" y="0" width="128" height="128"></rect>
+                                    <path d="M93,100 L103,90" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" transform="translate(98.000000, 95.000000) scale(-1, 1) translate(-98.000000, -95.000000) "></path>
+                                    <path d="M9,28 L24,13" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" transform="translate(16.500000, 20.500000) scale(-1, 1) translate(-16.500000, -20.500000) "></path>
+                                    <path d="M87,111 L103,95" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" transform="translate(95.000000, 103.000000) scale(-1, 1) translate(-95.000000, -103.000000) "></path>
+                                    <path d="M81,105 L86,100" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" transform="translate(83.500000, 102.500000) scale(-1, 1) translate(-83.500000, -102.500000) "></path>
+                                    <path d="M18.0598067,75.4911824 C9.7749327,69.0684217 5,59.2575134 5,48.6054823 C5,30.0744968 19.4685758,15 37.2528669,15 C48.4145558,15 58.6479958,21.0100849 64.4962164,30.6659112 C70.3456981,21.0100849 80.5854442,15 91.7559616,15 C109.536469,15 124,30.075811 124,48.6054823 C124,59.2653989 119.225067,69.0763072 110.898573,75.5227245 L64.4962164,113 L18.0598067,75.4911824 Z" stroke="#EBDE55" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M81.135573,24.8618885 C84.0718817,23.6524302 87.25011,23 90.5299192,23 C104.575026,23 116,34.8452801 116,49.4043075" stroke="#3EC2CF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M36,47 L36,31" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M44,39 L28,39" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M29,68 L47,68 L52,57 L63,85 M63,85 L75,50 L82,68 L99.0293864,68" stroke="#EBDE55" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+
+                            </svg>
+
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.FinancialSectorLabel) && !Model.FinancialSectorLink.IsNullOrEmpty())
+                    {
+                        <a href="@Model.FinancialSectorLink.First().Url" class="hero-home__content__icon">
+                            <h2 id="financial">@Model.FinancialSectorLabel</h2>
+                            <svg id="financial-svg" aria-describedby="financial" width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>@Model.FinancialSectorLabel</title>
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect fill-rule="nonzero" x="0" y="0" width="128" height="128"></rect>
+                                    <path d="M14,9 L14,116.01869" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M88,77.5 L88,114" stroke="#EBDE55" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M18.75,100.5 L15,100.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M18.75,86.5 L15,86.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M18.75,71.5 L15,71.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M18.75,57.5 L15,57.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M18.75,42.5 L15,42.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M18.75,27.5 L15,27.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M14,116 L119,116" stroke="#EBDE55" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M27,107.5 L27,114" stroke="#EBDE55" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M42,102.5 L42,114" stroke="#EBDE55" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M57,98.5 L57,114" stroke="#EBDE55" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M73,90.5 L73,114" stroke="#EBDE55" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M103,62.4393561 L103,114" stroke="#EBDE55" stroke-width="4" stroke-linecap="round"></path>
+                                    <path d="M31,91 C44.3333333,88.6666667 59,82 75,71 C91,60 102.333333,41 109,14" stroke="#3EC2CF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M7,15 L14,8" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M14,15 L21,8" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(17.500000, 11.500000) scale(-1, 1) translate(-17.500000, -11.500000) "></path>
+                                    <path d="M112,116 L119,109" stroke="#EBDE55" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(115.500000, 112.500000) scale(-1, 1) translate(-115.500000, -112.500000) "></path>
+                                    <path d="M119,123 L112,116" stroke="#EBDE55" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(115.500000, 119.500000) scale(-1, 1) translate(-115.500000, -119.500000) "></path>
+                                    <g id="Group-Copy" transform="translate(108.667347, 15.192474) rotate(-345.000000) translate(-108.667347, -15.192474) translate(101.667347, 11.692474)" stroke="#3EC2CF" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                                        <path d="M0,7 L7,0"></path>
+                                        <path d="M14,7 L7,0"></path>
+                                    </g>
+                                </g>
+
+                            </svg>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.ChildcareSectorLabel) && !Model.ChildcareSectorLink.IsNullOrEmpty())
+                    {
+                        <a href="@Model.ChildcareSectorLink.First().Url" class="hero-home__content__icon">
+                            <h2 id="education">@Model.ChildcareSectorLabel</h2>
+                            <svg id="education-svg" aria-describedby="education" width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>@Model.ChildcareSectorLabel</title>
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g transform="translate(10.000000, 10.000000)" stroke-width="4">
+                                        <path d="M12.5,35 C8.35786438,35 5,38.3578644 5,42.5 C5,46.6421356 8.35786438,50 12.5,50 C16.6421356,50 20,46.6421356 20,42.5" stroke="#FFFFFF"></path>
+                                        <path d="M36.5,35 C32.3578644,35 29,38.3578644 29,42.5 C29,46.6421356 32.3578644,50 36.5,50 C40.6421356,50 44,46.6421356 44,42.5" stroke="#3EC2CF"></path>
+                                        <path d="M77.5,0 C68.3873016,0 61,7.38730163 61,16.5 C61,25.6126984 68.3873016,33 77.5,33 C86.6126984,33 94,25.6126984 94,16.5" stroke="#EBDE55"></path>
+                                        <path d="M77.5,0 C68.3873016,0 61,7.38730163 61,16.5 C61,25.6126984 68.3873016,33 77.5,33 C86.6126984,33 94,25.6126984 94,16.5" stroke="#EBDE55" transform="translate(77.500000, 16.500000) rotate(-270.000000) translate(-77.500000, -16.500000) "></path>
+                                        <path d="M12.5,35 C8.35786438,35 5,38.3578644 5,42.5 C5,46.6421356 8.35786438,50 12.5,50 C16.6421356,50 20,46.6421356 20,42.5" stroke="#FFFFFF" transform="translate(12.500000, 42.500000) rotate(-270.000000) translate(-12.500000, -42.500000) "></path>
+                                        <path d="M36.5,35 C32.3578644,35 29,38.3578644 29,42.5 C29,46.6421356 32.3578644,50 36.5,50 C40.6421356,50 44,46.6421356 44,42.5" stroke="#3EC2CF" transform="translate(36.500000, 42.500000) rotate(-270.000000) translate(-36.500000, -42.500000) "></path>
+                                        <path d="M51.4425424,57.3004434 C56.3358299,48.1919887 65.9456102,42 77,42 C93.0162577,42 106,54.9981847 106,71.0322581 L106,82.6451613 L106,107 L0,107" stroke="#EBDE55" stroke-linecap="round"></path>
+                                        <path d="M29.4988614,60.162263 C31.372213,58.7940961 33.6041088,58 36,58 C42.627417,58 48,64.0761355 48,71.5714286 L48,98 L40.2857143,98" stroke="#3EC2CF" stroke-linecap="round"></path>
+                                        <path d="M0,98 L0,71.5714286 C0,64.0761355 5.372583,58 12,58 C18.627417,58 24,64.0761355 24,71.5714286 L24,98 L16.2857143,98" stroke="#FFFFFF" stroke-linecap="round"></path>
+                                    </g>
+                                    <g transform="translate(70.000000, 73.000000)" stroke="#EBDE55" stroke-linecap="round">
+                                        <path d="M1.88889127,4.60276412e-06 L9.44443493,0 C13.6172583,0 17,3.581722 17,8 C17,8.00000102 17,13.6666677 17,25 C15.3636068,22.936811 13.2386038,21.9052164 10.6249909,21.9052164 C7.71295772,21.9052164 4.80092449,21.9052164 1.88889127,21.9052164 C0.845685426,21.9052164 1.76941795e-15,21.0097859 4.71844785e-16,19.9052164 L0,2 C4.71844785e-16,0.895435103 0.845685426,4.60276412e-06 1.88889127,4.60276412e-06 Z" stroke-width="4" stroke-linejoin="round"></path>
+                                        <path d="M18.8888913,4.60276412e-06 L26.4444349,0 C30.6172583,0 34,3.581722 34,8 C34,8.00000102 34,13.6666677 34,25 C32.3636068,22.936811 30.2386038,21.9052164 27.6249909,21.9052164 C24.7129577,21.9052164 21.8009245,21.9052164 18.8888913,21.9052164 C17.8456854,21.9052164 17,21.0097859 17,19.9052164 L17,2 C17,0.895435103 17.8456854,4.60276412e-06 18.8888913,4.60276412e-06 Z" stroke-width="4" stroke-linejoin="round" transform="translate(25.500000, 12.500000) scale(-1, 1) translate(-25.500000, -12.500000) "></path>
+                                        <path d="M22,7 L28,7" stroke-width="2"></path>
+                                        <path d="M6,7 L12,7" stroke-width="2"></path>
+                                        <path d="M22,11 L28,11" stroke-width="2"></path>
+                                        <path d="M6,11 L12,11" stroke-width="2"></path>
+                                        <path d="M22,15 L28,15" stroke-width="2"></path>
+                                        <path d="M6,15 L12,15" stroke-width="2"></path>
+                                    </g>
+                                </g>
+
+                            </svg>
+
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.SportScienceLabel) && !Model.SportScienceLink.IsNullOrEmpty())
+                    {
+                        <a href="@Model.SportScienceLink.First().Url" class="hero-home__content__icon">
+                            <h2 id="sports">@Model.SportScienceLabel</h2>
+                            <svg id="sports-svg" aria-describedby="sports" width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>@Model.SportScienceLabel</title>
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="running-man" transform="translate(20.000000, 11.000000)" stroke="#EBDE55" stroke-width="4">
+                                        <path d="M63,0 C58.581722,0 55,3.581722 55,8 C55,12.418278 58.581722,16 63,16 C67.418278,16 71,12.418278 71,8" transform="translate(63.000000, 8.000000) rotate(-270.000000) translate(-63.000000, -8.000000) "></path>
+                                        <path d="M63,0 C58.581722,0 55,3.581722 55,8 C55,12.418278 58.581722,16 63,16 C67.418278,16 71,12.418278 71,8" transform="translate(63.000000, 8.000000) rotate(-180.000000) translate(-63.000000, -8.000000) "></path>
+                                        <path d="M34.9756743,24.9260065 L23.4169002,32.238398 C22.3160646,32.9186205 20.94002,33.2587317 19.5639755,33.0036483 C18.187931,32.7485649 17.0870953,32.0683424 16.2614686,31.0480087 C14.7019515,28.9223135 15.2523693,25.9463402 17.5457769,24.4158396 L31.0310133,15.8280309 C32.2235852,15.0627806 33.7831023,14.8076972 35.2508832,15.1478084 C52.6807806,19.4842267 52.6807806,19.4842267 52.7725169,19.4842267 C52.9559895,19.5692545 53.2311984,19.6542823 53.414671,19.7393101 C53.5064073,19.8243379 53.6898799,19.8243379 53.7825336,19.9093657 C53.9650888,19.9943935 54.1485614,20.1644492 54.332034,20.249477 C54.4237703,20.3345048 54.5155066,20.4195326 54.6998966,20.5045604 C54.8824518,20.674616 54.9741881,20.7596438 55.1585781,20.9296994 C55.2493971,21.0997551 55.3411334,21.1847829 55.4328697,21.2698107 L64.0560821,33.4287874 L72.8627671,33.4287874 C75.7065924,33.4287874 78,35.5544826 78,38.1903447 C78,40.8262067 75.7065924,42.951902 72.8627671,42.951902 L61.3957293,42.951902 C59.6527396,42.951902 58.0932224,42.1866517 57.0841231,40.8262067 L54.332034,36.9149275 L48.0939655,46.8631812 L56.7171779,53.4953503 C58.3693487,54.7707674 59.0105854,56.8964626 58.276695,58.7670744 L50.1130815,79.8539711 C49.2865374,81.7245829 47.3609924,83 45.1584038,83 C44.6089034,83 43.9658319,82.9149722 43.4154141,82.7449166 C40.7550613,81.8946385 39.3790168,79.0887208 40.2963798,76.6229143 L46.9023109,59.5323247 L35.6178284,52.3899888 L27.2698249,61.9131034 C26.4441982,62.8484093 25.1598899,63.5286317 23.7838454,63.6136596 L5.62005756,65.0591323 L5.16137605,65.0591323 C2.50102329,65.0591323 0.299352037,63.1885205 0.0241431307,60.722714 C-0.251065776,58.086852 1.85886917,55.7911011 4.70269454,55.6210455 L20.6648111,54.3456284 L42.1311058,26.7115904 L34.9756743,24.9260065 Z" id="Path" stroke-linecap="round"></path>
+                                    </g>
+                                    <g id="Group" transform="translate(12.000000, 7.000000)" stroke-width="4">
+                                        <rect stroke="#3EC2CF" x="2" y="93" width="98" height="17" rx="8.5"></rect>
+                                        <path d="M13,101.5 C13,100.119288 11.8807119,99 10.5,99 C9.11928813,99 8,100.119288 8,101.5 C8,102.880712 9.11928813,104 10.5,104" stroke="#3EC2CF" transform="translate(10.500000, 101.500000) rotate(-270.000000) translate(-10.500000, -101.500000) "></path>
+                                        <path d="M13,101.5 C13,100.119288 11.8807119,99 10.5,99 C9.11928813,99 8,100.119288 8,101.5 C8,102.880712 9.11928813,104 10.5,104" stroke="#3EC2CF" transform="translate(10.500000, 101.500000) rotate(-180.000000) translate(-10.500000, -101.500000) "></path>
+                                        <path d="M93,101.5 C93,100.119288 91.8807119,99 90.5,99 C89.1192881,99 88,100.119288 88,101.5 C88,102.880712 89.1192881,104 90.5,104" stroke="#3EC2CF"></path>
+                                        <path d="M93,101.5 C93,100.119288 91.8807119,99 90.5,99 C89.1192881,99 88,100.119288 88,101.5 C88,102.880712 89.1192881,104 90.5,104" stroke="#3EC2CF" transform="translate(90.500000, 101.500000) rotate(-270.000000) translate(-90.500000, -101.500000) "></path>
+                                        <path d="M71.8310547,55 C72.4977214,55 81.8310547,55 99.8310547,55 L88,92" stroke="#3EC2CF" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M97,41 L92,55" stroke="#3EC2CF" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M33,1 L40,1" stroke="#FFFFFF" stroke-linecap="round"></path>
+                                        <path d="M0,10 L40,10" stroke="#FFFFFF" stroke-linecap="round"></path>
+                                        <path d="M0,19 L19,19" stroke="#FFFFFF" stroke-linecap="round"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                    }
+                </div>
+            </div><!-- end .col-md-12 -->
+        </div>
+    </div>
+</section><!-- end .hero-home -->
+
+<section class="hero-search bg-usp-navi-dark">
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-md-6">
+                @if (!Model.CourseCareerSearchPage.IsNullOrEmpty())
+                {
+                    <h2 class="hero-home__headline">@Model.SearchTitle</h2>
+                    <div class="hero-search__form">
+                        <form class="search" role="search" method="post" action="@Model.CourseCareerSearchPage.First().Url">
+                            <label for="search"><span class="sr-only">@Model.SearchButtonLabel</span></label>
+                            <input type="search" autocomplete="off" id="search" name="term" placeholder="@Model.SearchHintText" data-predictive="/umbraco/api/PredictiveSearch/getresults" />
+                            <input class="btn btn--inline" type="submit" value="@Model.SearchButtonLabel">
+                        </form>
+                        <div class="hero-search__results hidden">
+
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+            <div class="col-md-6 text-center">
+                @if (!Model.CourseListingLink.IsNullOrEmpty())
+                {
+
+                    <a href="@Model.CourseListingLink.First().Url" class="btn btn--animated btn--white mb-30">
+                        <span class="wrapper">
+                            @Model.AllCoursesButtonLabel
+                        </span>
+                    </a>
+                    <p class="hero-home__headline">@Model.AllCoursesShortCopy</p>
+                }
+            </div>
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>
+<!-- end hero-search -->

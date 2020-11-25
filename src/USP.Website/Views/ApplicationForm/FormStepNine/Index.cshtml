@@ -1,0 +1,24 @@
+﻿@using USP.Business.Constants
+@using USP.Business.Models.ContentModels
+@inherits UmbracoViewPage<FormStepNine>
+@{
+    Layout = "~/Views/_MainLayout.cshtml";
+}
+@{ var progressBar = Model.WidthProgressBar != 0 ? Model.WidthProgressBar.ToString() : SiteConstants.WidthApplicationProgress.StepNine;}
+<div class="mt-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Action("ProgressBarWidth", "FormStepsListing", new { width = progressBar })
+
+                @Html.Action("StepsListing", "FormStepsListing", new { currentFormStep = Model.SortOrder, form = Model.ApplicationForm })
+            </div>
+
+            <div class="col-md-8 offset-md-1">
+                @Html.Partial("ApplicationFormStepNine", Model)
+            </div>
+        </div>
+    </div>
+</div>
+
+

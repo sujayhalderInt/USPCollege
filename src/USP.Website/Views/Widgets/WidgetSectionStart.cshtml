@@ -1,0 +1,18 @@
+﻿@using USP.Business.Extensions
+@inherits UmbracoViewPage<USP.Business.Models.ContentModels.WidgetSectionStart>
+
+@{
+    if (Model == null || string.IsNullOrWhiteSpace(Model.NavigationTitle))
+    {
+        return;
+    }
+}
+
+@if (Request.QueryString["dtgePreview"] != null)
+{
+    <div>Section @Model.NavigationTitle: Click here to edit</div>
+}
+else
+{
+    <a aria-hidden="true" data-anchor="@Model.NavigationTitle"></a>
+}
