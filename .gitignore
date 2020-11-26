@@ -21,7 +21,7 @@ artifacts/
 **/media
 **/Umbraco
 **/Umbraco_Client
-
+/Data/uSync
 # Ignore Umbraco content cache file
 **/App_Data/umbraco.config
 
