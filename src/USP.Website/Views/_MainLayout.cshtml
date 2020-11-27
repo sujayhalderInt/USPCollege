@@ -33,8 +33,8 @@
         .dropbtn {
             background-color: #3498DB;
             color: white;
-            padding: 16px;
-            font-size: 16px;
+            padding: 10px;
+            font-size: 32px !important;
             border: none;
             cursor: pointer;
         }
@@ -52,7 +52,7 @@
             display: none;
             position: absolute;
             background-color: #f1f1f1;
-            min-width: 160px;
+            min-width: 165px;
             overflow: auto;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
@@ -77,18 +77,23 @@
         .pojo-a11y-resize-font-130 {
             font-size: 130% !important;
         }
+
         .pojo-a11y-resize-font-140 {
             font-size: 140% !important;
         }
+
         .pojo-a11y-resize-font-150 {
             font-size: 150% !important;
         }
+
         .pojo-a11y-resize-font-160 {
             font-size: 160% !important;
         }
+
         .pojo-a11y-readable-font {
             font-family: Verdana,Arial,Helvetica,sans-serif !important;
         }
+
         .pojo-a11y-high-contrast {
             color: white !important;
             background: black !important;
@@ -97,16 +102,20 @@
             user-select: text !important;
             box-shadow: none !important;
         }
+
         .pojo-a11y-light-background {
             background: #fff !important;
             color: #000 !important;
+        }
+
+        .fafa-space {
+            padding-right: 7px
         }
     </style>
     @*Sujay End*@
 
     @Html.Action("Seo", "Seo")
     <title>@(Model.GetPropertyValue<string>("navigationTitle"))</title>
-
     <link rel="stylesheet" href="/assets/css/critical.css?cdv=@instanceVersion" />
     <link rel="preload" href="/assets/css/base/base.css?cdv=@instanceVersion" as="style" onload="this.onload = null; this.rel = 'stylesheet';" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CQuicksand:400,700" rel="preload" as="style" onload="this.onload = null; this.rel = 'stylesheet';">
@@ -114,23 +123,27 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700&7CQuicksand:400,700" rel="stylesheet">
         <link rel="stylesheet" href="/assets/css/base/base.css?cdv=@instanceVersion">
         <link rel="stylesheet" href="/assets/css/noscript.css?cdv=@instanceVersion">
+
     </noscript>
+    @*Sujay Start*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*Sujay End*@
 
     @Html.Action("RenderAnalyticsScript", "Script")
-   
+
 </head>
 <body data-nav-path=",@(UmbracoContext.Current.PublishedContentRequest.PublishedContent.Path)," data-doctype="@UmbracoContext.Current.PublishedContentRequest.PublishedContent.ContentType.Alias" data-versioning="@instanceVersion">
     @*Sujay Start*@
     <div class="dropdown">
-        <button onclick="helpSubMenu()" class="dropbtn">Logo</button>
+        <button onclick="helpSubMenu()" class="dropbtn fa fa-wheelchair"></button>
         <div id="helpDropdown" class="dropdown-content">
-            <a href="#" id="increaseText" onclick="increaseText()">Increase text</a>
-            <a href="#" id="decreaseText" onclick="decreaseText()">Decrease Text</a>
-            <a href="#" id="normalText" onclick="normalText()">Normal Font</a>
-            <a href="#" id="darkBackGround" onclick="darkBackGround()">Dark Background</a>
-            <a href="#" id="lightBackground" onclick="lightBackground()">Light Background</a>
-            <a href="#" id="tabbedContent">Tabbed Content</a>
-            <a href="#" id="reset" onclick="resetAll()">Reset</a>
+            <a href="#" id="increaseText" onclick="increaseText()"><i class="fa fa-search-plus fafa-space"></i>Increase text</a>
+            <a href="#" id="decreaseText" onclick="decreaseText()"><i class="fa fa-search-minus fafa-space"></i>Decrease Text</a>
+            <a href="#" id="normalText" onclick="normalText()"><i class="fa fa-font fafa-space"></i>Normal Font</a>
+            <a href="#" id="darkBackGround" onclick="darkBackGround()"><i class="fa fa-share-square fafa-space"></i>Dark Background</a>
+            <a href="#" id="lightBackground" onclick="lightBackground()"><i class="fa fa-share-square-o fafa-space"></i>Light Background</a>
+            <a href="#" id="tabbedContent"><i class="fa fa-keyboard-o fafa-space"></i>Tabbed Content</a>
+            <a href="#" id="reset" onclick="resetAll()"><i class="fa fa-refresh fafa-space"></i>Reset</a>
         </div>
     </div>
     <script>
@@ -158,8 +171,7 @@
             if ($("body").hasClass("pojo-a11y-resize-font-130") == false &&
                 $("body").hasClass("pojo-a11y-resize-font-140") == false &&
                 $("body").hasClass("pojo-a11y-resize-font-150") == false &&
-                $("body").hasClass("pojo-a11y-resize-font-160") == false)
-            {
+                $("body").hasClass("pojo-a11y-resize-font-160") == false) {
                 $('body').addClass('pojo-a11y-resize-font-130');
             }
             else if ($("body").hasClass("pojo-a11y-resize-font-130") == true) {
@@ -176,7 +188,7 @@
             }
         }
         function decreaseText() {
-             if ($("body").hasClass("pojo-a11y-resize-font-130") == true) {
+            if ($("body").hasClass("pojo-a11y-resize-font-130") == true) {
                 $('body').removeClass('pojo-a11y-resize-font-130');
             }
             else if ($("body").hasClass("pojo-a11y-resize-font-140") == true) {
