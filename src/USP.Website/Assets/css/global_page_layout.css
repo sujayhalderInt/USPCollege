@@ -83,7 +83,7 @@ body.usp-light-background, body.usp-light-background *:not(#usp-toolbar):not(.us
 .fafa-space {
     padding-right: 7px
 }
-/*INNER*/
+/* INNER */
 body.usp-high-contrast .hero-banner *:not(#usp-toolbar):not(.usp-toolbar-links) {
     background: transparent;
 }
