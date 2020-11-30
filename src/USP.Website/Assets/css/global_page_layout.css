@@ -1,0 +1,83 @@
+﻿.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 10px;
+    font-size: 32px !important;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 165px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+.dropdown a:hover {
+    background-color: #c6c6c6;
+    color: #1b25e5;
+}
+
+.show {
+    display: block;
+}
+
+.usp-resize-font-130 {
+    font-size: 130% !important;
+}
+
+.usp-resize-font-140 {
+    font-size: 140% !important;
+}
+
+.usp-resize-font-150 {
+    font-size: 150% !important;
+}
+
+.usp-resize-font-160 {
+    font-size: 160% !important;
+}
+
+.usp-readable-font {
+    font-family: Verdana,Arial,Helvetica,sans-serif !important;
+}
+
+.usp-high-contrast {
+    color: white !important;
+    background: black !important;
+    background-color: black !important;
+    text-shadow: none !important;
+    user-select: text !important;
+    box-shadow: none !important;
+}
+
+.usp-light-background {
+    background: #fff !important;
+    color: #000 !important;
+}
+
+.fafa-space {
+    padding-right: 7px
+}
+
+
