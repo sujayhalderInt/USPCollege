@@ -29,7 +29,6 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-
     @Html.Action("Seo", "Seo")
     <title>@(Model.GetPropertyValue<string>("navigationTitle"))</title>
     <link rel="stylesheet" href="/assets/css/critical.css?cdv=@instanceVersion" />
@@ -39,7 +38,6 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700&7CQuicksand:400,700" rel="stylesheet">
         <link rel="stylesheet" href="/assets/css/base/base.css?cdv=@instanceVersion">
         <link rel="stylesheet" href="/assets/css/noscript.css?cdv=@instanceVersion">
-
     </noscript>
 
     @*Sujay Start*@
@@ -48,22 +46,8 @@
     @*Sujay End*@
 
     @Html.Action("RenderAnalyticsScript", "Script")
-
 </head>
 <body data-nav-path=",@(UmbracoContext.Current.PublishedContentRequest.PublishedContent.Path)," data-doctype="@UmbracoContext.Current.PublishedContentRequest.PublishedContent.ContentType.Alias" data-versioning="@instanceVersion">
-    @*Sujay Start*@
-    <div class="dropdown">
-        <button onclick="helpSubMenu()" class="dropbtn fa fa-wheelchair"></button>
-        <div id="helpDropdown" class="dropdown-content">
-            <a href="#" id="increaseText" onclick="increaseText()"><i class="fa fa-search-plus fafa-space"></i>Increase text</a>
-            <a href="#" id="decreaseText" onclick="decreaseText()"><i class="fa fa-search-minus fafa-space"></i>Decrease Text</a>
-            <a href="#" id="normalText" onclick="normalText()"><i class="fa fa-font fafa-space"></i>Normal Font</a>
-            <a href="#" id="darkBackGround" onclick="darkBackGround()"><i class="fa fa-share-square fafa-space"></i>Dark Background</a>
-            <a href="#" id="lightBackground" onclick="lightBackground()"><i class="fa fa-share-square-o fafa-space"></i>Light Background</a>
-            <a href="#" id="tabbedContent"><i class="fa fa-keyboard-o fafa-space"></i>Tabbed Content</a>
-            <a href="#" id="reset" onclick="resetAll()"><i class="fa fa-refresh fafa-space"></i>Reset</a>
-        </div>
-    </div>
     <script>
         /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */
@@ -90,8 +74,8 @@
                 $("body").hasClass("usp-resize-font-140") == false &&
                 $("body").hasClass("usp-resize-font-150") == false &&
                 $("body").hasClass("usp-resize-font-160") == false) {
-                $('body').addClass('usp-resize-font-130'); 
-                $('header').addClass('usp-resize-font-130'); 
+                $('body').addClass('usp-resize-font-130');
+                $('header').addClass('usp-resize-font-130');
             }
             else if ($("body").hasClass("usp-resize-font-130") == true) {
                 $('body').removeClass('usp-resize-font-130');
@@ -160,24 +144,34 @@
             $('body').removeClass('usp-light-background');
         }
     </script>
-    @*Sujay End*@
     @Html.Action("Cookies", "CookiePolicy")
 
     <header class="header">
+        <div class="dropdown">
+            <button onclick="helpSubMenu()" class="dropbtn fa fa-wheelchair"></button>
+            <div id="helpDropdown" class="dropdown-content">
+                <a href="#" id="increaseText" onclick="increaseText()"><i class="fa fa-search-plus fafa-space"></i>Increase text</a>
+                <a href="#" id="decreaseText" onclick="decreaseText()"><i class="fa fa-search-minus fafa-space"></i>Decrease Text</a>
+                <a href="#" id="normalText" onclick="normalText()"><i class="fa fa-font fafa-space"></i>Normal Font</a>
+                <a href="#" id="darkBackGround" onclick="darkBackGround()"><i class="fa fa-share-square fafa-space"></i>Dark Background</a>
+                <a href="#" id="lightBackground" onclick="lightBackground()"><i class="fa fa-share-square-o fafa-space"></i>Light Background</a>
+                <a href="#" id="tabbedContent"><i class="fa fa-keyboard-o fafa-space"></i>Tabbed Content</a>
+                <a href="#" id="reset" onclick="resetAll()"><i class="fa fa-refresh fafa-space"></i>Reset</a>
+            </div>
+        </div>
+
         <nav class="menu">
             @Html.Action("Navigation", "Navigation")
             <ul class="menu__tertiary" role="menubar">
                 <li role="menuitem" class="mobile-only"><a href="/" class="menu__logo--mobile"><img src="/assets/img/logo.png" alt="logo"></a></li>
-
                 @Html.Action("SignUp", "Navigation")
-
                 <li role="menuitem"><a class="header-search-btn" href="@Umbraco.GetSearchUrl()"><i class="icon-search" aria-hidden="true"></i> @library.GetDictionaryItem("Global Search.Labels.SearchMenuText")</a></li>
-
                 @Html.Action("RenderApply", "Navigation")
             </ul>
         </nav>
         @Html.Action("RenderGlobalSearch", "Navigation")
     </header>
+
     <main id="mainContent">
         @RenderBody()
     </main>
@@ -195,6 +189,5 @@
     <script defer src="/assets/js/components.js?cdv=@instanceVersion"></script>
 
     @RenderSection("PageScript", false)
-
 </body>
 </html>

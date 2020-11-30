@@ -1,83 +1,84 @@
 ﻿.dropbtn {
-    background-color: #3498DB;
+    background-color: #3ec2cf;
     color: white;
     padding: 10px;
     font-size: 32px !important;
     border: none;
     cursor: pointer;
+    transition: 0.4s;
+    border-radius: 0 5px 5px 0;
 }
-
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
+    background-color: #db623c;
 }
-
 .dropdown {
-    position: relative;
-    display: inline-block;
+    position: fixed;
+    z-index: 9;
+    top: 100px;
 }
-
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 165px;
+    min-width: 200px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
 .dropdown a:hover {
     background-color: #c6c6c6;
     color: #1b25e5;
 }
-
 .show {
     display: block;
 }
-
-.usp-resize-font-130 {
+body.usp-resize-font-115 {
+    font-size: 115% !important;
+    line-height: normal;
+}
+body.usp-resize-font-130 {
     font-size: 130% !important;
+    line-height: normal;
 }
-
-.usp-resize-font-140 {
+body.usp-resize-font-140 {
     font-size: 140% !important;
+    line-height: normal;
 }
-
-.usp-resize-font-150 {
+body.usp-resize-font-150 {
     font-size: 150% !important;
+    line-height: normal;
 }
-
-.usp-resize-font-160 {
+body.usp-resize-font-160 {
     font-size: 160% !important;
+    line-height: normal;
 }
-
-.usp-readable-font {
+body.usp-readable-font {
     font-family: Verdana,Arial,Helvetica,sans-serif !important;
 }
-
-.usp-high-contrast {
-    color: white !important;
-    background: black !important;
-    background-color: black !important;
+body.usp-readable-font h1, body.usp-readable-font h2, body.usp-readable-font h3, body.usp-readable-font h4, body.usp-readable-font h5, body.usp-readable-font h6 {
+    font-family: Verdana,Arial,Helvetica,sans-serif !important;
+}
+body.usp-readable-font .header .menu__secondary li, body.usp-readable-font .header .menu__tertiary li {
+    margin-right: 27px;
+}
+body.usp-high-contrast, body.usp-high-contrast *:not(#usp-toolbar):not(.usp-toolbar-link) {
+    color: #fff !important;
+    background: #000 !important;
+    background-color: #000 !important;
     text-shadow: none !important;
     user-select: text !important;
     box-shadow: none !important;
 }
-
-.usp-light-background {
+body.usp-light-background, body.usp-light-background *:not(#usp-toolbar):not(.usp-toolbar-links) {
     background: #fff !important;
     color: #000 !important;
 }
-
 .fafa-space {
     padding-right: 7px
 }
-
-
