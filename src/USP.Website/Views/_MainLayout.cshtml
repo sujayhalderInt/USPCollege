@@ -86,12 +86,17 @@
         }
 
         function increaseText() {
-            if ($("body").hasClass("usp-resize-font-130") == false &&
+            if ($("body").hasClass("usp-resize-font-115") == false &&
+                $("body").hasClass("usp-resize-font-130") == false &&
                 $("body").hasClass("usp-resize-font-140") == false &&
                 $("body").hasClass("usp-resize-font-150") == false &&
                 $("body").hasClass("usp-resize-font-160") == false) {
-                $('body').addClass('usp-resize-font-130'); 
-                $('header').addClass('usp-resize-font-130'); 
+                $('body').addClass('usp-resize-font-115'); 
+                $('header').addClass('usp-resize-font-115'); 
+            }
+            else if ($("body").hasClass("usp-resize-font-115") == true) {
+                $('body').removeClass('usp-resize-font-115');
+                $('body').addClass('usp-resize-font-130');
             }
             else if ($("body").hasClass("usp-resize-font-130") == true) {
                 $('body').removeClass('usp-resize-font-130');
@@ -150,7 +155,6 @@
             }
         }
         function resetAll() {
-            $('body').removeClass('usp-resize-font-110');
             $('body').removeClass('usp-resize-font-130');
             $('body').removeClass('usp-resize-font-140');
             $('body').removeClass('usp-resize-font-150');
