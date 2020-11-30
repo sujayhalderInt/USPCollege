@@ -11,12 +11,12 @@
 .dropbtn:hover, .dropbtn:focus {
     background-color: #db623c;
 }
-.dropdown {
+.newDropdown {
     position: fixed;
     z-index: 9;
     top: 100px;
 }
-.dropdown-content {
+.newDropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -25,13 +25,13 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-.dropdown-content a {
-    color: black;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-}
-.dropdown a:hover {
+    .newDropdown-content a {
+        color: black;
+        padding: 10px 15px;
+        text-decoration: none;
+        display: block;
+    }
+.newDropdown a:hover {
     background-color: #c6c6c6;
     color: #1b25e5;
 }
