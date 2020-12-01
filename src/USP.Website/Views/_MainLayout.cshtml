@@ -189,13 +189,13 @@
     <div class="newDropdown">
         <button onclick="helpSubMenu()" class="dropbtn fa fa-wheelchair"></button>
         <div id="helpDropdown" class="newDropdown-content">
-            <a href="#" id="increaseText" onclick="increaseText()"><i class="fa fa-search-plus fafa-space"></i>Increase text</a>
-            <a href="#" id="decreaseText" onclick="decreaseText()"><i class="fa fa-search-minus fafa-space"></i>Decrease Text</a>
-            <a href="#" id="normalText" onclick="normalText()"><i class="fa fa-font fafa-space"></i>Normal Font</a>
-            <a href="#" id="darkBackGround" onclick="darkBackGround()"><i class="fa fa-share-square fafa-space"></i>Dark Background</a>
-            <a href="#" id="lightBackground" onclick="lightBackground()"><i class="fa fa-share-square-o fafa-space"></i>Light Background</a>
+            <a href="#" id="increaseText" onclick="increaseText(); return false;"><i class="fa fa-search-plus fafa-space"></i>Increase text</a>
+            <a href="#" id="decreaseText" onclick="decreaseText(); return false;"><i class="fa fa-search-minus fafa-space"></i>Decrease Text</a>
+            <a href="#" id="normalText" onclick="normalText(); return false;"><i class="fa fa-font fafa-space"></i>Normal Font</a>
+            <a href="#" id="darkBackGround" onclick="darkBackGround(); return false;"><i class="fa fa-share-square fafa-space"></i>Dark Background</a>
+            <a href="#" id="lightBackground" onclick="lightBackground(); return false;"><i class="fa fa-share-square-o fafa-space"></i>Light Background</a>
             <a href="#" id="tabbedContent"><i class="fa fa-keyboard-o fafa-space"></i>Tabbed Content</a>
-            <a href="#" id="reset" onclick="resetAll()"><i class="fa fa-refresh fafa-space"></i>Reset</a>
+            <a href="#" id="reset" onclick="resetAll(); return false;"><i class="fa fa-refresh fafa-space"></i>Reset</a>
         </div>
     </div>
 </body>

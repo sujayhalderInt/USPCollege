@@ -74,7 +74,10 @@ window.starterui.video = (function ($) {
             } else {
                 total = e.target.getDuration();
                 getTitle(videoId, videoKey);
-                vidDuration = Math.floor(total / 60) + ":" + (total % 60 ? total % 60 : '00');
+                //USP-4_30/11/2020 Begin
+                //vidDuration = Math.floor(total / 60) + ":" + (total % 60 ? total % 60 : '00');
+                vidDuration = Math.floor(total / 60) + ":" + (total % 60 ? total % 60 <= 9 ? '0' + total % 60 : total % 60 : '00');
+                //USP-4_30/11/2020 End
             }
 
             // set time
