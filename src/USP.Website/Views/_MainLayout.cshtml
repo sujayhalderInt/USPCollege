@@ -1,4 +1,4 @@
-﻿@using ClientDependency.Core.Config
+﻿﻿@using ClientDependency.Core.Config
 @using USP.Business.Controllers.Pages
 @using USP.Business.Extensions
 @inherits UmbracoViewPage
@@ -28,91 +28,6 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    @*Sujay Start*@
-    <style>
-        .dropbtn {
-            background-color: #3498DB;
-            color: white;
-            padding: 10px;
-            font-size: 32px !important;
-            border: none;
-            cursor: pointer;
-        }
-
-            .dropbtn:hover, .dropbtn:focus {
-                background-color: #2980B9;
-            }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 165px;
-            overflow: auto;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-            .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
-
-        .dropdown a:hover {
-            background-color: #c6c6c6;
-            color: #1b25e5;
-        }
-
-        .show {
-            display: block;
-        }
-        /*Added*/
-        .pojo-a11y-resize-font-130 {
-            font-size: 130% !important;
-        }
-
-        .pojo-a11y-resize-font-140 {
-            font-size: 140% !important;
-        }
-
-        .pojo-a11y-resize-font-150 {
-            font-size: 150% !important;
-        }
-
-        .pojo-a11y-resize-font-160 {
-            font-size: 160% !important;
-        }
-
-        .pojo-a11y-readable-font {
-            font-family: Verdana,Arial,Helvetica,sans-serif !important;
-        }
-
-        .pojo-a11y-high-contrast {
-            color: white !important;
-            background: black !important;
-            background-color: black !important;
-            text-shadow: none !important;
-            user-select: text !important;
-            box-shadow: none !important;
-        }
-
-        .pojo-a11y-light-background {
-            background: #fff !important;
-            color: #000 !important;
-        }
-
-        .fafa-space {
-            padding-right: 7px
-        }
-    </style>
-    @*Sujay End*@
 
     @Html.Action("Seo", "Seo")
     <title>@(Model.GetPropertyValue<string>("navigationTitle"))</title>
@@ -123,29 +38,16 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700&7CQuicksand:400,700" rel="stylesheet">
         <link rel="stylesheet" href="/assets/css/base/base.css?cdv=@instanceVersion">
         <link rel="stylesheet" href="/assets/css/noscript.css?cdv=@instanceVersion">
-
     </noscript>
+
     @*Sujay Start*@
+    <link href="~/Assets/css/global_page_layout.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @*Sujay End*@
 
     @Html.Action("RenderAnalyticsScript", "Script")
-
 </head>
 <body data-nav-path=",@(UmbracoContext.Current.PublishedContentRequest.PublishedContent.Path)," data-doctype="@UmbracoContext.Current.PublishedContentRequest.PublishedContent.ContentType.Alias" data-versioning="@instanceVersion">
-    @*Sujay Start*@
-    <div class="dropdown">
-        <button onclick="helpSubMenu()" class="dropbtn fa fa-wheelchair"></button>
-        <div id="helpDropdown" class="dropdown-content">
-            <a href="#" id="increaseText" onclick="increaseText()"><i class="fa fa-search-plus fafa-space"></i>Increase text</a>
-            <a href="#" id="decreaseText" onclick="decreaseText()"><i class="fa fa-search-minus fafa-space"></i>Decrease Text</a>
-            <a href="#" id="normalText" onclick="normalText()"><i class="fa fa-font fafa-space"></i>Normal Font</a>
-            <a href="#" id="darkBackGround" onclick="darkBackGround()"><i class="fa fa-share-square fafa-space"></i>Dark Background</a>
-            <a href="#" id="lightBackground" onclick="lightBackground()"><i class="fa fa-share-square-o fafa-space"></i>Light Background</a>
-            <a href="#" id="tabbedContent"><i class="fa fa-keyboard-o fafa-space"></i>Tabbed Content</a>
-            <a href="#" id="reset" onclick="resetAll()"><i class="fa fa-refresh fafa-space"></i>Reset</a>
-        </div>
-    </div>
     <script>
         /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */
@@ -156,7 +58,7 @@
         // Close the dropdown if the user clicks outside of it
         window.onclick = function (event) {
             if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var dropdowns = document.getElementsByClassName("newDropdown-content");
                 var i;
                 for (i = 0; i < dropdowns.length; i++) {
                     var openDropdown = dropdowns[i];
@@ -168,80 +70,89 @@
         }
 
         function increaseText() {
-            if ($("body").hasClass("pojo-a11y-resize-font-130") == false &&
-                $("body").hasClass("pojo-a11y-resize-font-140") == false &&
-                $("body").hasClass("pojo-a11y-resize-font-150") == false &&
-                $("body").hasClass("pojo-a11y-resize-font-160") == false) {
-                $('body').addClass('pojo-a11y-resize-font-130');
+            if ($("body").hasClass("usp-resize-font-115") == false &&
+                $("body").hasClass("usp-resize-font-130") == false &&
+                $("body").hasClass("usp-resize-font-140") == false &&
+                $("body").hasClass("usp-resize-font-150") == false &&
+                $("body").hasClass("usp-resize-font-160") == false) {
+                $('body').addClass('usp-resize-font-115');
+                $('header').addClass('usp-resize-font-115');
             }
-            else if ($("body").hasClass("pojo-a11y-resize-font-130") == true) {
-                $('body').removeClass('pojo-a11y-resize-font-130');
-                $('body').addClass('pojo-a11y-resize-font-140');
+            else if ($("body").hasClass("usp-resize-font-115") == true) {
+                $('body').removeClass('usp-resize-font-115');
+                $('body').addClass('usp-resize-font-130');
             }
-            else if ($("body").hasClass("pojo-a11y-resize-font-140") == true) {
-                $('body').removeClass('pojo-a11y-resize-font-140');
-                $('body').addClass('pojo-a11y-resize-font-150');
+            else if ($("body").hasClass("usp-resize-font-130") == true) {
+                $('body').removeClass('usp-resize-font-130');
+                $('body').addClass('usp-resize-font-140');
             }
-            else if ($("body").hasClass("pojo-a11y-resize-font-150") == true) {
-                $('body').removeClass('pojo-a11y-resize-font-150');
-                $('body').addClass('pojo-a11y-resize-font-160');
+            else if ($("body").hasClass("usp-resize-font-140") == true) {
+                $('body').removeClass('usp-resize-font-140');
+                $('body').addClass('usp-resize-font-150');
+            }
+            else if ($("body").hasClass("usp-resize-font-150") == true) {
+                $('body').removeClass('usp-resize-font-150');
+                $('body').addClass('usp-resize-font-160');
             }
         }
         function decreaseText() {
-            if ($("body").hasClass("pojo-a11y-resize-font-130") == true) {
-                $('body').removeClass('pojo-a11y-resize-font-130');
+            if ($("body").hasClass("usp-resize-font-115") == true) {
+                $('body').removeClass('usp-resize-font-115');
             }
-            else if ($("body").hasClass("pojo-a11y-resize-font-140") == true) {
-                $('body').removeClass('pojo-a11y-resize-font-140');
-                $('body').addClass('pojo-a11y-resize-font-130');
+            else if ($("body").hasClass("usp-resize-font-130") == true) {
+                $('body').removeClass('usp-resize-font-130');
+                $('body').addClass('usp-resize-font-115');
             }
-            else if ($("body").hasClass("pojo-a11y-resize-font-150") == true) {
-                $('body').removeClass('pojo-a11y-resize-font-150');
-                $('body').addClass('pojo-a11y-resize-font-140');
+            else if ($("body").hasClass("usp-resize-font-140") == true) {
+                $('body').removeClass('usp-resize-font-140');
+                $('body').addClass('usp-resize-font-130');
             }
-            else if ($("body").hasClass("pojo-a11y-resize-font-160") == true) {
-                $('body').removeClass('pojo-a11y-resize-font-160');
-                $('body').addClass('pojo-a11y-resize-font-150');
+            else if ($("body").hasClass("usp-resize-font-150") == true) {
+                $('body').removeClass('usp-resize-font-150');
+                $('body').addClass('usp-resize-font-140');
+            }
+            else if ($("body").hasClass("usp-resize-font-160") == true) {
+                $('body').removeClass('usp-resize-font-160');
+                $('body').addClass('usp-resize-font-150');
             }
         }
         function normalText() {
-            if ($("body").hasClass("pojo-a11y-readable-font") == false) {
-                $('body').addClass('pojo-a11y-readable-font');
+            if ($("body").hasClass("usp-readable-font") == false) {
+                $('body').addClass('usp-readable-font');
             }
             else {
-                $('body').removeClass('pojo-a11y-readable-font');
+                $('body').removeClass('usp-readable-font');
             }
         }
         function darkBackGround() {
-            if ($("body").hasClass("pojo-a11y-high-contrast") == false) {
-                $('body').removeClass('pojo-a11y-light-background');
-                $('body').addClass('pojo-a11y-high-contrast');
+            if ($("body").hasClass("usp-high-contrast") == false) {
+                $('body').removeClass('usp-light-background');
+                $('body').addClass('usp-high-contrast');
             }
             else {
-                $('body').removeClass('pojo-a11y-high-contrast');
+                $('body').removeClass('usp-high-contrast');
             }
         }
         function lightBackground() {
-            if ($("body").hasClass("pojo-a11y-light-background") == false) {
-                $('body').removeClass('pojo-a11y-high-contrast');
-                $('body').addClass('pojo-a11y-light-background');
+            if ($("body").hasClass("usp-light-background") == false) {
+                $('body').removeClass('usp-high-contrast');
+                $('body').addClass('usp-light-background');
             }
             else {
-                $('body').removeClass('pojo-a11y-light-background');
+                $('body').removeClass('usp-light-background');
             }
         }
         function resetAll() {
-            $('body').removeClass('pojo-a11y-resize-font-110');
-            $('body').removeClass('pojo-a11y-resize-font-130');
-            $('body').removeClass('pojo-a11y-resize-font-140');
-            $('body').removeClass('pojo-a11y-resize-font-150');
-            $('body').removeClass('pojo-a11y-resize-font-160');
-            $('body').removeClass('pojo-a11y-readable-font');
-            $('body').removeClass('pojo-a11y-high-contrast');
-            $('body').removeClass('pojo-a11y-light-background');
+            $('body').removeClass('usp-resize-font-115');
+            $('body').removeClass('usp-resize-font-130');
+            $('body').removeClass('usp-resize-font-140');
+            $('body').removeClass('usp-resize-font-150');
+            $('body').removeClass('usp-resize-font-160');
+            $('body').removeClass('usp-readable-font');
+            $('body').removeClass('usp-high-contrast');
+            $('body').removeClass('usp-light-background');
         }
     </script>
-    @*Sujay End*@
     @Html.Action("Cookies", "CookiePolicy")
 
     <header class="header">
@@ -249,16 +160,14 @@
             @Html.Action("Navigation", "Navigation")
             <ul class="menu__tertiary" role="menubar">
                 <li role="menuitem" class="mobile-only"><a href="/" class="menu__logo--mobile"><img src="/assets/img/logo.png" alt="logo"></a></li>
-
                 @Html.Action("SignUp", "Navigation")
-
                 <li role="menuitem"><a class="header-search-btn" href="@Umbraco.GetSearchUrl()"><i class="icon-search" aria-hidden="true"></i> @library.GetDictionaryItem("Global Search.Labels.SearchMenuText")</a></li>
-
                 @Html.Action("RenderApply", "Navigation")
             </ul>
         </nav>
         @Html.Action("RenderGlobalSearch", "Navigation")
     </header>
+
     <main id="mainContent">
         @RenderBody()
     </main>
@@ -277,5 +186,17 @@
 
     @RenderSection("PageScript", false)
 
+    <div class="newDropdown">
+        <button onclick="helpSubMenu()" class="dropbtn fa fa-wheelchair"></button>
+        <div id="helpDropdown" class="newDropdown-content">
+            <a href="#" id="increaseText" onclick="increaseText(); return false;"><i class="fa fa-search-plus fafa-space"></i>Increase text</a>
+            <a href="#" id="decreaseText" onclick="decreaseText(); return false;"><i class="fa fa-search-minus fafa-space"></i>Decrease Text</a>
+            <a href="#" id="normalText" onclick="normalText(); return false;"><i class="fa fa-font fafa-space"></i>Normal Font</a>
+            <a href="#" id="darkBackGround" onclick="darkBackGround(); return false;"><i class="fa fa-share-square fafa-space"></i>Dark Background</a>
+            <a href="#" id="lightBackground" onclick="lightBackground(); return false;"><i class="fa fa-share-square-o fafa-space"></i>Light Background</a>
+            <a href="#" id="tabbedContent"><i class="fa fa-keyboard-o fafa-space"></i>Tabbed Content</a>
+            <a href="#" id="reset" onclick="resetAll(); return false;"><i class="fa fa-refresh fafa-space"></i>Reset</a>
+        </div>
+    </div>
 </body>
 </html>
