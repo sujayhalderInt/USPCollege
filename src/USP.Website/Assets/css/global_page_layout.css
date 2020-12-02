@@ -62,8 +62,101 @@ body.usp-resize-font-160 {
 body.usp-readable-font {
     font-family: Verdana,Arial,Helvetica,sans-serif !important;
 }
-body.usp-readable-font h1, body.usp-readable-font h2, body.usp-readable-font h3, body.usp-readable-font h4, body.usp-readable-font h5, body.usp-readable-font h6 {
+body.usp-readable-font h1, 
+body.usp-readable-font h2, 
+body.usp-readable-font h3, 
+body.usp-readable-font h4, 
+body.usp-readable-font h5, 
+body.usp-readable-font h6 {
     font-family: Verdana,Arial,Helvetica,sans-serif !important;
+}
+body.usp-resize-font-115 h1 {
+    font-size: 4.5625rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-115 h2 {
+    font-size: 3.25rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-115 h3 {
+    font-size: 2.5rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-130 h1 {
+    font-size: 5.5625rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-130 h2 {
+    font-size: 4.25rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-130 h3 {
+    font-size: 3.5rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-140 h1 {
+    font-size: 6.5625rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-140 h2 {
+    font-size: 5.25rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-140 h3 {
+    font-size: 4.5rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-150 h1 {
+    font-size: 7.5625rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-150 h2 {
+    font-size: 6.25rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-150 h3 {
+    font-size: 5.5rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-160 h1 {
+    font-size: 8.5625rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-160 h2 {
+    font-size: 7.25rem !important;
+    line-height: normal;
+}
+body.usp-resize-font-160 h3 {
+    font-size: 6.5rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-115 p {
+    font-size: 1.875rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-130 p {
+    font-size: 2.875rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-140 p {
+    font-size: 3.875rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-150 p {
+    font-size: 4.875rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-160 p {
+    font-size: 5.875rem !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-115 .spotlight__description,
+body.usp-resize-font-130 .spotlight__description,
+body.usp-resize-font-140 .spotlight__description,
+body.usp-resize-font-150 .spotlight__description,
+body.usp-resize-font-160 .spotlight__description
+{
+    height: auto !important;
 }
 body.usp-readable-font .header .menu__secondary li, body.usp-readable-font .header .menu__tertiary li {
     margin-right: 27px;
@@ -101,9 +194,34 @@ body.usp-high-contrast .locations-map .map button.dismissButton {
 }
 body.usp-high-contrast .newDropdown button.dropbtn {
     border: 1px solid #565656;
+    background: #e6643b !important;
 }
 body.usp-high-contrast .newDropdown .newDropdown-content {
     border: 1px solid #565656;
+}
+body.usp-high-contrast .newDropdown-content .activeSideMenu,
+body.usp-high-contrast .newDropdown-content .activeSideMenu .fa {
+    background: #e6643b !important;
+}
+body.usp-high-contrast .btn--blue,
+body.usp-high-contrast .btn--blue.btn--animated span {
+    background: #287AB3 !important;
+}
+body.usp-high-contrast .slick-slider ul.slick-dots {
+    background-color: #fff !important;
+}
+body.usp-high-contrast .slick-slider ul.slick-dots li button {
+    background:#fff !important;
+    background-color: #fff !important;
+}
+body.usp-high-contrast .slick-slider ul.slick-dots li.slick-active button {
+    background: #3EC2CF !important;
+    background-color: #3EC2CF !important;
+}
+body.usp-high-contrast .points select, body.usp-high-contrast .points input {
+    background-color: #FFFFFF !important;
+    color: #000 !important;
+    border: 0;
 }
 
 body.usp-light-background .hero-banner *:not(#usp-toolbar):not(.usp-toolbar-links) {
@@ -117,13 +235,38 @@ body.usp-light-background .locations-map .map button.dismissButton {
 }
 body.usp-light-background .newDropdown button.dropbtn {
     border: 1px solid #ccc;
+    background: #ccc !important;
 }
 body.usp-light-background .newDropdown .newDropdown-content {
     border: 1px solid #ccc;
 }
-.activeSideMenu {
-    background-color: #b7b5b5;
+body.usp-light-background .newDropdown-content .activeSideMenu,
+body.usp-light-background .newDropdown-content .activeSideMenu .fa {
+    background: #ccc !important;
 }
-
-
-
+body.usp-light-background .btn--blue,
+body.usp-light-background .btn--blue.btn--animated span {
+    background: #ccc !important;
+}
+body.usp-light-background .btn--white {
+    border: 3px solid #ccc !important;
+}
+body.usp-light-background .slick-slider ul.slick-dots {
+    background-color: #ccc !important;
+}
+body.usp-light-background .slick-slider ul.slick-dots li button {
+    background: #ccc !important;
+    background-color: #ccc !important;
+}
+body.usp-light-background .slick-slider ul.slick-dots li.slick-active button {
+    background: #000 !important;
+    background-color: #000 !important;
+}
+body.usp-light-background .slick-prev:before, body.usp-light-background .slick-next:before {
+    color: #000 !important;
+}
+body.usp-light-background .points select, body.usp-light-background .points input {
+    background-color: #ccc !important;
+    color: #000 !important;
+    border: 0;
+}
