@@ -223,7 +223,6 @@ body.usp-high-contrast .points select, body.usp-high-contrast .points input {
     color: #000 !important;
     border: 0;
 }
-
 body.usp-light-background .hero-banner *:not(#usp-toolbar):not(.usp-toolbar-links) {
     background: transparent;
 }
