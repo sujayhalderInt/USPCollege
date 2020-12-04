@@ -20,7 +20,7 @@ window.starterui.video = (function ($) {
                     rel: 0,
                     cc_load_policy: 1,
                     modestbranding: 1,
-                    //playsinline: 1,
+                    //playsinline: 1, USP-4_30/11/2020
                     fs: 1,
                     enablejsapi: 1
                 },
@@ -50,10 +50,10 @@ window.starterui.video = (function ($) {
             $.getJSON('https://www.googleapis.com/youtube/v3/videos?id=' + id + '&key=' + key + '&part=snippet&callback=?', function (data) {
                 // set title
                 //console.log(data);
-                //USP-4_18/11/2020 Begin
+                //USP-4_30/11/2020 Begin
                 //$(model.outerContainer).find(model.videoTitle).html(data.items[0].snippet.title);
                 $("#vt-" + id).html(data.items[0].snippet.title);
-                //USP-4_18/11/2020 End
+                //USP-4_30/11/2020 End
             });
         },
 
@@ -62,7 +62,7 @@ window.starterui.video = (function ($) {
          * @param {object} e is event
          */
         onReady = function (e) {
-            var targetPlayer = e.target.f;
+            var targetPlayer = e.target.f;  //USP-4_30/11/2020 
             var total;
             var vidDuration = 0;
             var videoPoster = $(targetPlayer).next();
@@ -108,11 +108,11 @@ window.starterui.video = (function ($) {
          * @param {object} e is event
          */
         onPlayerStateChange = function (e) {
-            var vid = e.target.f;
+            var vid = e.target.f;   //USP-4_30/11/2020 
             /** Pauses current video playing if a new vide is seleted to play */
             if (e.data == YT.PlayerState.PLAYING) {
                 //BH
-                //var temp = e.target.f.src;
+                //var temp = e.target.f.src;     //USP-4_30/11/2020 
                 //for (var i = 0; i < videoArray.length; i++) {
                 //    if (videoArray[i].a.src !== temp) {
                 //        videoArray[i].pauseVideo();

@@ -72,28 +72,26 @@
         function increaseText() {
             $('#decreaseText').removeClass('activeSideMenu');
             if ($("body").hasClass("usp-resize-font-115") == false &&
-                $("body").hasClass("usp-resize-font-130") == false &&
-                $("body").hasClass("usp-resize-font-140") == false &&
-                $("body").hasClass("usp-resize-font-150") == false &&
-                $("body").hasClass("usp-resize-font-160") == false) {
+                $("body").hasClass("usp-resize-font-120") == false &&
+                $("body").hasClass("usp-resize-font-125") == false ) {
                 $('body').addClass('usp-resize-font-115');
             }
             else if ($("body").hasClass("usp-resize-font-115") == true) {
                 $('body').removeClass('usp-resize-font-115');
-                $('body').addClass('usp-resize-font-130');
+                $('body').addClass('usp-resize-font-120');
             }
-            else if ($("body").hasClass("usp-resize-font-130") == true) {
-                $('body').removeClass('usp-resize-font-130');
-                $('body').addClass('usp-resize-font-140');
+            else if ($("body").hasClass("usp-resize-font-120") == true) {
+                $('body').removeClass('usp-resize-font-120');
+                $('body').addClass('usp-resize-font-125');
             }
-            else if ($("body").hasClass("usp-resize-font-140") == true) {
-                $('body').removeClass('usp-resize-font-140');
-                $('body').addClass('usp-resize-font-150');
-            }
-            else if ($("body").hasClass("usp-resize-font-150") == true) {
-                $('body').removeClass('usp-resize-font-150');
-                $('body').addClass('usp-resize-font-160');
-            }
+            //else if ($("body").hasClass("usp-resize-font-140") == true) {
+            //    $('body').removeClass('usp-resize-font-140');
+            //    $('body').addClass('usp-resize-font-150');
+            //}
+            //else if ($("body").hasClass("usp-resize-font-150") == true) {
+            //    $('body').removeClass('usp-resize-font-150');
+            //    $('body').addClass('usp-resize-font-160');
+            //}
             $('#increaseText').addClass('activeSideMenu');
         }
         function decreaseText() {
@@ -101,22 +99,22 @@
             if ($("body").hasClass("usp-resize-font-115") == true) {
                 $('body').removeClass('usp-resize-font-115');
             }
-            else if ($("body").hasClass("usp-resize-font-130") == true) {
-                $('body').removeClass('usp-resize-font-130');
+            else if ($("body").hasClass("usp-resize-font-120") == true) {
+                $('body').removeClass('usp-resize-font-120');
                 $('body').addClass('usp-resize-font-115');
             }
-            else if ($("body").hasClass("usp-resize-font-140") == true) {
-                $('body').removeClass('usp-resize-font-140');
-                $('body').addClass('usp-resize-font-130');
+            else if ($("body").hasClass("usp-resize-font-125") == true) {
+                $('body').removeClass('usp-resize-font-125');
+                $('body').addClass('usp-resize-font-120');
             }
-            else if ($("body").hasClass("usp-resize-font-150") == true) {
-                $('body').removeClass('usp-resize-font-150');
-                $('body').addClass('usp-resize-font-140');
-            }
-            else if ($("body").hasClass("usp-resize-font-160") == true) {
-                $('body').removeClass('usp-resize-font-160');
-                $('body').addClass('usp-resize-font-150');
-            }
+            //else if ($("body").hasClass("usp-resize-font-150") == true) {
+            //    $('body').removeClass('usp-resize-font-150');
+            //    $('body').addClass('usp-resize-font-140');
+            //}
+            //else if ($("body").hasClass("usp-resize-font-160") == true) {
+            //    $('body').removeClass('usp-resize-font-160');
+            //    $('body').addClass('usp-resize-font-150');
+            //}
             $('#decreaseText').addClass('activeSideMenu');
         }
         function normalText() {
@@ -159,10 +157,8 @@
         }
         function resetAll() {
             $('body').removeClass('usp-resize-font-115');
-            $('body').removeClass('usp-resize-font-130');
-            $('body').removeClass('usp-resize-font-140');
-            $('body').removeClass('usp-resize-font-150');
-            $('body').removeClass('usp-resize-font-160');
+            $('body').removeClass('usp-resize-font-120');
+            $('body').removeClass('usp-resize-font-125');
             $('body').removeClass('usp-readable-font');
             $('body').removeClass('usp-high-contrast');
             $('body').removeClass('usp-light-background');
