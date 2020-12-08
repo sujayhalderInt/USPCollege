@@ -689,8 +689,10 @@ window.starterui.flyingFocus = function ($) {
             }
             clearTimeout(movingId);
             movingId = 0;
-            ringElem.classList.remove('flying-focus_visible');
-            prevFocused.classList.remove('flying-focus_target');
+            //USP-1_08/12/2020 Begin
+            //ringElem.classList.remove('flying-focus_visible');
+            //prevFocused.classList.remove('flying-focus_target');
+            //USP-1_08/12/2020 End
             prevFocused = null;
         }
 

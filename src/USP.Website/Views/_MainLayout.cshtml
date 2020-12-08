@@ -84,14 +84,6 @@
                 $('body').removeClass('usp-resize-font-120');
                 $('body').addClass('usp-resize-font-125');
             }
-            //else if ($("body").hasClass("usp-resize-font-140") == true) {
-            //    $('body').removeClass('usp-resize-font-140');
-            //    $('body').addClass('usp-resize-font-150');
-            //}
-            //else if ($("body").hasClass("usp-resize-font-150") == true) {
-            //    $('body').removeClass('usp-resize-font-150');
-            //    $('body').addClass('usp-resize-font-160');
-            //}
             $('#increaseText').addClass('activeSideMenu');
         }
         function decreaseText() {
@@ -107,14 +99,6 @@
                 $('body').removeClass('usp-resize-font-125');
                 $('body').addClass('usp-resize-font-120');
             }
-            //else if ($("body").hasClass("usp-resize-font-150") == true) {
-            //    $('body').removeClass('usp-resize-font-150');
-            //    $('body').addClass('usp-resize-font-140');
-            //}
-            //else if ($("body").hasClass("usp-resize-font-160") == true) {
-            //    $('body').removeClass('usp-resize-font-160');
-            //    $('body').addClass('usp-resize-font-150');
-            //}
             $('#decreaseText').addClass('activeSideMenu');
         }
         function normalText() {
@@ -150,11 +134,7 @@
                 $('body').removeClass('usp-light-background');
                 $('#lightBackground').removeClass('activeSideMenu');
             }
-        }
-
-        function tabbedContent() {
-            document.getElementById(window.event.target.id).classList.toggle("activeSideMenu");
-        }
+        }        
         function resetAll() {
             $('body').removeClass('usp-resize-font-115');
             $('body').removeClass('usp-resize-font-120');
@@ -245,7 +225,6 @@
             <a href="#" class="sideMenuOption" id="normalText" onclick="normalText(); return false;"><i class="fa fa-font fafa-space"></i>Normal Font</a>
             <a href="#" class="sideMenuOption" id="darkBackGround" onclick="darkBackGround(); return false;"><i class="fa fa-share-square fafa-space"></i>Dark Background</a>
             <a href="#" class="sideMenuOption" id="lightBackground" onclick="lightBackground(); return false;"><i class="fa fa-share-square-o fafa-space"></i>Light Background</a>
-            <a href="#" class="sideMenuOption" id="tabbedContent" onclick="tabbedContent(); return false;"><i class="fa fa-keyboard-o fafa-space"></i>Tabbed Content</a>
             <a href="#" class="sideMenuOption" id="reset" onclick="resetAll(); return false;"><i class="fa fa-refresh fafa-space"></i>Reset</a>
         </div>
     </div>
