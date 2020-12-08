@@ -408,19 +408,6 @@ body.usp-resize-font-125 .sidebar-filter__section__head {
     line-height: normal !important;
 }
 
-body.usp-resize-font-115 .results__head label {
-    font-size: 39px !important;
-    line-height: normal !important;
-}
-body.usp-resize-font-120 .results__head label {
-    font-size: 42px !important;
-    line-height: normal !important;
-}
-body.usp-resize-font-125 .results__head label {
-    font-size: 45px !important;
-    line-height: normal !important;
-}
-
 body.usp-resize-font-115 .form__check input {
     font-size: 18px !important;
     line-height: normal !important;
@@ -472,6 +459,87 @@ body.usp-resize-font-125 .form__check label {
     font-size: 30px !important;
     line-height: normal !important;
 }
+
+body.usp-resize-font-115 .results__head label {
+    font-size: 39px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-120 .results__head label {
+    font-size: 42px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-125 .results__head label {
+    font-size: 45px !important;
+    line-height: normal !important;
+}
+
+body.usp-resize-font-115 p span {
+    font-size: 18px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-120 p span {
+    font-size: 22px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-125 p span {
+    font-size: 26px !important;
+    line-height: normal !important;
+}
+
+body.usp-resize-font-115 .hero-home__headline {
+    font-size: 22px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-120 .hero-home__headline {
+    font-size: 26px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-125 .hero-home__headline {
+    font-size: 30px !important;
+    line-height: normal !important;
+}
+
+body.usp-resize-font-115 .spotlight__fullwidth .spotlight-details p,
+body.usp-resize-font-115 .spotlight__fullwidth .spotlight-details span {
+    font-size: 24px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-120 .spotlight__fullwidth .spotlight-details p,
+body.usp-resize-font-120 .spotlight__fullwidth .spotlight-details span {
+    font-size: 28px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-125 .spotlight__fullwidth .spotlight-details p,
+body.usp-resize-font-125 .spotlight__fullwidth .spotlight-details span {
+    font-size: 32px !important;
+    line-height: normal !important;
+}
+
+body.usp-resize-font-115 .step-nav {
+    font-size: 20px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-120 .step-nav {
+    font-size: 24px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-125 .step-nav {
+    font-size: 28px !important;
+    line-height: normal !important;
+}
+
+body.usp-resize-font-115 .cookie-banner--page input[type="checkbox"].switch + label {
+    font-size: 17px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-120 .cookie-banner--page input[type="checkbox"].switch + label {
+    font-size: 20px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-125 .cookie-banner--page input[type="checkbox"].switch + label {
+    font-size: 23px !important;
+    line-height: normal !important;
+}
 /* Font Adjust CSS*/
 body.usp-resize-font-115 .spotlight__description,
 body.usp-resize-font-120 .spotlight__description,
@@ -519,16 +587,10 @@ body.usp-high-contrast .newDropdown button.dropbtn {
 body.usp-high-contrast .newDropdown .newDropdown-content {
     border: 1px solid #565656;
 }
-/*body.usp-high-contrast .newDropdown-content .activeSideMenu,
-body.usp-high-contrast .newDropdown-content .activeSideMenu .fa {
-    background: #e6643b !important;
-}*/
-
 .activeSideMenu,
 .activeSideMenu .fa {
     background: #287AB3 !important;
 }
-
 body.usp-high-contrast .btn--blue,
 body.usp-high-contrast .btn--blue.btn--animated span {
     background: #287AB3 !important;
@@ -552,6 +614,10 @@ body.usp-high-contrast .points select, body.usp-high-contrast .points input {
 body.usp-high-contrast .btn--inline,
 body.usp-high-contrast .btn-inline {
     background: #287AB3 !important;
+}
+body.usp-high-contrast .progress-bar span,
+body.usp-light-background .progress-bar span {
+        background-color: #3EC2CF !important;
 }
 body.usp-light-background .hero-banner *:not(#usp-toolbar):not(.usp-toolbar-links) {
     background: transparent;
