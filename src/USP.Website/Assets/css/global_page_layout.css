@@ -37,6 +37,14 @@
     background-color: #c6c6c6 !important;
     /*color: #1b25e5;*/
 }
+.activeSideMenu,
+.activeSideMenu .fa {
+    background: #287AB3 !important;
+}
+@media only screen and (max-width: 1023px) {
+    .newDropdown a:hover,
+    .newDropdown a:hover .fa { background: #287AB3 !important; /* color: #1b25e5; */ }
+}
 .show {
     display: block;
 }
@@ -540,6 +548,22 @@ body.usp-resize-font-125 .cookie-banner--page input[type="checkbox"].switch + la
     font-size: 23px !important;
     line-height: normal !important;
 }
+
+body.usp-resize-font-115 .listing-item__details h3 a span,
+body.usp-resize-font-115 .related-item__details h3 a span {
+    font-size: 20px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-120 .listing-item__details h3 a span,
+body.usp-resize-font-120 .related-item__details h3 a span {
+    font-size: 24px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-125 .listing-item__details h3 a span,
+body.usp-resize-font-125 .related-item__details h3 a span {
+    font-size: 28px !important;
+    line-height: normal !important;
+}
 /* Font Adjust CSS*/
 body.usp-resize-font-115 .spotlight__description,
 body.usp-resize-font-120 .spotlight__description,
@@ -586,10 +610,6 @@ body.usp-high-contrast .newDropdown button.dropbtn {
 }
 body.usp-high-contrast .newDropdown .newDropdown-content {
     border: 1px solid #565656;
-}
-.activeSideMenu,
-.activeSideMenu .fa {
-    background: #287AB3 !important;
 }
 body.usp-high-contrast .btn--blue,
 body.usp-high-contrast .btn--blue.btn--animated span {
@@ -674,6 +694,23 @@ body.usp-light-background .checkbox input[type="checkbox"]:checked ~ .checkmark 
     border-color: #3EC2CF !important;
     border-width: 1px !important;
 }
+
+/*body.usp-high-contrast .flying-focus_target:focus {
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    -webkit-box-shadow: 0px 0px 0px 4px #E6643B !important;
+    box-shadow: 0px 0px 0px 4px #E6643B !important;
+    outline: none !important;
+}
+body.usp-light-background .flying-focus_target:focus {
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    -webkit-box-shadow: 0px 0px 0px 4px #E6643B !important;
+    box-shadow: 0px 0px 0px 4px #E6643B !important;
+    outline: none !important;
+}*/
 
 
 
