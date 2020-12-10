@@ -49,7 +49,7 @@
     display: block;
 }
 /* Font Adjust CSS*/
-body.usp-resize-font-115 {
+/*body.usp-resize-font-115 {
     font-size: 115% !important;
     line-height: normal;
     line-break: anywhere;
@@ -63,7 +63,7 @@ body.usp-resize-font-125 {
     font-size: 125% !important;
     line-height: normal;
     line-break: anywhere;
-}
+}*/
 body.usp-readable-font,
 body.usp-readable-font h1,
 body.usp-readable-font h2,

@@ -4906,18 +4906,22 @@ section.bg-usp-navi-dark {
   color: #d93400; }
 
 #flying-focus {
-  position: absolute;
-  margin: 0;
-  background: transparent;
-  -webkit-transition-property: left, top, width, height;
-  transition-property: left, top, width, height;
-  -webkit-transition-timing-function: linear;
-          transition-timing-function: linear;
-  visibility: hidden;
-  pointer-events: none;
-  -webkit-box-shadow: 0px 0px 0px 4px #E6643B inset;
-          box-shadow: 0px 0px 0px 4px #E6643B inset;
-  border-radius: 2px; }
+    position: absolute;
+    margin: 0;
+    background: transparent;
+    -webkit-transition-property: left, top, width, height;
+    transition-property: left, top, width, height;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+    visibility: hidden;
+    pointer-events: none;
+    /*USP-1_10/12/2020 Begin*/
+    -webkit-box-shadow: 0px 0px 0px 4px #E6643B inset !important;
+    box-shadow: 0px 0px 0px 4px #E6643B inset !important;
+    background: transparent !important;
+    /*USP-1_10/12/2020 End*/
+    border-radius: 2px;
+}
   #flying-focus.flying-focus_visible {
     visibility: visible;
     z-index: 9999; }

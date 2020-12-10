@@ -691,8 +691,8 @@ window.starterui.flyingFocus = function ($) {
             movingId = 0;
             //USP-1_08/12/2020 Begin
             //ringElem.classList.remove('flying-focus_visible');
-            //prevFocused.classList.remove('flying-focus_target');
             //USP-1_08/12/2020 End
+            prevFocused.classList.remove('flying-focus_target');           
             prevFocused = null;
         }
 

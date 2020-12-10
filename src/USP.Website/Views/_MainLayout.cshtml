@@ -69,11 +69,19 @@
             }
         }
 
+        $(function () {
+            $('body').on("click", function () {
+                if ($("#flying-focus").hasClass("flying-focus_visible")) {
+                    $("#flying-focus").removeClass("flying-focus_visible");
+                };
+            });
+        });
+
         function increaseText() {
             $('#decreaseText').removeClass('activeSideMenu');
             if ($("body").hasClass("usp-resize-font-115") == false &&
                 $("body").hasClass("usp-resize-font-120") == false &&
-                $("body").hasClass("usp-resize-font-125") == false ) {
+                $("body").hasClass("usp-resize-font-125") == false) {
                 $('body').addClass('usp-resize-font-115');
             }
             else if ($("body").hasClass("usp-resize-font-115") == true) {
@@ -134,7 +142,7 @@
                 $('body').removeClass('usp-light-background');
                 $('#lightBackground').removeClass('activeSideMenu');
             }
-        }        
+        }
         function resetAll() {
             $('body').removeClass('usp-resize-font-115');
             $('body').removeClass('usp-resize-font-120');
