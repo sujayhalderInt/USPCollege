@@ -43,7 +43,9 @@
 }
 @media only screen and (max-width: 1023px) {
     .newDropdown a:hover,
-    .newDropdown a:hover .fa { background: #287AB3 !important; /* color: #1b25e5; */ }
+    .newDropdown a:hover .fa {
+        background: #287AB3 !important; /* color: #1b25e5; */
+    }
 }
 .show {
     display: block;

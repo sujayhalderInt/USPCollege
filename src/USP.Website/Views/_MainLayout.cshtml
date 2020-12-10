@@ -69,14 +69,6 @@
             }
         }
 
-        $(function () {
-            $('body').on("click", function () {
-                if ($("#flying-focus").hasClass("flying-focus_visible")) {
-                    $("#flying-focus").removeClass("flying-focus_visible");
-                };
-            });
-        });
-
         function increaseText() {
             $('#decreaseText').removeClass('activeSideMenu');
             if ($("body").hasClass("usp-resize-font-115") == false &&
@@ -224,6 +216,16 @@
     <script defer src="/assets/js/components.js?cdv=@instanceVersion"></script>
 
     @RenderSection("PageScript", false)
+
+    <script type="text/javascript">
+        $(function () {
+            $('body').on("click", function () {
+                if ($("#flying-focus").hasClass("flying-focus_visible")) {
+                    $("#flying-focus").removeClass("flying-focus_visible");
+                };
+            });
+        });
+    </script>
 
     <div class="newDropdown">
         <button onclick="helpSubMenu()" class="dropbtn fa fa-wheelchair"></button>
