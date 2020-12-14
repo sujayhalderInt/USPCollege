@@ -40,14 +40,15 @@
         <link rel="stylesheet" href="/assets/css/noscript.css?cdv=@instanceVersion">
     </noscript>
 
-    @*Sujay Start*@
-    <link href="~/Assets/css/global_page_layout.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    @*Sujay End*@
+    @*USP-1_14/12/2020 Begin*@
+    <link href="/assets/css/global_page_layout.css" rel="stylesheet" />
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet" />
+    @*USP-1_14/12/2020 End*@
 
     @Html.Action("RenderAnalyticsScript", "Script")
 </head>
 <body data-nav-path=",@(UmbracoContext.Current.PublishedContentRequest.PublishedContent.Path)," data-doctype="@UmbracoContext.Current.PublishedContentRequest.PublishedContent.ContentType.Alias" data-versioning="@instanceVersion">
+    @*USP-1_14/12/2020 Begin*@
     <script>
         /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */
@@ -145,6 +146,7 @@
             $('.sideMenuOption').removeClass('activeSideMenu');
         }
     </script>
+    @*USP-1_14/12/2020 End*@
     @Html.Action("Cookies", "CookiePolicy")
 
     <header class="header">
@@ -216,7 +218,7 @@
     <script defer src="/assets/js/components.js?cdv=@instanceVersion"></script>
 
     @RenderSection("PageScript", false)
-
+    @*USP-1_14/12/2020 Begin*@
     <script type="text/javascript">
         $(function () {
             $('body').on("click", function () {
@@ -238,6 +240,7 @@
             <a href="#" class="sideMenuOption" id="reset" onclick="resetAll(); return false;"><i class="fa fa-refresh fafa-space"></i>Reset</a>
         </div>
     </div>
+    @*USP-1_14/12/2020 End*@
 </body>
 </html>
 
