@@ -20,7 +20,7 @@
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 205px;
+    min-width: 207px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -220,6 +220,7 @@ body.usp-resize-font-125 .spotlight-tertiary a h3 {
 body.usp-resize-font-115 table:not(.pika-table) tbody tr td {
     font-size: 16px !important;
     line-height: normal !important;
+    
 }
 body.usp-resize-font-120 table:not(.pika-table) tbody tr td {
     font-size: 20px !important;
@@ -885,3 +886,49 @@ body.usp-light-background .hero-banner .social-share .addthis_inline_share_toolb
         overflow-x: auto;
     }    
 }
+
+@media only screen and (width: 480px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 168px;
+    }
+}
+@media only screen and (width: 568px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 167px;
+    }
+}
+@media only screen and (width: 640px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 205px;
+    }
+}
+@media only screen and (width: 653px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 125px;
+    }
+}
+@media only screen and (width: 667px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 208px;
+    }
+}
+@media only screen and (width: 736px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 240px;
+    }
+}
+@media only screen and (width: 812px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 208px;
+    }
+}
+
+
+

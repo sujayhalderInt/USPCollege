@@ -50,13 +50,10 @@
 <body data-nav-path=",@(UmbracoContext.Current.PublishedContentRequest.PublishedContent.Path)," data-doctype="@UmbracoContext.Current.PublishedContentRequest.PublishedContent.ContentType.Alias" data-versioning="@instanceVersion">
     @*USP-1_14/12/2020 Begin*@
     <script>
-        /* When the user clicks on the button,
-        toggle between hiding and showing the dropdown content */
         function helpSubMenu() {
             document.getElementById("helpDropdown").classList.toggle("show");
         }
 
-        // Close the dropdown if the user clicks outside of it
         window.onclick = function (event) {
             if (!event.target.matches('.dropbtn') && !event.target.matches('.sideMenuOption')) {
                 var dropdowns = document.getElementsByClassName("newDropdown-content");
@@ -144,7 +141,7 @@
             $('body').removeClass('usp-high-contrast');
             $('body').removeClass('usp-light-background');
             $('.sideMenuOption').removeClass('activeSideMenu');
-        }
+        }        
     </script>
     @*USP-1_14/12/2020 End*@
     @Html.Action("Cookies", "CookiePolicy")

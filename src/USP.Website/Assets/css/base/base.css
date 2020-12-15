@@ -4915,11 +4915,11 @@ section.bg-usp-navi-dark {
     transition-timing-function: linear;
     visibility: hidden;
     pointer-events: none;
-    /*USP-1_10/12/2020 Begin*/
+    /*USP-1_14/12/2020 Begin*/
     -webkit-box-shadow: 0px 0px 0px 4px #E6643B inset !important;
     box-shadow: 0px 0px 0px 4px #E6643B inset !important;
     background: transparent !important;
-    /*USP-1_10/12/2020 End*/
+    /*USP-1_14/12/2020 End*/
     border-radius: 2px;
 }
   #flying-focus.flying-focus_visible {
