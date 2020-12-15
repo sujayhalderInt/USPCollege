@@ -13,7 +13,7 @@
 }
 .newDropdown {
     position: fixed;
-    z-index: 9;
+    z-index: 9999;
     top: 100px;
 }
 .newDropdown-content {
@@ -22,7 +22,7 @@
     background-color: #f1f1f1;
     min-width: 207px;
     overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
     z-index: 1;
     margin-top: -1px;
 }
@@ -668,6 +668,23 @@ body.usp-resize-font-125 .hero-search__form .search input[type="search"] {
     font-size: 18px !important;
     line-height: normal !important;
 }
+
+body.usp-resize-font-115 .header .menu__primary, 
+body.usp-resize-font-115 .header .menu__secondary {
+    font-size: 14px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-120 .header .menu__primary, 
+body.usp-resize-font-120 .header .menu__secondary {
+    font-size: 16px !important;
+    line-height: normal !important;
+}
+body.usp-resize-font-125 .header .menu__primary, 
+body.usp-resize-font-125 .header .menu__secondary {
+    font-size: 18px !important;
+    line-height: normal !important;
+}
+
 /* Font Adjust CSS*/
 body.usp-resize-font-115 .spotlight__description,
 body.usp-resize-font-120 .spotlight__description,
@@ -863,55 +880,89 @@ body.usp-light-background .hero-banner .social-share .addthis_inline_share_toolb
     border-bottom: 10px solid #ccc;
 }
 
+body.usp-light-background .signin ul:after {
+    border-bottom: 20px solid #ccc;
+}
+body.usp-light-background .signin ul {
+    background-color: #ccc !important;
+}
+body.usp-light-background .signin ul li {
+    background: #ccc !important;
+}
+body.usp-light-background .signin ul li a {
+    background: #ccc !important;
+    color: #000 !important;
+}
+@media only screen and (max-width: 1023px) {
+    body.usp-resize-font-115 .header .menu__dropdown__part > ul > li > a {
+        font-size: 14px !important;
+        line-height: normal !important;
+    }
+    body.usp-resize-font-120 .header .menu__dropdown__part > ul > li > a {
+        font-size: 16px !important;
+        line-height: normal !important;
+    }
+    body.usp-resize-font-125 .header .menu__dropdown__part > ul > li > a {
+        font-size: 18px !important;
+        line-height: normal !important;
+    }
+    body.usp-high-contrast .header .menu__primary > li a {
+        background-color: #287AB3 !important;
+    }
+    body.usp-high-contrast .header .menu__primary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a,
+    body.usp-high-contrast .header .menu__secondary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a {
+        background-color: #000 !important;
+        border-bottom: 2px solid #000 !important;
+    }
+    body.usp-high-contrast .header .menu__secondary *:not(#usp-toolbar):not(.usp-toolbar-links) {
+        background: #f1f1f1 !important;
+        background-color: #f1f1f1 !important;
+        color:#000 !important;
+    }
+    body.usp-light-background .header .menu__primary > li a {
+        background-color: #287AB3 !important;
+        color: #fff !important;
+    }
+    body.usp-light-background .header .menu__primary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a,
+    body.usp-light-background .header .menu__secondary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a {
+        background-color: #fff !important;
+        border-bottom: 2px solid #fff !important;
+    }
+    body.usp-light-background .header .menu__secondary *:not(#usp-toolbar):not(.usp-toolbar-links) {
+        background: #f1f1f1 !important;
+        background-color: #f1f1f1 !important;
+        color: #000 !important;
+    }
+    body.usp-light-background .header .menu__primary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a {
+        color: #7c909e !important;
+    }
+}
+
 @media only screen and (max-width: 767px) {
     body.usp-resize-font-115, body.usp-resize-font-120, body.usp-resize-font-125 {
         line-break: anywhere !important;
     }
-    body.usp-resize-font-115 .header .menu__tertiary, body.usp-resize-font-120 .header .menu__tertiary, body.usp-resize-font-125 .header .menu__tertiary {
-        line-break: normal !important;
-    }
+    /*body.usp-resize-font-115 .header .menu__tertiary, body.usp-resize-font-120 .header .menu__tertiary, body.usp-resize-font-125 .header .menu__tertiary {
+    line-break: normal !important;
+    }*/
     .spotlight-tertiary__img {
         width: 100% !important;
         margin-left: 0 !important;
     }
     .spotlight-tertiary a {
-        width:100% !important;
+        width: 100% !important;
     }
     .spotlight-tertiary > * {
-        display:block !important;
+        display: block !important;
     }
-}
-@media only screen and (max-width: 479px) {
-    .header .menu__tertiary {
-        overflow-x: auto;
-    }    
 }
 
-@media only screen and (width: 480px) {
-    .newDropdown-content {
-        overflow-y: auto;
-        max-height: 168px;
-    }
+@media only screen and (max-width: 479px) {
+    /*.header .menu__tertiary {
+    overflow-x: auto;
+    }*/
 }
-@media only screen and (width: 568px) {
-    .newDropdown-content {
-        overflow-y: auto;
-        max-height: 167px;
-    }
-}
-@media only screen and (width: 640px) {
-    .newDropdown-content {
-        overflow-y: auto;
-        max-height: 205px;
-    }
-}
-@media only screen and (width: 653px) {
-    .newDropdown-content {
-        overflow-y: auto;
-        max-height: 125px;
-    }
-}
-@media only screen and (width: 667px) {
+@media only screen and (width: 812px) {
     .newDropdown-content {
         overflow-y: auto;
         max-height: 208px;
@@ -923,12 +974,33 @@ body.usp-light-background .hero-banner .social-share .addthis_inline_share_toolb
         max-height: 240px;
     }
 }
-@media only screen and (width: 812px) {
+@media only screen and (width: 667px) {
     .newDropdown-content {
         overflow-y: auto;
         max-height: 208px;
     }
 }
-
-
-
+@media only screen and (width: 653px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 125px;
+    }
+}
+@media only screen and (width: 640px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 205px;
+    }
+}
+@media only screen and (width: 568px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 167px;
+    }
+}
+@media only screen and (width: 480px) {
+    .newDropdown-content {
+        overflow-y: auto;
+        max-height: 168px;
+    }
+}
