@@ -674,17 +674,17 @@ body.usp-resize-font-125 .hero-search__form .search input[type="search"] {
 
 body.usp-resize-font-115 .header .menu__primary, 
 body.usp-resize-font-115 .header .menu__secondary {
-    font-size: 14px !important;
+    font-size: 16px !important;   /* Sujay - instead of 14*/
     line-height: normal !important;
 }
-body.usp-resize-font-120 .header .menu__primary, 
+body.usp-resize-font-120 .header .menu__primary,
 body.usp-resize-font-120 .header .menu__secondary {
-    font-size: 16px !important;
+    font-size: 18px !important; /* Sujay - instead of 16*/
     line-height: normal !important;
 }
-body.usp-resize-font-125 .header .menu__primary, 
+body.usp-resize-font-125 .header .menu__primary,
 body.usp-resize-font-125 .header .menu__secondary {
-    font-size: 18px !important;
+    font-size: 20px !important; /* Sujay - instead of 18*/
     line-height: normal !important;
 }
 
