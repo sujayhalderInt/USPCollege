@@ -245,15 +245,18 @@ body.usp-resize-font-125 .header .menu__dropdown__part > ul > li > a {
 }
 
 body.usp-resize-font-115 .header .menu__dropdown__part > ul > li > ul > li > a {
-    font-size: 20px !important;
+    /*font-size: 20px !important;*/ /*Sujay*/
+    font-size: 16px !important; /*Sujay*/
     line-height: normal !important;
 }
 body.usp-resize-font-120 .header .menu__dropdown__part > ul > li > ul > li > a {
-    font-size: 24px !important;
+    /*font-size: 24px !important;*/ /*Sujay*/
+    font-size: 18px !important; /*Sujay*/
     line-height: normal !important;
 }
 body.usp-resize-font-125 .header .menu__dropdown__part > ul > li > ul > li > a {
-    font-size: 28px !important;
+    /*font-size: 28px !important;*/ /*Sujay*/
+    font-size: 20px !important; /*Sujay*/
     line-height: normal !important;
 }
 
@@ -893,6 +896,7 @@ body.usp-light-background .signin ul li a {
     background: #ccc !important;
     color: #000 !important;
 }
+
 @media only screen and (max-width: 1023px) {
     body.usp-resize-font-115 .header .menu__dropdown__part > ul > li > a {
         font-size: 14px !important;
@@ -905,9 +909,13 @@ body.usp-light-background .signin ul li a {
     body.usp-resize-font-125 .header .menu__dropdown__part > ul > li > a {
         font-size: 18px !important;
         line-height: normal !important;
-    }
+    }   
     body.usp-high-contrast .header .menu__primary > li a {
-        background-color: #287AB3 !important;
+        /*background-color: #287AB3 !important;*/ /*Sujay*/
+        background-color: #39393a !important; /*Sujay*/
+    }
+    body.usp-high-contrast .header .menu__primary > li a:hover { /*Sujay new set*/
+        background-color: #656565 !important;
     }
     body.usp-high-contrast .header .menu__primary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a,
     body.usp-high-contrast .header .menu__secondary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a {
@@ -920,8 +928,13 @@ body.usp-light-background .signin ul li a {
         color:#000 !important;
     }
     body.usp-light-background .header .menu__primary > li a {
-        background-color: #287AB3 !important;
-        color: #fff !important;
+        /*background-color: #287AB3 !important;
+        color: #fff !important;*/ /*SUjay*/
+        background-color: #e4e4e4 !important; /*SUjay*/
+        color: #000 !important; /*SUjay*/
+    }
+    body.usp-light-background .header .menu__primary > li a:hover { /*Sujay new set*/
+        background-color: #bfbfbf !important;
     }
     body.usp-light-background .header .menu__primary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a,
     body.usp-light-background .header .menu__secondary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a {

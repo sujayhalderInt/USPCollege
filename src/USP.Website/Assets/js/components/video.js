@@ -62,7 +62,7 @@ window.starterui.video = (function ($) {
          * @param {object} e is event
          */
         onReady = function (e) {
-            var targetPlayer = e.target.f;  //USP-4_30/11/2020 
+            var targetPlayer = e.target.h;  //USP-4_30/11/2020 
             var total;
             var vidDuration = 0;
             var videoPoster = $(targetPlayer).next();
