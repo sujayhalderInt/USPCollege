@@ -698,6 +698,15 @@ body.usp-light-background, body.usp-light-background *:not(#usp-toolbar):not(.us
     background: #fff;
     color: #000;
 }
+body.usp-light-background .header .menu__logo, body.usp-light-background .header .menu__logo--mobile img { /*Sujay new set sh*/
+    background: #e6e6e6 !important;
+}
+body.usp-light-background .header .menu__logo img { /*Sujay new set sh*/
+    background: transparent !important;
+}
+body.usp-light-background .footer .footer__logo img { /*Sujay new set sh*/
+    background: #e6e6e6 !important;
+}
 .fafa-space {
     padding-right: 7px
 }
