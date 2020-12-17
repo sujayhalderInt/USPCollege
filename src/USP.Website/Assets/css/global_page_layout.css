@@ -871,6 +871,207 @@ body.usp-high-contrast .hero-banner .social-share .addthis_inline_share_toolbox:
     border-bottom: 10px solid #FFFFFF;
 }
 
+body.usp-high-contrast .listing-item,
+body.usp-high-contrast .related-item {
+    border: 1px solid #287ab3;
+    border-radius: 12px;
+}
+body.usp-high-contrast .listing-item__details__tags .tags,
+body.usp-high-contrast .listing-item__details__description .tags,
+body.usp-high-contrast .related-item__details__tags .tags,
+body.usp-high-contrast .related-item__details__description .tags {
+    background-color: #287ab3 !important;
+}
+body.usp-high-contrast .listing-item__details__tags .tags:hover {
+    background: #3ec2cf !important;
+}
+body.usp-high-contrast .listing-item__details h3 a:hover,
+body.usp-high-contrast .related-item__details h3 a:hover {
+    color: #3EC2CF !important;
+}
+body.usp-high-contrast .listing-item__details h3 a:hover span,
+body.usp-high-contrast .related-item__details h3 a:hover span {
+    color: #3EC2CF !important;
+}
+body.usp-high-contrast .bg-usp-navi-dark,
+body.usp-high-contrast .bg-usp-navi-light {
+    border-bottom: 1px solid #287ab3;
+}
+body.usp-high-contrast .spotlight__fullwidth.bg-usp-navi-dark,
+body.usp-high-contrast .spotlight__fullwidth.bg-usp-navi-light,
+body.usp-high-contrast .upcoming-events.bg-usp-navi-dark,
+body.usp-high-contrast .upcoming-events.bg-usp-navi-light {
+    border-top: 1px solid #287ab3;
+    border-bottom: 0;
+}
+body.usp-high-contrast .bg-usp-grey,
+body.usp-high-contrast .bg-usp-navi,
+body.usp-high-contrast .spotlight__section.bg-usp-navi,
+body.usp-high-contrast .gallery.bg-usp-navi,
+body.usp-high-contrast .locations-map {
+    border-top: 1px solid #287ab3;
+    border-bottom: 1px solid #287ab3;
+}
+body.usp-high-contrast .spotlight {
+    border: 1px solid #287AB3;
+    border-bottom-right-radius: 6.25rem;
+}
+body.usp-high-contrast .spotlight.spotlight--v2 {
+    border: 0;
+    border-bottom-right-radius: 0;
+}
+body.usp-high-contrast .upcoming-events.bg-usp-navi-dark:last-child,
+body.usp-high-contrast .upcoming-events.bg-usp-navi-light:last-child {
+    border-top: 1px solid #287ab3;
+    border-bottom: 1px solid #287ab3;
+}
+body.usp-high-contrast .event-listing {
+    border: 1px solid #287ab3;
+    border-radius: 12px;
+}
+body.usp-high-contrast .event-listing__footer__course .tags {
+    background: #287ab3 !important;
+    background-color: #287ab3 !important;
+}
+body.usp-high-contrast .result__body--event .event-listing {
+    border: 1px solid #287ab3 !important;
+}
+body.usp-high-contrast .event-listing__footer__course {
+    background-color: #287ab3 !important;
+}
+body.usp-high-contrast .context-nav .tag-wrapper > p a {
+    background-color: #287ab3 !important;
+}
+body.usp-high-contrast .alert--purple,
+body.usp-high-contrast .alert--purple i,
+body.usp-high-contrast .alert--purple p {
+    background-color: #287AB3 !important;
+}
+body.usp-high-contrast .points {
+    border: 1px solid #287AB3 !important;
+}
+body.usp-high-contrast .points__grades-calc {
+    border-top: 1px solid #287AB3 !important;
+}
+body.usp-high-contrast .hero-banner__img.filter--pink {
+    border-bottom: 1px solid #287AB3 !important;
+}
+body.usp-high-contrast .bg-usp-blue-light {
+    border-top: 1px solid #287AB3;
+    border-bottom: 1px solid #287AB3;
+}
+
+body.usp-light-background .listing-item,
+body.usp-light-background .related-item {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+}
+body.usp-light-background .listing-item__details__tags .tags,
+body.usp-light-background .listing-item__details__description .tags,
+body.usp-light-background .related-item__details__tags .tags,
+body.usp-light-background .related-item__details__description .tags {
+    background-color: #ccc !important;
+}
+body.usp-light-background .listing-item__details__tags .tags:hover {
+    background: #a9a7a7 !important;
+}
+body.usp-light-background .listing-item__details h3 a:hover,
+body.usp-light-background .related-item__details h3 a:hover {
+    color: #6d6d6d !important;
+}
+body.usp-light-background .listing-item__details h3 a:hover span,
+body.usp-light-background .related-item__details h3 a:hover span {
+    color: #6d6d6d !important;
+}
+body.usp-light-background .listing-item__details__tags,
+body.usp-light-background .related-item__details__tags {
+    border-top: 1px solid #ccc;
+}
+body.usp-light-background .bg-usp-navi-dark,
+body.usp-light-background .bg-usp-navi-light {
+    border-bottom: 1px solid #ccc;
+}
+body.usp-light-background .result__body--event .event-listing {
+    border: 1px solid #ccc !important;
+}
+body.usp-light-background .event-listing__footer__course {
+    background-color: #ccc !important;
+}
+body.usp-light-background .context-nav .tag-wrapper > p a {
+    background-color: #ccc !important;
+}
+body.usp-light-background .alert--purple,
+body.usp-light-background .alert--purple i,
+body.usp-light-background .alert--purple p {
+    background-color: #ccc !important;
+}
+body.usp-light-background .points {
+    border: 1px solid #ccc !important;
+}
+body.usp-light-background .points__grades-calc {
+    border-top: 1px solid #ccc !important;
+}
+body.usp-light-background .spotlight__fullwidth.bg-usp-navi-dark,
+body.usp-light-background .spotlight__fullwidth.bg-usp-navi-light,
+body.usp-light-background .upcoming-events.bg-usp-navi-dark,
+body.usp-light-background .upcoming-events.bg-usp-navi-light {
+    border-top: 1px solid #ccc;
+    border-bottom: 0 !important;
+}
+body.usp-light-background .upcoming-events.bg-usp-navi-dark:last-child,
+body.usp-light-background .upcoming-events.bg-usp-navi-light:last-child {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc !important;
+}
+body.usp-light-background .event-listing {
+    border: 1px solid #ccc !important;
+}
+body.usp-light-background .event-listing__footer__course .tags {
+    background: #ccc !important;
+    background-color: #ccc !important;
+}
+body.usp-light-background .bg-usp-blue-light {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+body.usp-light-background .bg-usp-navi-dark,
+body.usp-light-background .bg-usp-navi-light {
+    border-bottom: 1px solid #ccc;
+}
+
+body.usp-light-background .spotlight__fullwidth.bg-usp-navi-dark,
+body.usp-light-background .spotlight__fullwidth.bg-usp-navi-light,
+body.usp-light-background .upcoming-events.bg-usp-navi-dark,
+body.usp-light-background .upcoming-events.bg-usp-navi-light {
+    border-top: 1px solid #ccc;
+    border-bottom: 0;
+}
+body.usp-light-background .bg-usp-grey,
+body.usp-light-background .bg-usp-navi,
+body.usp-light-background .spotlight__section.bg-usp-navi,
+body.usp-light-background .gallery.bg-usp-navi,
+body.usp-light-background .locations-map {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+body.usp-light-background .spotlight-tertiary div:first-child,
+body.usp-light-background .spotlight-tertiary a {
+    border-top: 3px solid #ccc;
+}
+body.usp-light-background .spotlight {
+    border: 1px solid #ccc;
+    border-bottom-right-radius: 6.25rem;
+}
+body.usp-light-background .spotlight.spotlight--v2 {
+    border: 0;
+    border-bottom-right-radius: 0;
+}
+body.usp-light-background .spotlight__component + .spotlight__component,
+body.usp-light-background .spotlight__wrapper[data-elements="3"] .spotlight__component:nth-child(2) {
+    border-left: 3px solid #ccc;
+}
+
 body.usp-light-background .hero-banner .social-share a, body.usp-light-background .hero-banner .social-share i {
     color: #FFFFFF !important;
 }
