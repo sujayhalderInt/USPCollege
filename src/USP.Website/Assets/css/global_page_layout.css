@@ -56,17 +56,23 @@
 body.usp-resize-font-115 {
     font-size: 115% !important;
     line-height: normal;
-    /*line-break: anywhere;*/
+    /*line-break: anywhere;
+        word-break: break-all;
+    */
 }
 body.usp-resize-font-120 {
     font-size: 120% !important;
     line-height: normal;
-    /*line-break: anywhere;*/
+    /*line-break: anywhere;
+        word-break: break-all;
+    */
 }
 body.usp-resize-font-125 {
     font-size: 125% !important;
     line-height: normal;
-    /*line-break: anywhere;*/
+    /*line-break: anywhere;
+        word-break: break-all;
+    */
 }
 body.usp-readable-font,
 body.usp-readable-font h1,
@@ -175,17 +181,20 @@ body.usp-resize-font-125 .hero-home__headline p {
 body.usp-resize-font-115 .hero-home__content__icon h2 {
     font-size: 22px !important;
     line-height: normal !important;
-    line-break: anywhere !important;
+    /*line-break: anywhere !important;*/
+    word-break: break-all !important;
 }
 body.usp-resize-font-120 .hero-home__content__icon h2 {
     font-size: 26px !important;
     line-height: normal !important;
-    line-break: anywhere !important;
+    /*line-break: anywhere !important;*/
+    word-break: break-all !important;
 }
 body.usp-resize-font-125 .hero-home__content__icon h2 {
     font-size: 30px !important;
     line-height: normal !important;
-    line-break: anywhere !important;
+    /*line-break: anywhere !important;*/
+    word-break: break-all !important;
 }
 
 body.usp-resize-font-115 .spotlight__fullwidth h2,
@@ -207,17 +216,20 @@ body.usp-resize-font-125 .spotlight-tertiary div:first-child h2 {
 body.usp-resize-font-115 .spotlight-tertiary a h3 {
     font-size: 24px !important;
     line-height: normal !important;
-    line-break: anywhere !important;
+    /*line-break: anywhere !important;*/
+    word-break: break-all !important;
 }
 body.usp-resize-font-120 .spotlight-tertiary a h3 {
     font-size: 28px !important;
     line-height: normal !important;
-    line-break: anywhere !important;
+    /*line-break: anywhere !important;*/
+    word-break: break-all !important;
 }
 body.usp-resize-font-125 .spotlight-tertiary a h3 {
     font-size: 32px !important;
     line-height: normal !important;
-    line-break: anywhere !important;
+    /*line-break: anywhere !important;*/
+    word-break: break-all !important;
 }
 
 body.usp-resize-font-115 table:not(.pika-table) tbody tr td {
@@ -295,14 +307,17 @@ body.usp-resize-font-125 .footer__main-nav {
 body.usp-resize-font-115 .statistic .statistic-wrapper .statistic-item__number {
     font-size: 60px !important;
     line-height: normal !important;
+    word-break: break-all !important;
 }
 body.usp-resize-font-120 .statistic .statistic-wrapper .statistic-item__number {
     font-size: 64px !important;
     line-height: normal !important;
+    word-break: break-all !important;
 }
 body.usp-resize-font-125 .statistic .statistic-wrapper .statistic-item__number {
     font-size: 68px !important;
     line-height: normal !important;
+    word-break: break-all !important;
 }
 
 body.usp-resize-font-115 .breadcrumb-list li {
@@ -329,7 +344,6 @@ body.usp-resize-font-125 .breadcrumb-list li:after {
     top: 45% !important;
     font-size: 18px;
 }
-
 
 body.usp-resize-font-115 .form__check__label {
     font-size: 18px !important;
@@ -677,6 +691,16 @@ body.usp-resize-font-125 .header .menu__secondary {
     line-height: normal !important;
 }
 
+body.usp-resize-font-115 .event-listing h3 {
+    word-break: break-all !important;
+}
+body.usp-resize-font-120 .event-listing h3 {
+    word-break: break-all !important;
+}
+body.usp-resize-font-125 .event-listing h3 {
+    word-break: break-all !important;
+}
+
 /* Font Adjust CSS*/
 body.usp-resize-font-115 .spotlight__description,
 body.usp-resize-font-120 .spotlight__description,
@@ -774,6 +798,7 @@ body.usp-high-contrast .signin ul li a {
     background: #287ab3 !important;
     color: #fff !important;
 }
+body.usp-high-contrast .rte p,
 body.usp-high-contrast .rte p span {
     color: #fff !important;
 }
@@ -1096,8 +1121,12 @@ body.usp-light-background .signin ul li a {
     color: #000 !important;
 }
 
+body.usp-light-background .spotlight__fullwidth .spotlight-details div:first-child {
+    border-right: 3px solid #ccc;
+}
+
 @media only screen and (max-width: 1023px) {
-    body.usp-resize-font-115 .header .menu__dropdown__part > ul > li > a {
+    body .usp-resize-font-115 .header .menu__dropdown__part > ul > li > a {
         font-size: 14px !important;
         line-height: normal !important;
     }
@@ -1204,11 +1233,45 @@ body.usp-light-background .signin ul li a {
     body.usp-light-background .spotlight__component + .spotlight__component {  /*Sujay new set*/ 
         border: none !important;
     }
+
+
+    body.usp-high-contrast .listing-item__img, 
+    body.usp-high-contrast .related-item__img {
+        margin: 0;
+    }
+    body.usp-high-contrast .listing-item__img img, 
+    body.usp-high-contrast .related-item__img img {
+        border-radius: 12px;
+    }
+    body.usp-high-contrast .listing-item__details, 
+    body.usp-high-contrast .related-item__details {
+        margin: 0 0 0.9375rem;
+    }
+    body.usp-light-background .listing-item__img, 
+    body.usp-light-background .related-item__img {
+        margin: 0;
+    }
+    body.usp-light-background .listing-item__img img, 
+    body.usp-light-background .related-item__img img {
+        border-radius: 12px;
+    }
+    body.usp-light-background .listing-item__details, 
+    body.usp-light-background .related-item__details {
+        margin: 0 0 0.9375rem;
+    }
+
+    body.usp-light-background .spotlight__fullwidth .spotlight-details div:first-child {
+        border-right: 3px solid #fff;
+    }
+    body.usp-light-background .spotlight__fullwidth .spotlight-details div:first-child:after {
+        background: #ccc;
+    }
 }
 
 @media only screen and (max-width: 767px) {
     body.usp-resize-font-115, body.usp-resize-font-120, body.usp-resize-font-125 {
-        line-break: anywhere !important;
+        /*line-break: anywhere !important;*/
+        word-break: break-all !important;
     }
     /*body.usp-resize-font-115 .header .menu__tertiary, body.usp-resize-font-120 .header .menu__tertiary, body.usp-resize-font-125 .header .menu__tertiary {
     line-break: normal !important;
