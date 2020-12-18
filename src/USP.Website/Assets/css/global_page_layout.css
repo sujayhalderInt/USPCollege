@@ -1201,6 +1201,9 @@ body.usp-light-background .signin ul li a {
         top: 14px;
         left: -19px;
     }
+    body.usp-light-background .spotlight__component + .spotlight__component {  /*Sujay new set*/ 
+        border: none !important;
+    }
 }
 
 @media only screen and (max-width: 767px) {
