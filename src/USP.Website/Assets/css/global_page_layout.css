@@ -1266,6 +1266,16 @@ body.usp-light-background .spotlight__fullwidth .spotlight-details div:first-chi
     body.usp-light-background .spotlight__fullwidth .spotlight-details div:first-child:after {
         background: #ccc;
     }
+
+    body.usp-resize-font-115 .statistic .statistic-wrapper .statistic-item .statistic-item__number {
+        font-size: 37px !important;
+    }
+    body.usp-resize-font-120 .statistic .statistic-wrapper .statistic-item .statistic-item__number {
+        font-size: 40px !important;
+    }
+    body.usp-resize-font-125 .statistic .statistic-wrapper .statistic-item .statistic-item__number {
+        font-size: 43px !important;
+    }
 }
 
 @media only screen and (max-width: 767px) {
