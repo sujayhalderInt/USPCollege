@@ -701,6 +701,22 @@ body.usp-resize-font-125 .event-listing h3 {
     word-break: break-all !important;
 }
 
+body.usp-resize-font-115 h3.related-item__details__head {
+    /*font-size: 28px !important;
+    line-height: normal !important;*/
+    word-break: break-all !important;
+}
+body.usp-resize-font-120 h3.related-item__details__head {
+    /*font-size: 32px !important;
+    line-height: normal !important;*/
+    word-break: break-all !important;
+}
+body.usp-resize-font-125 h3.related-item__details__head {
+    /*font-size: 36px !important;
+    line-height: normal !important;*/
+    word-break: break-all !important;
+}
+
 /* Font Adjust CSS*/
 body.usp-resize-font-115 .spotlight__description,
 body.usp-resize-font-120 .spotlight__description,
@@ -730,6 +746,15 @@ body.usp-light-background .header .menu__logo img { /*Sujay new set sh*/
 }
 body.usp-light-background .footer .footer__logo img { /*Sujay new set sh*/
     background: #e6e6e6 !important;
+}
+body.usp-light-background .header {
+    border-bottom: 3px solid #ccc;
+}
+body.usp-light-background table:not(.pika-table) tbody tr {
+    border-bottom: 0.0625rem solid #ccc;
+}
+body.usp-light-background table:not(.pika-table) tbody tr td {
+    border-right: 0.0625rem solid #ccc;
 }
 .fafa-space {
     padding-right: 7px
