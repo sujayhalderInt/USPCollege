@@ -5,7 +5,9 @@
 <a class="menu__skip" href="#mainContent">Skip to main content</a>
 
 <ul class="menu__primary" role="menubar" aria-hidden="false">
-    <li><a href="/" class="menu__logo"><img src="/assets/img/logo.png" alt="logo"></a></li>
+    <li class="normalView"><a href="/" class="menu__logo"><img src="/assets/img/logo.png" alt="logo"></a></li>
+    <li class="lightView"><a href="/" class="menu__logo"><img src="/assets/img/logo_blue.png" alt="logo"></a></li>
+
     @foreach (var primaryItem in Model.NavigationItems)
     {
         var hasBuckets = primaryItem.Buckets.Any(b => b.Buckets.Count > 0);

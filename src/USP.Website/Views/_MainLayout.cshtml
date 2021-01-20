@@ -173,7 +173,8 @@
         <nav class="menu">
             @Html.Action("Navigation", "Navigation")
             <ul class="menu__tertiary" role="menubar">
-                <li role="menuitem" class="mobile-only"><a href="/" class="menu__logo--mobile"><img src="/assets/img/logo.png" alt="logo"></a></li>
+                <li role="menuitem" class="mobile-only normalView"><a href="/" class="menu__logo--mobile"><img src="/assets/img/logo.png" alt="logo"></a></li>
+                <li role="menuitem" class="mobile-only lightView"><a href="/" class="menu__logo--mobile"><img src="/assets/img/logo_blue.png" alt="logo"></a></li>
                 @Html.Action("SignUp", "Navigation")
                 <li role="menuitem"><a class="header-search-btn" href="@Umbraco.GetSearchUrl()"><i class="icon-search" aria-hidden="true"></i> @library.GetDictionaryItem("Global Search.Labels.SearchMenuText")</a></li>
                 @Html.Action("RenderApply", "Navigation")
@@ -263,4 +264,6 @@
     @*USP-1_14/12/2020 End*@
 </body>
 </html>
-
+<style type="text/css">
+    
+</style>

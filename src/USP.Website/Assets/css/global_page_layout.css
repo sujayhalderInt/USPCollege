@@ -40,6 +40,7 @@
 .activeSideMenu,
 .activeSideMenu .fa {
     background: #287AB3 !important;
+    /*color:#fff !important;*/
 }
 /*@media only screen and (max-width: 1023px) {*/    /*Temporary for side menu active class*/
 @media only screen and (min-width: 1023px) {
@@ -734,18 +735,13 @@ body.usp-high-contrast, body.usp-high-contrast *:not(#usp-toolbar):not(.usp-tool
     user-select: text;
     box-shadow: none;
 }
-body.usp-light-background, body.usp-light-background *:not(#usp-toolbar):not(.usp-toolbar-links) {
-    background: #fff;
+body.usp-light-background, body.usp-light-background *:not(#usp-toolbar):not(.usp-toolbar-link) {
     color: #000;
-}
-body.usp-light-background .header .menu__logo, body.usp-light-background .header .menu__logo--mobile img { /*Sujay new set sh*/
-    background: #e6e6e6 !important;
-}
-body.usp-light-background .header .menu__logo img { /*Sujay new set sh*/
-    background: transparent !important;
-}
-body.usp-light-background .footer .footer__logo img { /*Sujay new set sh*/
-    background: #e6e6e6 !important;
+    background: #fff;
+    background-color: #fff;
+    text-shadow: none;
+    user-select: text;
+    box-shadow: none;
 }
 body.usp-light-background .header {
     border-bottom: 3px solid #ccc;
@@ -1369,4 +1365,48 @@ body.usp-light-background .spotlight__fullwidth .spotlight-details div:first-chi
         overflow-y: auto;
         max-height: 168px;
     }
+}
+
+/* 20-01-2020 - New CSS */
+.header .menu__primary li.lightView,
+.footer__logo img.lightView,
+.under-footer img.lightView {
+    display: none;
+}
+body.usp-light-background .header .menu__primary li.normalView,
+body.usp-light-background .footer__logo img.normalView,
+body.usp-light-background .under-footer img.normalView {
+    display: none;
+}
+body.usp-light-background .header .menu__primary li.lightView,
+body.usp-light-background .footer__logo img.lightView,
+body.usp-light-background .under-footer img.lightView {
+    display: block;
+}
+@media screen and (max-width: 1023px) {
+    .header .menu__tertiary > li.lightView { display: none !important; }
+    body.usp-light-background .header .menu__tertiary > li.normalView { display: none !important; }
+    body.usp-light-background .header .menu__tertiary > li.lightView { display: block !important; }
+}
+body.usp-light-background .header .menu a.menu__skip {
+    color: #FFFFFF !important;
+}
+body.usp-light-background .header .menu a.menu__skip:focus {
+    color: #000000 !important;
+}
+body.usp-high-contrast .header .menu a.menu__skip {
+    color: #000000 !important;
+}
+body.usp-high-contrast .header .menu a.menu__skip:focus {
+    color: #ffffff !important;
+}
+body.usp-light-background .rte a,
+body.usp-high-contrast .rte a {
+    text-decoration: underline;
+}
+body.usp-high-contrast .rte a:hover {
+    color: #3EC2CF !important;
+}
+body.usp-light-background .rte a:hover {
+    color: #287ab3 !important;
 }
