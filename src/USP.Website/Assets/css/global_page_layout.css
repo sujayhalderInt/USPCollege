@@ -60,7 +60,7 @@ body.usp-resize-font-115 {
     /*line-break: anywhere;
         word-break: break-all;
     */
-    overflow-wrap: break-word !important;
+    overflow-wrap: break-word !important; 
 }
 body.usp-resize-font-120 {
     font-size: 120% !important;
