@@ -1431,29 +1431,53 @@ body.usp-light-background .rte a:hover {
 }
 
 /*Button Font Size CSS*/
-body.usp-resize-font-115 .btn.btn--blue, 
-body.usp-resize-font-115 .btn.btn--white, 
-body.usp-resize-font-115 .btn.btn--animated span {
+body.usp-resize-font-115 .btn.btn--blue,
+body.usp-resize-font-115 .btn.btn--white,
+body.usp-resize-font-115 .btn.btn--animated span,
+body.usp-resize-font-115 .btn.btn-inline,
+body.usp-resize-font-115 .btn.btn--inline {
     font-size: 21px !important;
 }
-body.usp-resize-font-120 .btn.btn--blue, 
-body.usp-resize-font-120 .btn.btn--white, 
-body.usp-resize-font-120 .btn.btn--animated span {
+body.usp-resize-font-120 .btn.btn--blue,
+body.usp-resize-font-120 .btn.btn--white,
+body.usp-resize-font-120 .btn.btn--animated span,
+body.usp-resize-font-120 .btn.btn-inline,
+body.usp-resize-font-120 .btn.btn--inline {
     font-size: 24px !important;
 }
-body.usp-resize-font-125 .btn.btn--blue, 
-body.usp-resize-font-125 .btn.btn--white, 
-body.usp-resize-font-125 .btn.btn--animated span {
+body.usp-resize-font-125 .btn.btn--blue,
+body.usp-resize-font-125 .btn.btn--white,
+body.usp-resize-font-125 .btn.btn--animated span,
+body.usp-resize-font-125 .btn.btn-inline,
+body.usp-resize-font-125 .btn.btn--inline {
     font-size: 27px !important;
 }
 body.usp-readable-font .btn.btn--blue,
 body.usp-readable-font .btn.btn--white,
-body.usp-readable-font .btn.btn--animated span {
+body.usp-readable-font .btn.btn--animated span,
+body.usp-readable-font .btn.btn-inline,
+body.usp-readable-font .btn.btn--inline {
     font-family: Verdana, Arial, Helvetica, sans-serif !important;
 }
+body.usp-resize-font-115 .btn.btn--line-blue {
+    font-size: 21px !important;
+    width:100% !important;
+}
+body.usp-resize-font-120 .btn.btn--line-blue {
+    font-size: 24px !important;
+    width: 100% !important;
+}
+body.usp-resize-font-125 .btn.btn--line-blue {
+    font-size: 27px !important;
+    width: 100% !important;
+}
+body.usp-readable-font .btn.btn--line-blue {
+    font-family: Verdana, Arial, Helvetica, sans-serif !important;
+    width: 100% !important;
+}
 @media screen and (max-width: 410px) {
-    body.usp-resize-font-115 .header .menu__primary > li,
-    body.usp-resize-font-115 .header .menu__secondary > li,
+    body .usp-resize-font-115 .header .menu__primary > li, 
+    body.usp-resize-font-115 .header .menu__secondary > li, 
     body.usp-resize-font-115 .header .menu__tertiary > li {
         font-size: 115% !important;
         line-height: normal;
