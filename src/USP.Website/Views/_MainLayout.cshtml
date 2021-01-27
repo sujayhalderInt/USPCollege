@@ -82,7 +82,7 @@
                 $('body').addClass('usp-resize-font-125');
             }
             $('#increaseText').addClass('activeSideMenu');
-            acessiblitySaving();
+            //acessiblitySaving();
         }
         function decreaseText() {
             $('#increaseText').removeClass('activeSideMenu');
@@ -98,7 +98,7 @@
                 $('body').addClass('usp-resize-font-120');
             }
             $('#decreaseText').addClass('activeSideMenu');
-            acessiblitySaving();
+            //acessiblitySaving();
         }
         function normalText() {
             if ($("body").hasClass("usp-readable-font") == false) {
@@ -109,7 +109,7 @@
                 $('body').removeClass('usp-readable-font');
                 $('#normalText').removeClass('activeSideMenu');
             }
-            acessiblitySaving();
+            //acessiblitySaving();
         }
         function darkBackGround() {
             $('#lightBackground').removeClass('activeSideMenu');
@@ -122,7 +122,7 @@
                 $('body').removeClass('usp-high-contrast');
                 $('#darkBackGround').removeClass('activeSideMenu');
             }
-            acessiblitySaving();
+            //acessiblitySaving();
         }
         function lightBackground() {
             $('#darkBackGround').removeClass('activeSideMenu');
@@ -135,7 +135,7 @@
                 $('body').removeClass('usp-light-background');
                 $('#lightBackground').removeClass('activeSideMenu');
             }
-            acessiblitySaving();
+            //acessiblitySaving();
         }
         function resetAll() {
             $('body').removeClass('usp-resize-font-115');
@@ -145,25 +145,25 @@
             $('body').removeClass('usp-high-contrast');
             $('body').removeClass('usp-light-background');
             $('.sideMenuOption').removeClass('activeSideMenu');
-            localStorage.clear();
+            //localStorage.clear();
         }
         //accesibility setting begin
-        function acessiblitySaving() {
-            localStorage.setItem('LSBodyClass', $('body').attr('class'));
-            localStorage.setItem('LSIncreaseTextClass', $('#increaseText').attr('class'));
-            localStorage.setItem('LSDecreaseTextClass', $('#decreaseText').attr('class'));
-            localStorage.setItem('LSNormalTextClass', $('#normalText').attr('class'));
-            localStorage.setItem('LSDarkBGClass', $('#darkBackGround').attr('class'));
-            localStorage.setItem('LSLightBGClass', $('#lightBackground').attr('class'));
-        }
-        window.onload = function () {
-            $('body').addClass(localStorage.getItem('LSBodyClass')); 
-            $('#increaseText').addClass(localStorage.getItem('LSIncreaseTextClass')); 
-            $('#decreaseText').addClass(localStorage.getItem('LSDecreaseTextClass')); 
-            $('#normalText').addClass(localStorage.getItem('LSNormalTextClass')); 
-            $('#darkBackGround').addClass(localStorage.getItem('LSDarkBGClass')); 
-            $('#lightBackground').addClass(localStorage.getItem('LSLightBGClass')); 
-        };
+        //function acessiblitySaving() {
+        //    localStorage.setItem('LSBodyClass', $('body').attr('class'));
+        //    localStorage.setItem('LSIncreaseTextClass', $('#increaseText').attr('class'));
+        //    localStorage.setItem('LSDecreaseTextClass', $('#decreaseText').attr('class'));
+        //    localStorage.setItem('LSNormalTextClass', $('#normalText').attr('class'));
+        //    localStorage.setItem('LSDarkBGClass', $('#darkBackGround').attr('class'));
+        //    localStorage.setItem('LSLightBGClass', $('#lightBackground').attr('class'));
+        //}
+        //window.onload = function () {
+        //    $('body').addClass(localStorage.getItem('LSBodyClass')); 
+        //    $('#increaseText').addClass(localStorage.getItem('LSIncreaseTextClass')); 
+        //    $('#decreaseText').addClass(localStorage.getItem('LSDecreaseTextClass')); 
+        //    $('#normalText').addClass(localStorage.getItem('LSNormalTextClass')); 
+        //    $('#darkBackGround').addClass(localStorage.getItem('LSDarkBGClass')); 
+        //    $('#lightBackground').addClass(localStorage.getItem('LSLightBGClass')); 
+        //};
         //accesibility setting end
     </script>
     @*USP-1_14/12/2020 End*@
