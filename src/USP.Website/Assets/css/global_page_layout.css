@@ -1476,38 +1476,72 @@ body.usp-readable-font .btn.btn--line-blue {
     width: 100% !important;
 }
 @media screen and (max-width: 410px) {
-    body .usp-resize-font-115 .header .menu__primary > li, 
-    body.usp-resize-font-115 .header .menu__secondary > li, 
-    body.usp-resize-font-115 .header .menu__tertiary > li {
+    body.usp-resize-font-115.usp-readable-font .header .menu__primary > li,
+    body.usp-resize-font-115.usp-readable-font .header .menu__secondary > li,
+    body.usp-resize-font-115.usp-readable-font .header .menu__tertiary > li {
         font-size: 115% !important;
         line-height: normal;
         /*line-break: anywhere;*/
         word-break: break-all !important;
         overflow-wrap: normal !important;
     }
-    body.usp-resize-font-120 .header .menu__primary > li,
-    body.usp-resize-font-120 .header .menu__secondary > li,
-    body.usp-resize-font-120 .header .menu__tertiary > li {
+    body.usp-resize-font-120.usp-readable-font .header .menu__primary > li,
+    body.usp-resize-font-120.usp-readable-font .header .menu__secondary > li,
+    body.usp-resize-font-120.usp-readable-font .header .menu__tertiary > li {
         font-size: 120% !important;
         line-height: normal;
         /*line-break: anywhere;*/
         word-break: break-all !important;
         overflow-wrap: normal !important;
     }
-    body.usp-resize-font-125 .header .menu__primary > li,
-    body.usp-resize-font-125 .header .menu__secondary > li,
-    body.usp-resize-font-125 .header .menu__tertiary > li {
+    body.usp-resize-font-125.usp-readable-font .header .menu__primary > li,
+    body.usp-resize-font-125.usp-readable-font .header .menu__secondary > li,
+    body.usp-resize-font-125.usp-readable-font .header .menu__tertiary > li {
         font-size: 125% !important;
         line-height: normal;
         /*line-break: anywhere;*/
         word-break: break-all !important;
         overflow-wrap: normal !important;
     }
-    body.usp-readable-font .header .menu__primary > li,
-    body.usp-readable-font .header .menu__secondary > li,
-    body.usp-readable-font .header .menu__tertiary > li {
-        /*line-break: anywhere;*/
-        word-break: break-all !important;
-        overflow-wrap: normal !important;
-    }
+}
+body.usp-light-background .features-item a,
+body.usp-high-contrast .features-item a {
+    text-decoration: underline;
+}
+body.usp-high-contrast .features-item a:hover {
+    color: #3EC2CF !important;
+}
+body.usp-light-background .features-item a:hover {
+    color: #287ab3 !important;
+}
+body.usp-high-contrast .header .menu a:hover,
+body.usp-high-contrast .header .menu a:hover i,
+body.usp-high-contrast .footer .footer__main-nav a:hover,
+body.usp-high-contrast .footer .footer__sec-nav a:hover,
+body.usp-high-contrast .footer .footer__social-nav a:hover i {
+    color: #3ec2cf !important;
+}
+body.usp-light-background .header .menu a:hover,
+body.usp-light-background .header .menu a:hover i,
+body.usp-light-background .footer .footer__main-nav a:hover,
+body.usp-light-background .footer .footer__sec-nav a:hover,
+body.usp-light-background .footer .footer__social-nav a:hover i {
+    color: #287ab3 !important;
+}
+body.usp-high-contrast .spotlight-tertiary a h3,
+body.usp-high-contrast .spotlight-tertiary a p,
+body.usp-light-background .spotlight-tertiary a h3,
+body.usp-light-background .spotlight-tertiary a p {
+    transition: all 200ms ease-out;
+}
+body.usp-high-contrast .spotlight-tertiary a:hover h3,
+body.usp-high-contrast .spotlight-tertiary a:hover p {
+    color: #3EC2CF !important;
+}
+body.usp-light-background .spotlight-tertiary a:hover {
+    border-color: #287ab3 !important;
+}
+body.usp-light-background .spotlight-tertiary a:hover h3,
+body.usp-light-background .spotlight-tertiary a:hover p {
+    color: #287ab3 !important;
 }
