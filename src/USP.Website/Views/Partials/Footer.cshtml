@@ -32,9 +32,11 @@
                 <p class="footer__logo">
                     @*USP-3_04/11/2020 Begin*@
                     @* @Html.LazyImage("/assets/img/logo.png", new { alt = "Unified Seevic Palmers College" }, "/assets/img/logo.png")*@
+                    @*USP-1_14/12/2020 Begin*@
                     <img class="normalView" src="/assets/img/logo.png" alt="Unified Seevic Palmers College" />
                     <img class="lightView" src="/assets/img/logo_blue.png" alt="Unified Seevic Palmers College" />
                     @*USP-3_04/11/2020 End*@
+                    @*USP-1_14/12/2020 End*@
                 </p>
             </div>
         </div>
@@ -151,8 +153,10 @@
                         var image = new Image(logo.LogoImage);
                         <p>
                             <a href="@logo.ExternalUrl">
+                                @*USP-1_14/12/2020 Begin*@
                                 <img class="normalView" src="/assets/img/logo.png" alt="USP College" />
                                 <img class="lightView" src="/assets/img/logo_blue.png" alt="USP College" />
+                                @*USP-1_14/12/2020 End*@
                             </a>
                         </p>
                     }
