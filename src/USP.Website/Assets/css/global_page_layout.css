@@ -1713,3 +1713,11 @@ body.usp-light-background i.icon-instagram {
 body.usp-light-background i.icon-instagram:hover {
     background: url(/Assets/img/icon-instagram-blue2.png) no-repeat left top !important;
 }
+@media screen and (max-width: 410px) {
+    .statistic .statistic-wrapper .statistic-item .statistic-item__number,
+    body.usp-readable-font .statistic .statistic-wrapper .statistic-item__number,
+    body.usp-light-background .statistic .statistic-wrapper .statistic-item__number,
+    body.usp-high-contrast .statistic .statistic-wrapper .statistic-item__number {
+        overflow-wrap: break-word !important;
+    }
+}
