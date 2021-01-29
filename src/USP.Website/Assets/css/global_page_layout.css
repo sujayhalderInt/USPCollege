@@ -405,6 +405,10 @@ body.usp-resize-font-125 .statistic .statistic-wrapper .statistic-item__number {
         /*overflow-wrap: break-word !important;*/
         word-wrap: break-word !important;
     }
+    body.usp-readable-font .statistic .statistic-wrapper .statistic-item__number {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
 }
 /* Microsoft Edge Browser 12+ (All) - @supports method */
 @supports (-ms-ime-align:auto) {
@@ -412,10 +416,18 @@ body.usp-resize-font-125 .statistic .statistic-wrapper .statistic-item__number {
         /*overflow-wrap: break-word !important;*/
         word-wrap: break-word !important;
     }
+    body.usp-readable-font .statistic .statistic-wrapper .statistic-item__number {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
 }
 /* Microsoft Edge Browser 15+ - @supports method */
 @supports (-ms-ime-align:auto) and (-webkit-text-stroke:initial) {
     body.usp-resize-font-115 .statistic .statistic-wrapper .statistic-item__number, body.usp-resize-font-120 .statistic .statistic-wrapper .statistic-item__number, body.usp-resize-font-125 .statistic .statistic-wrapper .statistic-item__number {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+    body.usp-readable-font .statistic .statistic-wrapper .statistic-item__number {
         /*overflow-wrap: break-word !important;*/
         word-wrap: break-word !important;
     }

@@ -1408,6 +1408,7 @@ a[class^="addthis_"] img {
 a.addthis_button_email img {
   margin-top: 2px; }
 
+/*USP-1_14/12/2020 Begin*/
 /*i.icon-instagram:before {
   content: '';
   background: url("/Assets/img/instagram.svg");
@@ -1416,9 +1417,10 @@ a.addthis_button_email img {
   height: 30px;
   background-size: cover;
   bottom: 1px; }*/
+/*USP-1_14/12/2020 End*/
 
 @media (max-width: 991.98px) {
-  .breadcrumb-list {
+    .breadcrumb-list {
     background-color: #FFFFFF;
     margin-bottom: 0;
     padding-left: 0; }
