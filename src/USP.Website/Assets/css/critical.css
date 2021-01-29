@@ -1408,14 +1408,14 @@ a[class^="addthis_"] img {
 a.addthis_button_email img {
   margin-top: 2px; }
 
-i.icon-instagram:before {
+/*i.icon-instagram:before {
   content: '';
   background: url("/Assets/img/instagram.svg");
   position: absolute;
   width: 30px;
   height: 30px;
   background-size: cover;
-  bottom: 1px; }
+  bottom: 1px; }*/
 
 @media (max-width: 991.98px) {
   .breadcrumb-list {

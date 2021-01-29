@@ -58,26 +58,48 @@ body.usp-resize-font-115 {
     font-size: 115% !important;
     line-height: normal;
     /*line-break: anywhere;
-        word-break: break-all;
-    */
-    overflow-wrap: break-word !important; 
+      word-break: break-all;*/
+    overflow-wrap: break-word !important;
 }
 body.usp-resize-font-120 {
     font-size: 120% !important;
     line-height: normal;
     /*line-break: anywhere;
-        word-break: break-all;
-    */
+      word-break: break-all;*/
     overflow-wrap: break-word !important;
 }
 body.usp-resize-font-125 {
     font-size: 125% !important;
     line-height: normal;
     /*line-break: anywhere;
-        word-break: break-all;
-    */
+      word-break: break-all;*/
     overflow-wrap: break-word !important;
 }
+
+/*========== IE & Edge Hack Start ==========*/
+/*IE10 and IE11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    body.usp-resize-font-115, body.usp-resize-font-120, body.usp-resize-font-125 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 12+ (All) - @supports method */
+@supports (-ms-ime-align:auto) {
+    body.usp-resize-font-115, body.usp-resize-font-120, body.usp-resize-font-125 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 15+ - @supports method */
+@supports (-ms-ime-align:auto) and (-webkit-text-stroke:initial) {
+    body.usp-resize-font-115, body.usp-resize-font-120, body.usp-resize-font-125 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/*========== IE & Edge Hack End ==========*/
+
 body.usp-readable-font,
 body.usp-readable-font h1,
 body.usp-readable-font h2,
@@ -203,7 +225,29 @@ body.usp-resize-font-125 .hero-home__content__icon h2 {
     /*word-break: break-all !important;*/
     overflow-wrap: break-word !important;
 }
-
+/*========== IE & Edge Hack Start ==========*/
+/*IE10 and IE11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    body.usp-resize-font-115 .hero-home__content__icon h2, body.usp-resize-font-120 .hero-home__content__icon h2, body.usp-resize-font-125 .hero-home__content__icon h2 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 12+ (All) - @supports method */
+@supports (-ms-ime-align:auto) {
+    body.usp-resize-font-115 .hero-home__content__icon h2, body.usp-resize-font-120 .hero-home__content__icon h2, body.usp-resize-font-125 .hero-home__content__icon h2 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 15+ - @supports method */
+@supports (-ms-ime-align:auto) and (-webkit-text-stroke:initial) {
+    body.usp-resize-font-115 .hero-home__content__icon h2, body.usp-resize-font-120 .hero-home__content__icon h2, body.usp-resize-font-125 .hero-home__content__icon h2 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/*========== IE & Edge Hack End ==========*/
 body.usp-resize-font-115 .spotlight__fullwidth h2,
 body.usp-resize-font-115 .spotlight-tertiary div:first-child h2 {
     font-size: 60px !important;
@@ -241,7 +285,29 @@ body.usp-resize-font-125 .spotlight-tertiary a h3 {
     /*word-break: break-all !important;*/
     overflow-wrap: break-word !important;
 }
-
+/*========== IE & Edge Hack Start ==========*/
+/*IE10 and IE11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    body.usp-resize-font-115 .spotlight-tertiary a h3, body.usp-resize-font-120 .spotlight-tertiary a h3, body.usp-resize-font-125 .spotlight-tertiary a h3 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 12+ (All) - @supports method */
+@supports (-ms-ime-align:auto) {
+    body.usp-resize-font-115 .spotlight-tertiary a h3, body.usp-resize-font-120 .spotlight-tertiary a h3, body.usp-resize-font-125 .spotlight-tertiary a h3 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 15+ - @supports method */
+@supports (-ms-ime-align:auto) and (-webkit-text-stroke:initial) {
+    body.usp-resize-font-115 .spotlight-tertiary a h3, body.usp-resize-font-120 .spotlight-tertiary a h3, body.usp-resize-font-125 .spotlight-tertiary a h3 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/*========== IE & Edge Hack End ==========*/
 body.usp-resize-font-115 table:not(.pika-table) tbody tr td {
     font-size: 16px !important;
     line-height: normal !important;
@@ -270,18 +336,18 @@ body.usp-resize-font-125 .header .menu__dropdown__part > ul > li > a {
 }
 
 body.usp-resize-font-115 .header .menu__dropdown__part > ul > li > ul > li > a {
-    /*font-size: 20px !important;*/ /*Sujay*/
-    font-size: 16px !important; /*Sujay*/
+    /*font-size: 20px !important;*/
+    font-size: 16px !important;
     line-height: normal !important;
 }
 body.usp-resize-font-120 .header .menu__dropdown__part > ul > li > ul > li > a {
-    /*font-size: 24px !important;*/ /*Sujay*/
-    font-size: 18px !important; /*Sujay*/
+    /*font-size: 24px !important;*/
+    font-size: 18px !important;
     line-height: normal !important;
 }
 body.usp-resize-font-125 .header .menu__dropdown__part > ul > li > ul > li > a {
-    /*font-size: 28px !important;*/ /*Sujay*/
-    font-size: 20px !important; /*Sujay*/
+    /*font-size: 28px !important;*/
+    font-size: 20px !important;
     line-height: normal !important;
 }
 
@@ -331,6 +397,32 @@ body.usp-resize-font-125 .statistic .statistic-wrapper .statistic-item__number {
     line-height: normal !important;
     /*word-break: break-all !important;*/
     overflow-wrap: break-word !important;
+}
+/*========== IE & Edge Hack Start ==========*/
+/*IE10 and IE11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    body.usp-resize-font-115 .statistic .statistic-wrapper .statistic-item__number, body.usp-resize-font-120 .statistic .statistic-wrapper .statistic-item__number, body.usp-resize-font-125 .statistic .statistic-wrapper .statistic-item__number {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 12+ (All) - @supports method */
+@supports (-ms-ime-align:auto) {
+    body.usp-resize-font-115 .statistic .statistic-wrapper .statistic-item__number, body.usp-resize-font-120 .statistic .statistic-wrapper .statistic-item__number, body.usp-resize-font-125 .statistic .statistic-wrapper .statistic-item__number {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 15+ - @supports method */
+@supports (-ms-ime-align:auto) and (-webkit-text-stroke:initial) {
+    body.usp-resize-font-115 .statistic .statistic-wrapper .statistic-item__number, body.usp-resize-font-120 .statistic .statistic-wrapper .statistic-item__number, body.usp-resize-font-125 .statistic .statistic-wrapper .statistic-item__number {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/*========== IE & Edge Hack End ==========*/
+body.usp-readable-font .statistic .statistic-wrapper .statistic-item__number {
+    font-family: Verdana,Arial,Helvetica,sans-serif !important;
 }
 
 body.usp-resize-font-115 .breadcrumb-list li {
@@ -690,17 +782,17 @@ body.usp-resize-font-125 .hero-search__form .search input[type="search"] {
 
 body.usp-resize-font-115 .header .menu__primary, 
 body.usp-resize-font-115 .header .menu__secondary {
-    font-size: 16px !important;   /* Sujay - instead of 14*/
+    font-size: 16px !important;
     line-height: normal !important;
 }
 body.usp-resize-font-120 .header .menu__primary,
 body.usp-resize-font-120 .header .menu__secondary {
-    font-size: 18px !important; /* Sujay - instead of 16*/
+    font-size: 18px !important;
     line-height: normal !important;
 }
 body.usp-resize-font-125 .header .menu__primary,
 body.usp-resize-font-125 .header .menu__secondary {
-    font-size: 20px !important; /* Sujay - instead of 18*/
+    font-size: 20px !important;
     line-height: normal !important;
 }
 
@@ -716,6 +808,29 @@ body.usp-resize-font-125 .event-listing h3 {
     /*word-break: break-all !important;*/
     overflow-wrap: break-word !important;
 }
+/*========== IE & Edge Hack Start ==========*/
+/*IE10 and IE11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    body.usp-resize-font-115 .event-listing h3, body.usp-resize-font-120 .event-listing h3, body.usp-resize-font-125 .event-listing h3 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 12+ (All) - @supports method */
+@supports (-ms-ime-align:auto) {
+    body.usp-resize-font-115 .event-listing h3, body.usp-resize-font-120 .event-listing h3, body.usp-resize-font-125 .event-listing h3 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 15+ - @supports method */
+@supports (-ms-ime-align:auto) and (-webkit-text-stroke:initial) {
+    body.usp-resize-font-115 .event-listing h3, body.usp-resize-font-120 .event-listing h3, body.usp-resize-font-125 .event-listing h3 {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/*========== IE & Edge Hack End ==========*/
 
 body.usp-resize-font-115 h3.related-item__details__head {
     /*font-size: 28px !important;
@@ -735,6 +850,29 @@ body.usp-resize-font-125 h3.related-item__details__head {
     /*word-break: break-all !important;*/
     overflow-wrap: break-word !important;
 }
+/*========== IE & Edge Hack Start ==========*/
+/*IE10 and IE11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    body.usp-resize-font-115 h3.related-item__details__head, body.usp-resize-font-120 h3.related-item__details__head, body.usp-resize-font-125 h3.related-item__details__head {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 12+ (All) - @supports method */
+@supports (-ms-ime-align:auto) {
+    body.usp-resize-font-115 h3.related-item__details__head, body.usp-resize-font-120 h3.related-item__details__head, body.usp-resize-font-125 h3.related-item__details__head {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/* Microsoft Edge Browser 15+ - @supports method */
+@supports (-ms-ime-align:auto) and (-webkit-text-stroke:initial) {
+    body.usp-resize-font-115 h3.related-item__details__head, body.usp-resize-font-120 h3.related-item__details__head, body.usp-resize-font-125 h3.related-item__details__head {
+        /*overflow-wrap: break-word !important;*/
+        word-wrap: break-word !important;
+    }
+}
+/*========== IE & Edge Hack End ==========*/
 
 /* Font Adjust CSS*/
 body.usp-resize-font-115 .spotlight__description,
@@ -1178,10 +1316,10 @@ body.usp-light-background .spotlight__fullwidth .spotlight-details div:first-chi
         line-height: normal !important;
     }   
     body.usp-high-contrast .header .menu__primary > li a {
-        /*background-color: #287AB3 !important;*/ /*Sujay*/
-        background-color: #39393a !important; /*Sujay*/
+        /*background-color: #287AB3 !important;*/
+        background-color: #39393a !important;
     }
-    body.usp-high-contrast .header .menu__primary > li a:hover { /*Sujay new set*/
+    body.usp-high-contrast .header .menu__primary > li a:hover {
         background-color: #656565 !important;
     }
     body.usp-high-contrast .header .menu__primary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a,
@@ -1196,11 +1334,11 @@ body.usp-light-background .spotlight__fullwidth .spotlight-details div:first-chi
     }
     body.usp-light-background .header .menu__primary > li a {
         /*background-color: #287AB3 !important;
-        color: #fff !important;*/ /*SUjay*/
-        background-color: #e4e4e4 !important; /*SUjay*/
-        color: #000 !important; /*SUjay*/
+        color: #fff !important;*/
+        background-color: #e4e4e4 !important;
+        color: #000 !important;
     }
-    body.usp-light-background .header .menu__primary > li a:hover { /*Sujay new set*/
+    body.usp-light-background .header .menu__primary > li a:hover {
         background-color: #bfbfbf !important;
     }
     body.usp-light-background .header .menu__primary.minify .oppened .menu__dropdown .menu__dropdown__part > ul a,
@@ -1269,7 +1407,7 @@ body.usp-light-background .spotlight__fullwidth .spotlight-details div:first-chi
         top: 14px;
         left: -19px;
     }
-    body.usp-light-background .spotlight__component + .spotlight__component {  /*Sujay new set*/ 
+    body.usp-light-background .spotlight__component + .spotlight__component {
         border: none !important;
     }
 
@@ -1544,4 +1682,22 @@ body.usp-light-background .spotlight-tertiary a:hover {
 body.usp-light-background .spotlight-tertiary a:hover h3,
 body.usp-light-background .spotlight-tertiary a:hover p {
     color: #287ab3 !important;
+}
+i.icon-instagram {
+    content: '';
+    background: url(/Assets/img/icon-instagram-white.png) no-repeat left top !important;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    bottom: 1px;
+    transition: 0.8s;
+}
+i.icon-instagram:hover {
+    background: url(/Assets/img/icon-instagram-blue.png) no-repeat left top !important;
+}
+body.usp-light-background i.icon-instagram {
+    background: url(/Assets/img/icon-instagram-black.png) no-repeat left top !important;
+}
+body.usp-light-background i.icon-instagram:hover {
+    background: url(/Assets/img/icon-instagram-blue2.png) no-repeat left top !important;
 }
