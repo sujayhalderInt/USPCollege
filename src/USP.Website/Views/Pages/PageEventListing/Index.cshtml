@@ -33,7 +33,7 @@
                 <div class="col-md-6 offset-md-3">
 
                     <h2 class="hero-home__headline">@Model.SearchLabel</h2>
-                    <div class="hero-search__form">
+                    <div class="hero-search__form" role="search" aria-labelledby="page-search btn-listing-search">
                         <div class="search mb-0">
                             <label for="@Html.IdFor(m => m.ListingPostback.SearchText)"><span class="sr-only">@Model.SearchLabel</span></label>
                             @Html.TextBoxFor(m => m.ListingPostback.SearchText, new { type = "search", id = "page-search", placeholder = Model.SearchPlaceholder,data_predictive = "/umbraco/api/PredictiveSearch/geteventresults" })
@@ -51,7 +51,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <div class="sidebar-filter">
+                <div class="sidebar-filter" role="menuitemcheckbox" aria-label="filter area">
                     <h2 class="sidebar-filter__head">Filter by date</h2>
                     <div class="form__check mb-10">
                         @Html.LabelFor(m => m.ListingPostback.StartDate, "From", new {@class= "form__check__label" })
@@ -64,7 +64,7 @@
 
 
                     <h2 class="sidebar-filter__head">Filter by</h2>
-                    <input id="btn-clear-all" class="btn btn--line-blue mb-20" type="submit" name="@Html.NameFor(m => m.ListingPostback.BtnClearFilters)" value="@library.GetDictionaryItem("CourseListing.ClearFilters")"/>
+                    <input id="btn-clear-all" class="btn btn--line-blue mb-20" type="submit" name="@Html.NameFor(m => m.ListingPostback.BtnClearFilters)" value="@library.GetDictionaryItem("CourseListing.ClearFilters")" aria-labelledby="btn-clear-all"/>
 
                     <div class="sidebar-filter__body">
                         @foreach (var filter in Model.FilterItems)
@@ -81,7 +81,7 @@
                                         @foreach (var taxonomy in taxonomies)
                                         {
                                             var key = taxonomyFolder.Id + "|" + taxonomy.GetKey().ToIndexString();
-                                            <div class="checkbox">
+                                            <div class="checkbox" role="checkbox" aria-labelledby="filter-@(taxonomy.Id)">
                                                 <label for="filter-@(taxonomy.Id)">@taxonomy.TaxonomyName</label>
                                                 <input id="filter-@(taxonomy.Id)" name="@Html.NameFor(m => m.ListingPostback.SelectedTaxonomy)" type="checkbox" value="@key" @IsChecked(key, Model.ListingPostback.SelectedTaxonomy)>
                                                 <span class="checkmark"></span>

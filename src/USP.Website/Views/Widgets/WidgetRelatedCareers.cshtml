@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="spotlight__wrapper" data-elements="@Model.RelatedCareers.Count()">
+                <div class="spotlight__wrapper" data-elements="@Model.RelatedCareers.Count()" role="img" aria-label="spotlight__wrapper entire area">
                     @foreach (var career in Model.RelatedCareers)
                     {
                         var overlay = "teal";
@@ -31,7 +31,7 @@
                         {
                             overlay = career.Overlay.ToString().ToLower();
                         }
-                        <div class="spotlight__component">
+                        <div class="spotlight__component" role="img" aria-label="spotlight__component individual">
                             <div class="spotlight spotlight--v2">
                                 <p class="mb-20 filter filter--@overlay">
                                     @Html.LazyImage(career.BannerImage, SiteConstants.Crops.CropSpotlightSecondary)

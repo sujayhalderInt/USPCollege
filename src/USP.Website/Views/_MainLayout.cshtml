@@ -82,7 +82,7 @@
                 $('body').addClass('usp-resize-font-125');
             }
             $('#increaseText').addClass('activeSideMenu');
-            //acessiblitySaving();
+            //accessibilitySaving();
         }
         function decreaseText() {
             $('#increaseText').removeClass('activeSideMenu');
@@ -98,7 +98,7 @@
                 $('body').addClass('usp-resize-font-120');
             }
             $('#decreaseText').addClass('activeSideMenu');
-            //acessiblitySaving();
+            //accessibilitySaving();
         }
         function normalText() {
             if ($("body").hasClass("usp-readable-font") == false) {
@@ -109,7 +109,7 @@
                 $('body').removeClass('usp-readable-font');
                 $('#normalText').removeClass('activeSideMenu');
             }
-            //acessiblitySaving();
+            //accessibilitySaving();
         }
         function darkBackGround() {
             $('#lightBackground').removeClass('activeSideMenu');
@@ -122,7 +122,7 @@
                 $('body').removeClass('usp-high-contrast');
                 $('#darkBackGround').removeClass('activeSideMenu');
             }
-            //acessiblitySaving();
+            //accessibilitySaving();
         }
         function lightBackground() {
             $('#darkBackGround').removeClass('activeSideMenu');
@@ -135,7 +135,7 @@
                 $('body').removeClass('usp-light-background');
                 $('#lightBackground').removeClass('activeSideMenu');
             }
-            //acessiblitySaving();
+            //accessibilitySaving();
         }
         function resetAll() {
             $('body').removeClass('usp-resize-font-115');
@@ -147,8 +147,8 @@
             $('.sideMenuOption').removeClass('activeSideMenu');
             //localStorage.clear();
         }
-        //accesibility setting Begin
-        //function acessiblitySaving() {
+        //accessibility setting Begin
+        //function accessibilitySaving() {
         //    localStorage.setItem('LSBodyClass', $('body').attr('class'));
         //    localStorage.setItem('LSIncreaseTextClass', $('#increaseText').attr('class'));
         //    localStorage.setItem('LSDecreaseTextClass', $('#decreaseText').attr('class'));
@@ -164,7 +164,7 @@
         //    $('#darkBackGround').addClass(localStorage.getItem('LSDarkBGClass')); 
         //    $('#lightBackground').addClass(localStorage.getItem('LSLightBGClass')); 
         //};
-        //accesibility setting End
+        //accessibility setting End
     </script>
     @*USP-1_14/12/2020 End*@
     @Html.Action("Cookies", "CookiePolicy")
@@ -172,13 +172,13 @@
     <header class="header">
         <nav class="menu">
             @Html.Action("Navigation", "Navigation")
-            <ul class="menu__tertiary" role="menubar">
+            <ul class="menu__tertiary" role="menubar" aria-label="Secondary">
                 @*USP-1_14/12/2020 Begin*@
-                <li role="menuitem" class="mobile-only normalView"><a href="/" class="menu__logo--mobile"><img src="/assets/img/logo.png" alt="logo"></a></li>
-                <li role="menuitem" class="mobile-only lightView"><a href="/" class="menu__logo--mobile"><img src="/assets/img/logo_blue.png" alt="logo"></a></li>
+                <li role="menuitem" class="mobile-only normalView" aria-label="Secondary"><a href="/" class="menu__logo--mobile"><img src="/assets/img/logo.png" alt="logo"></a></li>
+                <li role="menuitem" class="mobile-only lightView" aria-label="Secondary"><a href="/" class="menu__logo--mobile"><img src="/assets/img/logo_blue.png" alt="logo"></a></li>
                 @*USP-1_14/12/2020 End*@
                 @Html.Action("SignUp", "Navigation")
-                <li role="menuitem"><a class="header-search-btn" href="@Umbraco.GetSearchUrl()"><i class="icon-search" aria-hidden="true"></i> @library.GetDictionaryItem("Global Search.Labels.SearchMenuText")</a></li>
+                <li role="menuitem" aria-label="Secondary"><a class="header-search-btn" href="@Umbraco.GetSearchUrl()"><i class="icon-search" aria-hidden="true"></i> @library.GetDictionaryItem("Global Search.Labels.SearchMenuText")</a></li>
                 @Html.Action("RenderApply", "Navigation")
             </ul>
         </nav>
@@ -252,7 +252,7 @@
         });
     </script>
 
-    <div class="newDropdown">
+    <div class="newDropdown" role="menu" aria-labelledby="helpDropdown">
         <button onclick="helpSubMenu()" class="dropbtn fa fa-wheelchair" tabindex="1"></button>
         <div id="helpDropdown" class="newDropdown-content">
             <a href="#" class="sideMenuOption" id="increaseText" onclick="increaseText(); return false;" tabindex="2"><i class="fa fa-search-plus fafa-space"></i>Increase Text</a>

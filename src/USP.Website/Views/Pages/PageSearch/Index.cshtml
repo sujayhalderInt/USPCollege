@@ -38,7 +38,7 @@
                 <div class="col-md-6 offset-md-3">
 
                     <h2 class="hero-home__headline">Search results</h2>
-                    <div class="hero-search__form">
+                    <div class="hero-search__form" role="search" aria-labelledby="page-search btn-listing-search">
                         <div class="search mb-0">
                             <label for="@Html.IdFor(m => m.ListingPostback.SearchText)"><span class="sr-only">@library.GetDictionaryItem("CourseListing.Search")</span></label>
                             @Html.TextBoxFor(m => m.ListingPostback.SearchText, new { type = "search", id = "page-search", placeholder = library.GetDictionaryItem("CourseListing.SearchPlaceholder"), data_predictive = "/umbraco/api/PredictiveSearch/getresults" })
@@ -57,7 +57,7 @@
     <div class="container mt-50">
         <div class="row">
             <div class="col-lg-3">
-                <div class="sidebar-filter">
+                <div class="sidebar-filter" role="menuitemcheckbox" aria-label="filter area">
                     <h2 class="sidebar-filter__head">Filter</h2>
 
                     <div class="sidebar-filter__body">
@@ -68,7 +68,7 @@
                                 
                                 @foreach (var docType in filterDocTypes)
                                 {
-                                    <div class="checkbox">
+                                    <div class="checkbox" role="checkbox" aria-labelledby="filter-@docType.Key">
                                         <label for="filter-@docType.Key">@docType.Key</label>
                                         <input id="filter-@docType.Key" class="doc-type-filter" name="@Html.NameFor(m => m.ListingPostback.SelectedDocTypes)" type="checkbox" value="@docType.Value" @IsChecked(docType.Value, Model.ListingPostback.SelectedDocTypes)>
                                         <span class="checkmark"></span>

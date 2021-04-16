@@ -10,7 +10,7 @@
 
 <section class="container">
     <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md-10 offset-md-1" role="img" aria-label="related-course-list entire area">
             @if (!string.IsNullOrEmpty(Model.Title))
             {
                 <h3>@Model.Title</h3>
@@ -20,7 +20,7 @@
                     {
                         var showDesc = true;
 
-                        <article class="related-item">
+                        <article class="related-item" role="img" aria-label="related-item individual">
                             <aside class="related-item__img">
                                 <a href="@news.Url">
                                     @Html.LazyImage(news.BannerImage, SiteConstants.Crops.RelatedCourse)

@@ -26,9 +26,9 @@
     {
         <div class="results__head">
             <p class="results__head__number">@Model.SearchResults.TotalItemCount  @((Model.SearchResults.TotalItemCount == 1) ? "result" : "results")</p>
-            <div class="form__check  mb-0">
+            <div class="form__check  mb-0" role="contentinfo" aria-label="control and info area">
                 <label for="single-select-sort">Sort by</label>
-                <p class="select-wrapper">
+                <p class="select-wrapper" aria-labelledby="single-select-sort">
                     <select id="single-select-sort" class="sort-by" name="@Html.NameFor(m => m.ListingPostback.SortBy)">
                         <option value="@SiteConstants.Sort.DateDesc" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.DateDesc)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.NewsListing.SortyByDateDescendingText)</option>
                         <option value="@SiteConstants.Sort.Date" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.Date)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.NewsListing.SortyByDateAscendingText)</option>
@@ -36,7 +36,7 @@
                 </p>
             </div>
         </div>
-        <div class="results__body related-course-list">
+        <div class="results__body related-course-list" role="listitem" aria-label="listing area">
             @foreach (var item in Model.SearchResults.Results.OfType<NewsDetailResultItem>())
             {
                 var showDesc = true;
@@ -94,7 +94,7 @@
 
         if (Model.SearchResults.PageCount > Model.SearchResults.PageNumber)
         {
-            <div class="text-center">
+            <div class="text-center" aria-labelledby="btnpageing">
                 <input name="@Html.NameFor(m => m.ListingPostback.BtnLoadMore)" type="submit" value="@library.GetDictionaryItem("CourseListing.LoadMore")" class="btn btn--inline btn-listing-submit" id="btnpageing" />
             </div>
         }

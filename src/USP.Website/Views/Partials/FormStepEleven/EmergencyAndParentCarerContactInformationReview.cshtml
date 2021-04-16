@@ -10,7 +10,7 @@
             <a href="@Model.FormStep4Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
         </div>
     </div>
-    <div class="review-block review-block--inline">
+    <div class="review-block review-block--inline" role="contentinfo" aria-label="user details area">
         @if (!string.IsNullOrEmpty(Model.ApplicationForm.EmergencyContactFirstName))
         {
             <div>
@@ -57,7 +57,7 @@
             <a href="@Model.FormStep5Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
         </div>
     </div>
-    <div class="review-block review-block--inline">
+    <div class="review-block review-block--inline" role="contentinfo" aria-label="user details empty_area">
         @if (!string.IsNullOrEmpty(Model.ApplicationForm.ParentOrCarerFirstName))
         {
             <div>

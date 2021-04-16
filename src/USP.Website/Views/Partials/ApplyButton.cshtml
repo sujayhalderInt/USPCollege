@@ -20,11 +20,11 @@
     }
 }
 
-<li role="menuitem" class="mobile-only"><a href="@Model.FormUrl"><i class="icon-apply" aria-hidden="true"></i> @buttonText</a></li>
-<li role="menuitem" class="mobile-only">
+<li role="menuitem" class="mobile-only" aria-label="Secondary"><a href="@Model.FormUrl"><i class="icon-apply" aria-hidden="true"></i> @buttonText</a></li>
+<li role="menuitem" class="mobile-only" aria-label="Secondary button area">
     <a href="" class="nav-toggle">
         <i class="icon-burger" aria-hidden="true"></i>
         <span class="sr-only"> Navigation button</span>
     </a>
 </li>
-<li role="menuitem" class="desktop-only"><a href="@Model.FormUrl" class="btn btn--blue btn--animated btn--apply @buttonDisabledClass"><span class="wrapper">@buttonText</span></a></li>
+<li role="menuitem" class="desktop-only" aria-label="Secondary"><a href="@Model.FormUrl" class="btn btn--blue btn--animated btn--apply @buttonDisabledClass"><span class="wrapper">@buttonText</span></a></li>

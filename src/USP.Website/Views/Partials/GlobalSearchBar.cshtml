@@ -3,7 +3,7 @@
 @model USP.Business.Models.ViewModels.GlobalSearchViewModel
 
 <div class="header-search">
-    <form class="search" role="search" method="get" action="@Model.SearchUrl">
+    <form class="search" role="search" method="get" action="@Model.SearchUrl" aria-label="Primary">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-right">
@@ -14,7 +14,7 @@
                 <div class="col-md-6">
                     <div class="form__check mb-0">
                         <label for="single-select" class="form__check__label">@library.GetDictionaryItem("Global Search.Labels.SearchForLabel")</label>
-                        <p class="select-wrapper">
+                        <p class="select-wrapper" role="listitem" aria-labelledby="single-select">
                             <select id="single-select">
                                 <option value="@Model.SearchUrl">Everything</option>
                                 <option value="@Model.CourseCareerUrl">Courses and careers</option>
@@ -24,8 +24,8 @@
                 </div><!-- end col-md-6 -->
                 <div class="col-md-6">
 
-                    <div class="hero-search__form" role="search">
-                        <div class="search mb-0">
+                    <div class="hero-search__form" role="search" aria-label="Secondary">
+                        <div class="search mb-0" aria-labelledby="global-search btn-global-search">
                             <label for="global-search"><span class="sr-only">@library.GetDictionaryItem("Global Search.Labels.SearchForLabel")</span></label>
                             <input type="search" autocomplete="off" id="global-search" name="term" placeholder="@library.GetDictionaryItem("Global Search.Labels.SearchBoxPlaceholder")" data-predictive="/umbraco/api/PredictiveSearch/getresults">
                             <input class="btn btn--inline" type="submit" id="btn-global-search" value="@library.GetDictionaryItem("Global Search.Labels.SearchButtonText")">

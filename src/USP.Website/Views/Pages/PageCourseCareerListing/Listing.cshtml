@@ -40,13 +40,13 @@
 
     @if (Model.SearchResults.HasResults)
     {
-        <div class="results__head">
+        <div class="results__head" role="contentinfo" aria-label="control and info area">
             @*<p class="results__head__number">@Model.SearchResults.TotalItemCount @((Model.SearchResults.TotalItemCount == 1) ? "result" : "results")</p>*@
             <p class="results__head__number">
                 @Html.Raw(txt)
             </p>
         </div>
-        <div class="results__body">
+        <div class="results__body" role="listitem" aria-label="listing area">
             @foreach (var result in Model.SearchResults.Results)
             {
                 if (result is CourseDetailResultItem)
@@ -119,7 +119,7 @@
 
         if (Model.SearchResults.PageCount > Model.SearchResults.PageNumber)
         {
-            <div class="text-center">
+            <div class="text-center" aria-labelledby="btnpageing">
                 <input name="@Html.NameFor(m => m.ListingPostback.BtnLoadMore)" type="submit" value="@library.GetDictionaryItem("CourseListing.LoadMore")" class="btn btn--inline btn-listing-submit" id="btnpageing"/>
             </div>
 

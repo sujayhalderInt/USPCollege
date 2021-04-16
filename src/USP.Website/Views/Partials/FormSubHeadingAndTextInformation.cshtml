@@ -7,9 +7,9 @@
 
 @if (!string.IsNullOrEmpty(Model.SubHeading))
 {
-    <h3 class="mb-20">@Model.SubHeading</h3>
+    <h3 class="mb-20" aria-label="sub heading area">@Model.SubHeading</h3>
 }
 @if (Model.TextInformation != null)
 {
-    <p class="form-details">@Html.Raw(Model.TextInformation)</p>
+    <p class="form-details" aria-label="form details info">@Html.Raw(Model.TextInformation)</p>
 }

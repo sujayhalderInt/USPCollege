@@ -43,7 +43,7 @@
         {
             var id = "disability-"+ idNo++;
             var isChecked = selectedValues.Contains("," + disablity.Value + ",");
-            <div class="checkbox">
+            <div class="checkbox" role="checkbox" aria-labelledby="@id">
                 <label for="@id">@disablity.Label</label>
                 <input id="@id" type="checkbox" name="@Html.NameFor(m => m.PostBackModel.DisabilitiesDifficultiesCsv)" value="@disablity.Value" @{if (isChecked) { <text> checked='checked' </text>  }} />
                 <span class="checkmark"></span>

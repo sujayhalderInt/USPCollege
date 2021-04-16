@@ -10,7 +10,7 @@
     }
 }
 
-<section class="@if( Model.ShowBackground){<text>upcoming-events bg-usp-navi-dark</text>}">
+<section class="@if( Model.ShowBackground){<text>upcoming-events bg-usp-navi-dark</text>}" role="contentinfo" aria-label="upcoming-events entire area">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -21,7 +21,7 @@
                     @foreach (var eventDetail in Model.EventList)
                     {
 
-                        <div class="event-listing">
+                        <div class="event-listing" role="link" aria-label="upcoming-events individual">
 
                             @if (eventDetail.EndDate > DateTime.MinValue)
                             {

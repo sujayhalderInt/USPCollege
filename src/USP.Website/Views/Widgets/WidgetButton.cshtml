@@ -10,6 +10,6 @@
     var cta = Model.ButtonLink.First();
 }
 
-<div class="button">
+<div class="button" role="button" aria-label="button area">
     <span><a href="@cta.Link"  @Html.NewWindow(cta.NewWindow) @Html.GoogleCTAEvent("cta", "Button", "Clicked", Model)>@cta.Caption</a></span>
 </div>

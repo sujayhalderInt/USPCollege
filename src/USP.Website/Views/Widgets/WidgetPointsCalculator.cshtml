@@ -12,18 +12,18 @@ else
             <div class="col-12">
                 <h2>Points calculator</h2>
                 <noscript>
-                    <div class="alert alert-primary" role="alert">
+                    <div class="alert alert-primary" role="alert" aria-label="point calculator alert area">
                         <i class="icon-exclamation_fill c-usp-orange"><span class="sr-only">Alert icon</span></i>
                         <div>
                             <p class="mb-0">This component is based on javascript, will not work with javascript turned off.</p>
                         </div>
                     </div>
                 </noscript>
-                <div class="points">
+                <div class="points" role="math" aria-label="point calculation">
                     <div class="points__system">
                         <div class="form__check">
                             <label for="single-select" class="form__check__label">Grading system</label>
-                            <p class="select-wrapper mb-20">
+                            <p class="select-wrapper mb-20" aria-labelledby="single-select">
                                 <select id="single-select">
                                     <option value="aflabetic">A, B, C, D, E...</option>
                                     <option value="numeric">9, 8, 7, 6, 5...</option>

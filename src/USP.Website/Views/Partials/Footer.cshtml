@@ -28,7 +28,7 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" role="img" aria-label="footer logo section primary">
                 <p class="footer__logo">
                     @*USP-3_04/11/2020 Begin*@
                     @* @Html.LazyImage("/assets/img/logo.png", new { alt = "Unified Seevic Palmers College" }, "/assets/img/logo.png")*@
@@ -46,7 +46,7 @@
             @if (!Model.FooterLinks.IsNullOrEmpty())
             {
                 <div class="col-lg-8 my-auto cxbvie1">
-                    <nav class="footer__main-nav">
+                    <nav class="footer__main-nav" role="navigation" aria-label="footer navigation area">
 
                         <ul>
                             @foreach (var link in Model.FooterLinks)
@@ -63,7 +63,7 @@
             {
                 <div class="col-lg-4 my-auto cxbvie2">
                     <p>Follow us</p>
-                    <nav class="footer__social-nav">
+                    <nav class="footer__social-nav" role="navigation" aria-label="footer social navigation area">
                         <ul>
                             @if (!string.IsNullOrWhiteSpace(Model.FacebookLink))
                             {
@@ -99,7 +99,7 @@
         <div class="row">
             @foreach (var campusAddress in Model.CampusList.OfType<DataCampusAddress>())
             {
-                <div class="col-md-2">
+                <div class="col-md-2" role="contentinfo" aria-label="footer address area">
                     <h2>@campusAddress.CampusName</h2>
                     <address>
                         @DisplayIfPresent(campusAddress.AddressLine1, string.Empty, "<br />")
@@ -120,7 +120,7 @@
 
                         @if (!Model.PolicyLinks.IsNullOrEmpty())
                         {
-                            <nav class="footer__sec-nav">
+                            <nav class="footer__sec-nav" role="navigation" aria-label="footer__sec-nav area">
                                 <ul>
                                     @foreach (var link in Model.PolicyLinks)
                                     {
@@ -144,7 +144,7 @@
 </footer>
 @if (!Model.LogoList.IsNullOrEmpty())
 {
-    <div class="container" role="complementary">
+    <div class="container" role="complementary" aria-label="footer logo section">
         <div class="row">
             <div class="col-12">
                 <div class="under-footer">

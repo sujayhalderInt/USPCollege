@@ -20,8 +20,8 @@ else
     <div class="container">
         <div class="row">
             <div class="col-md-10 offset-md-1">
-                <section class="video-wrapper">
-                    <div class="video-wrapper-single is-loading" data-youTubeId="@Model.YouTubeID" data-ytkey="@Model.ApiKey">                    
+                <section class="video-wrapper" role="contentinfo" aria-label="video-wrapper entire area">
+                    <div class="video-wrapper-single is-loading" data-youTubeId="@Model.YouTubeID" data-ytkey="@Model.ApiKey" aria-label="video-wrapper-single section">                    
                         <div class="video-player" id=""></div>
                         @if (Model.CoverImage != null)
                         {
@@ -31,7 +31,7 @@ else
                         }
                         
                     </div>
-                    <div class="video-player-content">
+                    <div class="video-player-content" aria-labelledby="vt-@Model.YouTubeID v-@Model.YouTubeID">
                         @*USP-4_30/11/2020 Begin*@
                         @*<h2 class="video-title">@Model.VideoTitle</h2>*@
                         <h2 class="video-title" id="vt-@Model.YouTubeID"></h2>

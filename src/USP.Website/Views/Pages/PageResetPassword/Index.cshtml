@@ -10,7 +10,7 @@
 
 @Html.Partial("ArticleGrid", Model)
 <div class="container">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-8 offset-md-2" role="contentinfo" aria-label="password reset area">
         @if (!string.IsNullOrEmpty(Model.Heading))
         {
             <h2>@Model.Heading</h2>

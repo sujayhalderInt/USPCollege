@@ -18,7 +18,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="highlight">
+            <div class="highlight" role="contentinfo" aria-label="login info area">
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
                         @{
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-8 offset-md-2" role="contentinfo" aria-label="registration area">
             @{
                 if (!string.IsNullOrEmpty(Model.SubHeading) && !Model.LoginPage.IsNullOrEmpty() && !string.IsNullOrEmpty(Model.LoginPageLinkText))
                 {

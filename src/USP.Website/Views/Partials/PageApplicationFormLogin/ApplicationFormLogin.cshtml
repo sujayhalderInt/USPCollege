@@ -9,7 +9,7 @@
 
 @using (Html.BeginUmbracoForm<PageApplicationFormLoginController>("HandleLogin"))
 {
-    <div class="form__check">
+    <div class="form__check" aria-labelledby="EmailAddress">
         @if (!string.IsNullOrEmpty(Model.LabelEmail))
         {
             @Html.LabelFor(model => model.EmailAddress, Model.LabelEmail)
@@ -17,7 +17,7 @@
         @Html.TextBoxFor(model => model.EmailAddress)
         @Html.ValidationMessageFor(model => model.EmailAddress)
     </div>
-    <div class="form__check">
+    <div class="form__check" aria-labelledby="Password">
         @if (!string.IsNullOrEmpty(Model.LabelPassword))
         {
             @Html.LabelFor(model => model.Password, Model.LabelPassword)

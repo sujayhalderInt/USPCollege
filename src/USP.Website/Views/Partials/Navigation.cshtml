@@ -4,7 +4,7 @@
 
 <a class="menu__skip" href="#mainContent">Skip to main content</a>
 
-<ul class="menu__primary" role="menubar" aria-hidden="false">
+<ul class="menu__primary" role="menubar" aria-hidden="false" aria-label="Primary">
     @*USP-1_14/12/2020 Begin*@
     <li class="normalView"><a href="/" class="menu__logo"><img src="/assets/img/logo.png" alt="logo"></a></li>
     <li class="lightView"><a href="/" class="menu__logo"><img src="/assets/img/logo_blue.png" alt="logo"></a></li>
@@ -14,7 +14,7 @@
     {
         var hasBuckets = primaryItem.Buckets.Any(b => b.Buckets.Count > 0);
 
-        <li role="menuitem" aria-haspopup="true" class="@(hasBuckets ? "has-dropdown" : "")">
+        <li role="menuitem" aria-haspopup="true" class="@(hasBuckets ? "has-dropdown" : "")" aria-label="Primary">
             <a href="@primaryItem.PrimaryNavigationItem.Url" data-nav-id=",@(primaryItem.PrimaryNavigationItem.Id),">@primaryItem.PrimaryNavigationItem.NavigationTitle</a>
             @if (hasBuckets)
             {
@@ -50,12 +50,12 @@
 </ul>
     
 
-<ul class="menu__secondary" role="menubar" aria-hidden="false">
+<ul class="menu__secondary" role="menubar" aria-hidden="false" aria-label="Primary">
     @if (Model.Settings != null && Model.Settings.UtilityLinks != null)
     {
         foreach (var link in Model.Settings.UtilityLinks)
         {
-            <li role="menuitem"><a href="@link.Link" @Html.NewWindow(link.NewWindow)>@link.Caption</a></li>
+            <li role="menuitem" aria-label="Secondary"><a href="@link.Link" @Html.NewWindow(link.NewWindow)>@link.Caption</a></li>
         }
     }
 

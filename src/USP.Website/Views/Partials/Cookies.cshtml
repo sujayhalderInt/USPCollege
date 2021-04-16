@@ -7,20 +7,20 @@
     return;
 }
 
-<div class="cookie-banner">
+<div class="cookie-banner" role="contentinfo" aria-label="cookie-banner area">
    
     @using (Html.BeginUmbracoForm<CookiePolicyController>("SaveCookies", null, new { @class = "cookie exclude-form" }))
     {
        
         <div>
-            <div class="cookie__desc">
+            <div class="cookie__desc" aria-label="cookie__desc details">
                 @Model.CookieMessage
             </div>
-            <div class="switch-wrapper">
+            <div class="switch-wrapper" aria-labelledby="cookie-1">
                 <input type='checkbox' class='switch' id='cookie-1' checked disabled>
                 <label for='cookie-1'>@Model.EssentialCookieText</label>
             </div>
-            <div class="switch-wrapper">
+            <div class="switch-wrapper" aria-labelledby="cookie-2">
                 <input type="checkbox" class="switch other-cookie" id="cookie-2" name="otherCookies" value="true" checked>
                 <label for='cookie-2'>@Model.OtherCookieText</label>
             </div>

@@ -20,7 +20,7 @@
 
 <section class="container">
     <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md-10 offset-md-1" role="img" aria-label="related-course-list entire area">
             <h2>@relatedcourse.Title</h2>
             @relatedcourse.Description
             <div class="related-course-list mobile-centered-carousel mb-50">
@@ -29,7 +29,7 @@
                 {
                     var showDesc = true;
 
-                    <article class="related-item">
+                    <article class="related-item" role="img" aria-label="related-item individual">
                         <aside class="related-item__img">
                             <a href="@course.Url">
                                 @Html.LazyImage(course.BannerImage, "RelatedCourse", aspect: SiteConstants.Crops.AspectRatio.TwentyOneToNine)

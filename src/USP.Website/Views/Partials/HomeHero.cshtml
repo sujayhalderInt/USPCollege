@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="hero-alert" role="alert">
+                    <div class="hero-alert" role="alert" aria-label="home alert message area">
                         <i class="icon-info_line"><span class="sr-only">Alert icon</span></i>
                         <p class="mb-0 mr-15">@Model.TextAlert</p>
                         @if (Model.CallToAction != null && Model.CallToAction.Any())
@@ -28,7 +28,7 @@
         </div>
     </div>
 }
-<section class="hero-home bg-usp-navi">
+<section class="hero-home bg-usp-navi" role="contentinfo" aria-label="home back ground and navigation">
     <div class="container">
         <div class="row">
             <div class="col-md-5">
@@ -45,7 +45,7 @@
                 <div class="hero-home__content mobile-carousel">
                     @if (!string.IsNullOrEmpty(Model.CreativeAndDigitalLabel) && !Model.CreativeAndDigitalLink.IsNullOrEmpty())
                     {
-                        <a href="@Model.CreativeAndDigitalLink.First().Url" class="hero-home__content__icon">
+                        <a href="@Model.CreativeAndDigitalLink.First().Url" class="hero-home__content__icon" role="link" aria-labelledby="creative creative-svg">
                             <h2 id="creative">@Model.CreativeAndDigitalLabel</h2>
                             <svg id="creative-svg" aria-describedby="creative" width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>@Model.CreativeAndDigitalLabel</title>
@@ -71,7 +71,7 @@
                     }
                     @if (!string.IsNullOrEmpty(Model.HealthcareAndMedicalLabel) && !Model.HealthcareAndMedicalLink.IsNullOrEmpty())
                     {
-                        <a href="@Model.HealthcareAndMedicalLink.First().Url" class="hero-home__content__icon">
+                        <a href="@Model.HealthcareAndMedicalLink.First().Url" class="hero-home__content__icon" role="link" aria-labelledby="medical medical-svg">
                             <h2 id="medical">@Model.HealthcareAndMedicalLabel</h2>
                             <svg id="medical-svg" aria-describedby="medical" width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>@Model.HealthcareAndMedicalLabel</title>
@@ -94,7 +94,7 @@
                     }
                     @if (!string.IsNullOrEmpty(Model.FinancialSectorLabel) && !Model.FinancialSectorLink.IsNullOrEmpty())
                     {
-                        <a href="@Model.FinancialSectorLink.First().Url" class="hero-home__content__icon">
+                        <a href="@Model.FinancialSectorLink.First().Url" class="hero-home__content__icon" role="link" aria-labelledby="financial financial-svg">
                             <h2 id="financial">@Model.FinancialSectorLabel</h2>
                             <svg id="financial-svg" aria-describedby="financial" width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>@Model.FinancialSectorLabel</title>
@@ -130,7 +130,7 @@
                     }
                     @if (!string.IsNullOrEmpty(Model.ChildcareSectorLabel) && !Model.ChildcareSectorLink.IsNullOrEmpty())
                     {
-                        <a href="@Model.ChildcareSectorLink.First().Url" class="hero-home__content__icon">
+                        <a href="@Model.ChildcareSectorLink.First().Url" class="hero-home__content__icon" role="link" aria-labelledby="education education-svg">
                             <h2 id="education">@Model.ChildcareSectorLabel</h2>
                             <svg id="education-svg" aria-describedby="education" width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>@Model.ChildcareSectorLabel</title>
@@ -164,7 +164,7 @@
                     }
                     @if (!string.IsNullOrEmpty(Model.SportScienceLabel) && !Model.SportScienceLink.IsNullOrEmpty())
                     {
-                        <a href="@Model.SportScienceLink.First().Url" class="hero-home__content__icon">
+                        <a href="@Model.SportScienceLink.First().Url" class="hero-home__content__icon" role="link" aria-labelledby="sports sports-svg">
                             <h2 id="sports">@Model.SportScienceLabel</h2>
                             <svg id="sports-svg" aria-describedby="sports" width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>@Model.SportScienceLabel</title>
@@ -204,7 +204,7 @@
                 {
                     <h2 class="hero-home__headline">@Model.SearchTitle</h2>
                     <div class="hero-search__form">
-                        <form class="search" role="search" method="post" action="@Model.CourseCareerSearchPage.First().Url">
+                        <form class="search" role="search" method="post" action="@Model.CourseCareerSearchPage.First().Url" aria-labelledby="search">
                             <label for="search"><span class="sr-only">@Model.SearchButtonLabel</span></label>
                             <input type="search" autocomplete="off" id="search" name="term" placeholder="@Model.SearchHintText" data-predictive="/umbraco/api/PredictiveSearch/getresults" />
                             <input class="btn btn--inline" type="submit" value="@Model.SearchButtonLabel">

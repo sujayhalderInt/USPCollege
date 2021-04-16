@@ -12,7 +12,7 @@
                 <a href="@Model.FormStep8Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
             </div>
         </div>
-        <div class="review-block">
+        <div class="review-block" role="contentinfo" aria-label="SportsAcademies area">
             <p class="review-block__label">@Model.HeadingsAndLabels.LabelSportsAcademiesApplyingTo</p>
             @foreach (var academy in Model.ApplicationForm.SportsAcademiesCsv.Split(','))
             {

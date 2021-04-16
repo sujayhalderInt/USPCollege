@@ -15,7 +15,7 @@
 }
 else
 {
-    <section class="bg-usp-grey mb-50 statistic">
+    <section class="bg-usp-grey mb-50 statistic" role="contentinfo" aria-label="statistic-item entire area">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -23,7 +23,7 @@ else
                         @foreach (var stat in Model.StatisticsData)
                         {
                            
-                            <div class="statistic-item">
+                            <div class="statistic-item" role="article" aria-label="statistic-item individual">
                                 <p class="statistic-item__number"> @stat.Figure </p>
                                 <p class="statistic-item__details"> @stat.Description </p>
                             </div>

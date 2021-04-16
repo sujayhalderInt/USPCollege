@@ -23,7 +23,7 @@
 
 <header class="hero-banner">
     @Html.Action("RenderBreadCrumb", "Breadcrumb")
-    <div class="hero-banner__img filter filter--@overlay">
+    <div class="hero-banner__img filter filter--@overlay" role="img" aria-label="banner image">
         @Html.LazyImage(Model.BannerImage, "Banner", aspect: SiteConstants.Crops.AspectRatio.TwentyOneToNine)
     </div>
     <div class="container">
@@ -32,7 +32,7 @@
                 <div class="hero-banner__content">
 
                     <div class="hero-banner__content__details">
-                        <div>
+                        <div role="contentinfo" aria-label="banner info">
                             @{
                                 if (Model is PageCourseDetail)
                                 {
@@ -98,7 +98,7 @@
                         </div>
                         @if (CookieHelper.GetCookieBool(SiteConstants.CookieName, "other", false) && !string.IsNullOrWhiteSpace(key))
                         {
-                            <div class="social-share mb-10" data-key="@key">
+                            <div class="social-share mb-10" data-key="@key" role="link" aria-label="social-share area">
                                 <a href="#">Share <i class="icon-share" aria-hidden="true"></i></a>
                                 <div class="share-wrapper">
                                     <div class="addthis_inline_share_toolbox">

@@ -5,13 +5,13 @@
     
 @if (Model.ApplicationForm.IsALevels)
 {
-    <div class="review-headline">
+    <div class="review-headline" role="contentinfo" aria-label="TypeOfStudy TaxonomyName area">
         <h3>@(Model.HeadingsAndLabels.CourseSelectionReviewHeading + "(" + FormHelper.GetField(Model.ApplicationForm.TypeOfStudy, SiteConstants.Fields.TaxonomyName) + ")")</h3>
         <div>
             <a href="@Model.FormStep6Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
         </div>
     </div>
-    <div class="review-block review-block--inline">
+    <div class="review-block review-block--inline" role="contentinfo" aria-label="FirstChoice SecondChoice ThirdChoice area">
         @if (!string.IsNullOrEmpty(Model.ApplicationForm.AlevelCourseFirstChoice))
         {
             <div>
@@ -38,13 +38,13 @@
 
 @if (!Model.ApplicationForm.IsALevels)
 {
-    <div class="review-headline">
+    <div class="review-headline" role="contentinfo" aria-label="TypeOfStudy TaxonomyName empty_area">
         <h3>@(Model.HeadingsAndLabels.YouAreApplyingForReviewHeading + "(" + FormHelper.GetField(Model.ApplicationForm.TypeOfStudy, SiteConstants.Fields.TaxonomyName) + ")")</h3>
         <div>
             <a href="@Model.FormStep7Url"><i class="icon-edit" aria-hidden="true"></i>@SiteConstants.ApplicationFormGeneral.Step11.Edit</a>
         </div>
     </div>
-    <div class="review-block review-block--inline">
+    <div class="review-block review-block--inline" role="contentinfo" aria-label="FirstChoice SecondChoice ThirdChoice empty_area">
         @if (Model.ApplicationForm.IsAdultLearning)
         {
             if (!string.IsNullOrEmpty(Model.ApplicationForm.AlevelCourseFirstChoice))

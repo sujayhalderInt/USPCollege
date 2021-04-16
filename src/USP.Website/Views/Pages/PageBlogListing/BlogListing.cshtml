@@ -23,11 +23,11 @@
 
     @if (Model.SearchResults.HasResults)
     {
-        <div class="results__head">
+        <div class="results__head" role="contentinfo" aria-label="contorl and info area">
             <p class="results__head__number">@Model.SearchResults.TotalItemCount  @((Model.SearchResults.TotalItemCount == 1) ? "result" : "results")</p>
             <div class="form__check  mb-0">
                 <label for="single-select-sort">Sort by</label>
-                <p class="single-select-sort">
+                <p class="single-select-sort" aria-labelledby="single-select">
                     <select id="single-select" class="sort-by" name="@Html.NameFor(m => m.ListingPostback.SortBy)">
                         <option value="@SiteConstants.Sort.DateDesc" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.DateDesc)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.BlogListing.SortyByDateDescendingText)</option>
                         <option value="@SiteConstants.Sort.Date" @IsSelected(Model.ListingPostback.SortBy, SiteConstants.Sort.Date)>@library.GetDictionaryItem(SiteConstants.UmbracoDictionaryKey.ListingPages.BlogListing.SortyByDateAscendingText)</option>
@@ -37,7 +37,7 @@
                 </p>
             </div>
         </div>
-        <div class="results__body related-course-list">
+        <div class="results__body related-course-list" role="listitem" aria-label="listing area">
             @foreach (var item in Model.SearchResults.Results.OfType<BlogDetailResultItem>())
             {
                 var showDesc = true;
@@ -106,7 +106,7 @@
 
         if (Model.SearchResults.PageCount > Model.SearchResults.PageNumber)
         {
-            <div class="text-center">
+            <div class="text-center" aria-labelledby="btnpageing">
                 <input name="@Html.NameFor(m => m.ListingPostback.BtnLoadMore)" type="submit" value="@library.GetDictionaryItem("CourseListing.LoadMore")" class="btn btn--inline btn-listing-submit" id="btnpageing" />
             </div>
 

@@ -13,7 +13,7 @@
 {
     <div class="container">
         <div class="row">
-            <div class="col-md-8 offset-md-2 mb-50 rte" data-table-color="@GetColor()">
+            <div class="col-md-8 offset-md-2 mb-50 rte" data-table-color="@GetColor()" role="grid" aria-label="table area">
                 @if (!string.IsNullOrWhiteSpace(Model.SectionNavigationTitle))
                 {
                     <a aria-hidden="true" data-anchor="@Model.SectionNavigationTitle"></a>

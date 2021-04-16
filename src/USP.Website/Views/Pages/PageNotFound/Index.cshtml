@@ -18,7 +18,7 @@
                     <label for="search404" class="form__check__label">@Model.SearchLabel</label>
                 </div>
                 <div class="hero-search__form" role="search">
-                    <div class="search mb-0">
+                    <div class="search mb-0" role="search" aria-labelledby="search404">
                         <input type="search" id="search404" name="term" placeholder="@library.GetDictionaryItem("Global Search.Labels.SearchBoxPlaceholder")">
                         <input class="btn btn--inline" type="submit" value="@library.GetDictionaryItem("Global Search.Labels.SearchButtonText")">
                     </div>
